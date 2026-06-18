@@ -8,7 +8,7 @@
     <text class="hero-badge">ROUND {{nextRace.round}} · {{nextRace.country}}</text>
     <text class="hero-title">{{nextRace.cn}}</text>
     <text class="hero-sub">{{nextRace.circuit}}</text>
-    <view class="season-bar"><view class="season-fill" style="width:{{seasonPct}}%"></view></view>
+    <view class="season-row"><view class="season-bar"><view class="season-fill" style="width:{{seasonPct}}%"></view></view><text class="season-label">{{nextRace.round}}/22 站</text></view>
     
     <view class="hero-countdown">
       <view class="cd-box"><text class="cd-num {{cdUrgent ? 'urgent' : ''}}">{{cd.days}}</text><text class="cd-label">DAYS</text></view>
