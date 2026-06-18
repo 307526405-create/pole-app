@@ -63,3 +63,12 @@ button::after { border: none; }
 @keyframes toast-in { from { opacity:0; transform: translate(-50%,-50%) scale(.8); } to { opacity:1; transform: translate(-50%,-50%) scale(1); } }
 .lt-icon { font-size: 64rpx; display: block; margin-bottom: 16rpx; }
 .lt-text { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
+
+.last-race-strip {
+  display: flex; justify-content: space-between; align-items: center;
+  background: #fff; border-radius: 12rpx; padding: 20rpx 24rpx;
+  margin-bottom: 24rpx; box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+  border-left: 6rpx solid #52C41A;
+}
+.lrs-left { font-size: 24rpx; color: #52C41A; font-weight: 600; }
+.lrs-right { font-size: 22rpx; color: #666; }

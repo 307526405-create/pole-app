@@ -24,6 +24,12 @@
     <text class="participants">已有 128 人参与竞猜</text>
   </view>
 
+  <!-- 上站结算横条 -->
+  <view class="last-race-strip" bind:tap="onPredict">
+    <text class="lrs-left">⬆ 西班牙站 +11</text>
+    <text class="lrs-right">杆位✅ 领奖台2/3 ✅</text>
+  </view>
+
   <view class="hero-card offseason" wx:if="{{isOffSeason}}">
     <view class="hero-badge">2027 SEASON</view>
     <view class="hero-title">新赛季倒计时</view>
@@ -60,7 +66,6 @@
     </view>
   </view>
 
-  <!-- 浮动盲盒球 -->
   <view class="loot-float {{lootOpened ? 'opened' : ''}}" bind:tap="openLoot">
     <text class="loot-float-icon">{{lootOpened ? '✅' : '🎁'}}</text>
     <view class="loot-toast" wx:if="{{showLootToast}}">
