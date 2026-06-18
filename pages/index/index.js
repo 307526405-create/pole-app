@@ -1,8 +1,8 @@
 Page({
   data: {
-    isOffSeason: false,
-    checkedIn: false,
+    isOffSeason: false, checkedIn: false, streak: 5,
     dailyTrivia: '舒马赫在2004赛季赢得了前13站中的12站——这是F1历史上最具统治力的赛季开局。',
+    todayInHistory: '2003年的今天，舒马赫在加拿大站夺冠，追平了塞纳的41胜纪录。',
     cd: { days: '02', hours: '18', minutes: '45' },
     news: [
       { tag: '转会', title: '法拉利2027赛季确认继续使用自研引擎', time: '2小时前', summary: '法拉利车队官方宣布，2027赛季将继续使用自主研发的动力单元。', expanded: false },
@@ -13,19 +13,23 @@ Page({
   onLoad() { this.startCountdown(); this.checkCheckin() },
   onShow() { if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 0 }) },
   onShareAppMessage() { return { title: '杆位 - F1赛车竞猜', path: '/pages/index/index' } },
-  
   onCheckin() {
     if (this.data.checkedIn) return
-    this.setData({ checkedIn: true })
-    wx.showToast({ title: '签到成功 +1分', icon: 'success' })
-    // TODO: 后端记录签到积分
+    const today = new Date().toDateString()
+    wx.setStorageSync('checkin_date', today)
+    const streak = (wx.getStorageSync('checkin_streak') || 0) + 1
+    wx.setStorageSync('checkin_streak', streak)
+    this.setData({ checkedIn: true, streak })
+    wx.showToast({ title: `签到成功！连续${streak}天`, icon: 'success' })
   },
   checkCheckin() {
     const today = new Date().toDateString()
     const last = wx.getStorageSync('checkin_date')
-    if (last === today) this.setData({ checkedIn: true })
+    if (last === today) {
+      const streak = wx.getStorageSync('checkin_streak') || 1
+      this.setData({ checkedIn: true, streak })
+    }
   },
-  
   startCountdown() {
     const target = new Date('2026-06-20T23:00:00+08:00')
     const tick = () => {

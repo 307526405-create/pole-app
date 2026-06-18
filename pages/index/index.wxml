@@ -1,6 +1,6 @@
 <view class="page">
   <view class="nav-bar"><text class="nav-title">杆位</text><view class="nav-right">
-    <view class="checkin-btn" bind:tap="onCheckin">{{checkedIn ? '已签到' : '签到 +1'}}</view>
+    <view class="checkin-btn {{checkedIn ? 'done' : ''}}" bind:tap="onCheckin">{{checkedIn ? '🔥 连续'+streak+'天' : '签到 +1'}}</view>
     <text class="nav-pts">PTS 156</text>
   </view></view>
 
@@ -25,21 +25,40 @@
     <text class="participants">已有 128 人参与竞猜</text>
   </view>
 
-  <!-- 休赛期 -->
   <view class="hero-card offseason" wx:if="{{isOffSeason}}">
     <view class="hero-badge">2027 SEASON</view>
     <view class="hero-title">新赛季倒计时</view>
     <view class="hero-sub">澳大利亚大奖赛 · 3月8日</view>
-    <view class="hero-countdown"><view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view><view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view><view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view></view>
+    <view class="hero-countdown"><view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view></view>
     <view class="offseason-tips">
-      <view class="tip-item">🏎️ 冬测追踪：2月巴林</view><view class="tip-item">🔄 转会市场：跟踪最新动态</view><view class="tip-item">📊 你的2026赛季报告已生成</view>
+      <view class="tip-item">🏎️ 冬测追踪：2月巴林</view><view class="tip-item">🔄 转会市场</view><view class="tip-item">📊 赛季报告</view>
     </view>
   </view>
 
-  <!-- 每日冷知识 -->
-  <view class="card daily-card">
-    <view class="daily-badge">💡 每日F1冷知识</view>
-    <text class="daily-text">{{dailyTrivia}}</text>
+  <!-- 每日三连：冷知识+历史今天+我的统计 -->
+  <view class="daily-row">
+    <view class="daily-card">
+      <view class="daily-badge">💡 冷知识</view>
+      <text class="daily-text">{{dailyTrivia}}</text>
+    </view>
+    <view class="daily-card">
+      <view class="daily-badge">📅 历史上的今天</view>
+      <text class="daily-text">{{todayInHistory}}</text>
+    </view>
+  </view>
+
+  <!-- 我的进步 -->
+  <view class="card">
+    <view class="card-title">📈 我的竞猜</view>
+    <view class="my-stats-mini">
+      <view class="msm-item"><text class="msm-val">156</text><text class="msm-lbl">积分</text></view>
+      <view class="msm-div"></view>
+      <view class="msm-item"><text class="msm-val green">47%</text><text class="msm-lbl">准确率</text></view>
+      <view class="msm-div"></view>
+      <view class="msm-item"><text class="msm-val">5</text><text class="msm-lbl">连对杆位</text></view>
+      <view class="msm-div"></view>
+      <view class="msm-item"><text class="msm-val">#42</text><text class="msm-lbl">排名</text></view>
+    </view>
   </view>
 
   <view class="card">
@@ -55,17 +74,16 @@
 
   <view class="card">
     <view class="score-row">
-      <view class="score-main"><text class="score-num">156</text><text class="score-sub">赛季积分</text><text class="score-rank">排名 #42 / 1280</text></view>
+      <view class="score-main"><text class="score-num">+11</text><text class="score-sub">上站 · 西班牙</text></view>
       <view class="score-last">
-        <text class="last-label">上站 · 西班牙</text><text class="last-change">▲ +11</text>
-        <view class="last-detail"><text class="ld-item">✅ 杆位</text><text class="ld-item">✅ 2/3领奖台</text><text class="ld-item miss">— 最快圈</text></view>
+        <view class="last-detail"><text class="ld-item">✅ 杆位(23%)</text><text class="ld-item">✅ 领奖台(8%)</text><text class="ld-item miss">最快圈</text></view>
       </view>
     </view>
     <view class="review-divider"></view>
     <view class="review-detail">
-      <view class="rd-row"><text>杆位</text><text class="hit">Verstappen ✅</text><text class="rd-extra">23%猜对</text></view>
-      <view class="rd-row"><text>领奖台</text><text class="hit">2/3 正确 ✅</text><text class="rd-extra">8%全对</text></view>
-      <view class="rd-row"><text>最快圈</text><text class="miss">Norris 猜错</text><text class="rd-extra">41%猜对</text></view>
+      <view class="rd-row"><text>杆位</text><text class="hit">Verstappen ✅</text></view>
+      <view class="rd-row"><text>领奖台</text><text class="hit">2/3 正确 ✅</text></view>
+      <view class="rd-row"><text>最快圈</text><text class="miss">Norris 猜错</text></view>
     </view>
     <button class="share-btn" open-type="share">分享到微信</button>
   </view>
