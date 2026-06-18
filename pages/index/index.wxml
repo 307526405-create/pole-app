@@ -6,6 +6,10 @@
     <view class="hero-title">加拿大大奖赛</view>
     <view class="hero-sub">维伦纽夫赛道 · 4.36km · 14弯 · DRS 3区</view>
     
+    <!-- 赛季进度 -->
+    <view class="season-bar"><view class="season-fill" style="width:42%"></view></view>
+    <text class="season-label">赛季进度 10/24</text>
+
     <view class="hero-track">
       <view class="ht-item"><text class="ht-lbl">最快圈纪录</text><text class="ht-val">1:11.441</text><text class="ht-drv">Verstappen 2024</text></view>
       <view class="ht-item"><text class="ht-lbl">轮胎策略</text><text class="ht-val">1停为主</text><text class="ht-drv">C3/C4/C5</text></view>
@@ -40,9 +44,7 @@
       <view class="score-last">
         <text class="last-label">上站 · 西班牙</text><text class="last-change">▲ +11</text>
         <view class="last-detail">
-          <text class="ld-item">✅ 杆位</text>
-          <text class="ld-item">✅ 2/3领奖台</text>
-          <text class="ld-item miss">— 最快圈</text>
+          <text class="ld-item">✅ 杆位</text><text class="ld-item">✅ 2/3领奖台</text><text class="ld-item miss">— 最快圈</text>
         </view>
       </view>
     </view>
