@@ -1,1 +1,16 @@
-page { background: #F5F5F5; }
+.page { padding: 0 32rpx; background: #F5F5F5; min-height: 100vh; }
+.predict-step { text-align: center; padding: 48rpx 0 16rpx; }
+.step-q { font-size: 36rpx; font-weight: 600; color: #333; display: block; }
+.step-sub { font-size: 24rpx; color: #999; display: block; margin-top: 8rpx; }
+.step-dots { display: flex; justify-content: center; gap: 16rpx; margin-bottom: 32rpx; }
+.dot { width: 12rpx; height: 12rpx; background: #E5E5E5; border-radius: 50%; }
+.dot.done { background: #E10600; }
+.driver-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12rpx; }
+.driver-card { background: #fff; border-radius: 12rpx; padding: 24rpx 16rpx; text-align: center; border: 2rpx solid transparent; transition: all .1s; }
+.driver-card.sel { border-color: #52C41A; background: rgba(82,196,26,0.04); }
+.dc-num { font-size: 24rpx; color: #999; display: block; margin-bottom: 8rpx; }
+.dc-name { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
+.dc-team { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; }
+.submit-area { position: fixed; bottom: 0; left: 0; right: 0; padding: 24rpx 32rpx; padding-bottom: calc(24rpx + env(safe-area-inset-bottom)); background: #fff; border-top: 1rpx solid #F0F0F0; }
+.submit-btn { height: 88rpx; background: #E10600; color: #fff; border: none; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; display: flex; align-items: center; justify-content: center; width: 100%; }
+button::after { border: none; }

@@ -1,1 +1,21 @@
-<view style="padding:32rpx"><text>{{title}}</text></view>
+<view class="page">
+  <view class="predict-step">
+    <text class="step-q">{{stepTitles[step]}}</text>
+    <text class="step-sub">🇨🇦 加拿大大奖赛 · 周六23:00截止</text>
+  </view>
+  <view class="step-dots">
+    <view class="dot {{step>=0?'done':''}}"></view>
+    <view class="dot {{step>=1?'done':''}}"></view>
+    <view class="dot {{step>=2?'done':''}}"></view>
+  </view>
+  <view class="driver-grid">
+    <view wx:for="{{drivers}}" wx:key="num" class="driver-card {{item.selected?'sel':''}}" bind:tap="selectDriver" data-idx="{{index}}">
+      <text class="dc-num">#{{item.num}}</text>
+      <text class="dc-name">{{item.name}}</text>
+      <text class="dc-team">{{item.team}}</text>
+    </view>
+  </view>
+  <view class="submit-area" wx:if="{{canSubmit}}">
+    <button class="submit-btn" bind:tap="submit">提交竞猜</button>
+  </view>
+</view>

@@ -1,1 +1,31 @@
-<view style="padding:32rpx"><text style="font-size:28rpx;color:#999">{{title}}</text></view>
+<view class="page">
+  <view class="profile-top">
+    <view class="avatar">🏎️</view>
+    <text class="nick">车迷·老李</text>
+    <text class="since">加入2赛季</text>
+    <text class="streak">🔥 连续预测9站</text>
+  </view>
+  
+  <view class="team-cards">
+    <view class="tc"><text class="tc-icon">🐎</text><text class="tc-name">Ferrari</text><text class="tc-sub">车队 #2 · 465分</text></view>
+    <view class="tc"><text class="tc-icon">🇲🇨</text><text class="tc-name">Leclerc</text><text class="tc-sub">车手 #5 · 242分</text></view>
+  </view>
+
+  <view class="stats-row">
+    <view class="stat"><text class="stat-v" style="color:#E10600">156</text><text class="stat-l">积分</text></view>
+    <view class="stat"><text class="stat-v">42</text><text class="stat-l">排名</text></view>
+    <view class="stat"><text class="stat-v" style="color:#52C41A">47%</text><text class="stat-l">准确率</text></view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">最近预测</view>
+    <view class="dr-row"><text>🇪🇸 西班牙</text><text class="hit">+11</text></view>
+    <view class="dr-row"><text>🇲🇨 摩纳哥</text><text class="hit">+3</text></view>
+    <view class="dr-row"><text>🇺🇸 迈阿密</text><text class="hit">+16</text></view>
+  </view>
+
+  <view class="pro-card">
+    <view class="pro-info"><text class="pro-title">杆位 Pro</text><text class="pro-sub">圈速对比 · 历史数据 · 无广告</text></view>
+    <text class="pro-btn">¥18/月</text>
+  </view>
+</view>

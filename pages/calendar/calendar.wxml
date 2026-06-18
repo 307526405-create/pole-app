@@ -1,1 +1,12 @@
-<view style="padding:32rpx"><text style="font-size:28rpx;color:#999">{{title}}</text></view>
+<view class="page">
+  <view class="nav-bar"><text class="nav-title">赛程</text></view>
+  <view class="section-title">2026 F1赛季 · 24站</view>
+  <view wx:for="{{races}}" wx:key="round" class="cal-row">
+    <text class="cal-flag">{{item.flag}}</text>
+    <view class="cal-info">
+      <text class="cal-gp">{{item.gp}}</text>
+      <text class="cal-detail">{{item.date}} · {{item.circuit}} · {{item.length}}</text>
+    </view>
+    <text class="cal-tag {{item.status}}">{{item.tag}}</text>
+  </view>
+</view>

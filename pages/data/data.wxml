@@ -1,1 +1,16 @@
-<view style="padding:32rpx"><text style="font-size:28rpx;color:#999">{{title}}</text></view>
+<view class="page">
+  <view class="nav-bar"><text class="nav-title">数据</text></view>
+  <view class="tabs">
+    <text class="tab {{tab==0?'active':''}}" bind:tap="switchTab" data-idx="0">车手</text>
+    <text class="tab {{tab==1?'active':''}}" bind:tap="switchTab" data-idx="1">车队</text>
+    <text class="tab {{tab==2?'active':''}}" bind:tap="switchTab" data-idx="2">上站</text>
+  </view>
+  <view wx:for="{{data[tab]}}" wx:key="pos" class="ds-row">
+    <text class="ds-pos">{{item.pos}}</text>
+    <view class="ds-info">
+      <text class="ds-name">{{item.name}}</text>
+      <text class="ds-team" wx:if="{{item.team}}">{{item.team}}</text>
+    </view>
+    <text class="ds-pts" wx:if="{{item.pts}}">{{item.pts}}</text>
+  </view>
+</view>
