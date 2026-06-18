@@ -4,7 +4,8 @@
     "pages/data/data",
     "pages/profile/profile",
     "pages/predict/predict",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/driver/driver"
   ],
   "window": {
     "backgroundColor": "#F5F5F5",

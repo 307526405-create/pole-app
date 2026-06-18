@@ -63,7 +63,7 @@
       </view>
     </view>
     <view wx:if="{{wikiTab==1}}">
-      <view class="team-card" wx:for="{{wikiDrivers}}" wx:key="name">
+      <view class="team-card" wx:for="{{wikiDrivers}}" wx:key="name" bind:tap="goDriver" data-idx="{{index}}">
         <view class="tc-header">
           <image wx:if="{{item.img}}" class="tch-logo" src="{{item.img}}" mode="aspectFill" style="border-radius:50%"/>
           <view wx:else class="tch-logo" style="background:#E10600;border-radius:50%"><text>#{{item.num}}</text></view>

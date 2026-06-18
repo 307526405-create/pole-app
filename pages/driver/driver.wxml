@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="nav-bar">
+    <text class="back" bind:tap="onBack">←</text>
+    <text class="nav-title">车手详情</text>
+  </view>
+  
+  <view class="hero">
+    <image wx:if="{{driver.img}}" class="hero-img" src="{{driver.img}}" mode="aspectFill"/>
+    <view wx:else class="hero-avt" style="background:#E10600"><text>#{{driver.num}}</text></view>
+    <view class="hero-info">
+      <text class="hero-num">#{{driver.num}}</text>
+      <text class="hero-name">{{driver.name}}</text>
+      <text class="hero-team">{{driver.team}}</text>
+      <text class="hero-nat">{{driver.nationality}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">生涯数据</view>
+    <view class="stats-grid">
+      <view class="sg"><text class="sg-v">{{driver.championships}}</text><text class="sg-l">世界冠军</text></view>
+      <view class="sg"><text class="sg-v">{{driver.wins}}</text><text class="sg-l">分站冠军</text></view>
+      <view class="sg"><text class="sg-v">{{driver.podiums}}</text><text class="sg-l">领奖台</text></view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">简介</view>
+    <text class="bio">{{driver.desc}}</text>
+  </view>
+</view>
