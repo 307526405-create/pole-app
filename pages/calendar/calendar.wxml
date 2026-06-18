@@ -1,12 +1,28 @@
 <view class="page">
   <view class="nav-bar"><text class="nav-title">赛程</text></view>
-  <view class="section-title">2026 F1赛季 · 24站</view>
-  <view wx:for="{{races}}" wx:key="round" class="cal-row">
-    <text class="cal-flag">{{item.flag}}</text>
-    <view class="cal-info">
-      <text class="cal-gp">{{item.gp}}</text>
-      <text class="cal-detail">{{item.date}} · {{item.circuit}} · {{item.length}}</text>
+
+  <!-- 子Tab -->
+  <view class="tabs">
+    <text class="tab {{subtab==0?'active':''}}" bind:tap="switchSub" data-idx="0">赛程</text>
+    <text class="tab {{subtab==1?'active':''}}" bind:tap="switchSub" data-idx="1">车手积分</text>
+    <text class="tab {{subtab==2?'active':''}}" bind:tap="switchSub" data-idx="2">车队积分</text>
+  </view>
+
+  <!-- 赛程 -->
+  <view wx:if="{{subtab==0}}">
+    <view wx:for="{{races}}" wx:key="round" class="cal-row">
+      <text class="cal-flag">{{item.flag}}</text>
+      <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-detail">{{item.date}} · {{item.circuit}} · {{item.length}}</text></view>
+      <text class="cal-tag {{item.status}}">{{item.tag}}</text>
     </view>
-    <text class="cal-tag {{item.status}}">{{item.tag}}</text>
+  </view>
+
+  <!-- 积分榜 -->
+  <view wx:if="{{subtab>0}}">
+    <view wx:for="{{standings[subtab-1]}}" wx:key="pos" class="ds-row">
+      <text class="ds-pos">{{item.pos}}</text>
+      <view class="ds-info"><text class="ds-name">{{item.name}}</text><text class="ds-team" wx:if="{{item.team}}">{{item.team}}</text></view>
+      <text class="ds-pts">{{item.pts}}</text>
+    </view>
   </view>
 </view>
