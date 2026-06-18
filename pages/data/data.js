@@ -77,7 +77,7 @@ Page({
   onPullDownRefresh(){this.onLoad()},
   switchSub(e){this.setData({subtab:parseInt(e.currentTarget.dataset.idx)})},
   switchRank(e){this.setData({rankTab:parseInt(e.currentTarget.dataset.idx)})},
-  goDriver(e){var i=e.currentTarget.dataset.idx;var d=this.data.wikiDrivers[i];this.setData({showDriver:d})},closeDriver(){this.setData({showDriver:null})},goTeam(e){var i=e.currentTarget.dataset.idx;var d=this.data.teams[i];this.setData({showTeam:d})},closeTeam(){this.setData({showTeam:null})},switchWiki(e){this.setData({wikiTab:parseInt(e.currentTarget.dataset.idx)})},
+  switchWiki(e){this.setData({wikiTab:parseInt(e.currentTarget.dataset.idx)})},
   toggleDetail(e){
     var i=e.currentTarget.dataset.idx
     var races=this.data.races

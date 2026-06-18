@@ -43,7 +43,7 @@
       <text class="sub-tab {{wikiTab==2?'active':''}}" bind:tap="switchWiki" data-idx="2">赛道</text>
     </view>
     <view wx:if="{{wikiTab==0}}">
-      <view class="team-card" wx:for="{{teams}}" wx:key="name" bind:tap="goTeam" data-idx="{{index}}">
+      <view class="team-card" wx:for="{{teams}}" wx:key="name">
         <view class="tc-header">
           <image wx:if="{{item.logo}}" class="tch-logo" src="{{item.logo}}" mode="aspectFit"/>
           <view wx:else class="tch-logo" style="background:{{item.color}}"><text>{{item.name[0]}}</text></view>
@@ -63,7 +63,7 @@
       </view>
     </view>
     <view wx:if="{{wikiTab==1}}">
-      <view class="team-card" wx:for="{{wikiDrivers}}" wx:key="name" bind:tap="goDriver" data-idx="{{index}}">
+      <view class="team-card" wx:for="{{wikiDrivers}}" wx:key="name">
         <view class="tc-header">
           <image wx:if="{{item.img}}" class="tch-logo" src="{{item.img}}" mode="aspectFill" style="border-radius:50%"/>
           <view wx:else class="tch-logo" style="background:#E10600;border-radius:50%"><text>#{{item.num}}</text></view>
@@ -94,41 +94,4 @@
     </view>
   </view>
   <view style="height:160rpx"></view>
-  <view wx:if="{{showDriver}}" class="driver-popup" bind:tap="closeDriver">
-    <view class="dp-card" catchtap="">
-      <text class="dp-close" bind:tap="closeDriver">✕</text>
-      <image wx:if="{{showDriver.img}}" class="dp-img" src="{{showDriver.img}}" mode="aspectFill"/>
-      <view wx:else class="dp-avt" style="background:#E10600"><text>#{{showDriver.num}}</text></view>
-      <text class="dp-num">#{{showDriver.num}}</text>
-      <text class="dp-name">{{showDriver.name}}</text>
-      <text class="dp-team">{{showDriver.team}} · {{showDriver.nationality}}</text>
-      <view class="dp-stats">
-        <view class="dps"><text class="dps-v">{{showDriver.championships}}</text><text class="dps-l">世界冠军</text></view>
-        <view class="dps"><text class="dps-v">{{showDriver.wins}}</text><text class="dps-l">分站冠军</text></view>
-        <view class="dps"><text class="dps-v">{{showDriver.podiums}}</text><text class="dps-l">领奖台</text></view>
-      </view>
-      <text class="dp-desc">{{showDriver.desc}}</text>
-    </view>
-  </view>
-
-  <view wx:if="{{showTeam}}" class="driver-popup" bind:tap="closeTeam">
-    <view class="dp-card" catchtap="">
-      <text class="dp-close" bind:tap="closeTeam">✕</text>
-      <image wx:if="{{showTeam.logo}}" class="dp-logo" src="{{showTeam.logo}}" mode="aspectFit"/>
-      <view wx:else class="dp-avt" style="background:{{showTeam.color}}"><text>{{showTeam.name[0]}}</text></view>
-      <text class="dp-name">{{showTeam.name}}</text>
-      <text class="dp-team">总部 {{showTeam.base}} · 引擎 {{showTeam.engine}}</text>
-      <view class="dp-stats">
-        <view class="dps"><text class="dps-v">{{showTeam.championships}}</text><text class="dps-l">世界冠军</text></view>
-        <view class="dps"><text class="dps-v">{{showTeam.wins}}</text><text class="dps-l">分站冠军</text></view>
-        <view class="dps"><text class="dps-v">{{showTeam.since}}</text><text class="dps-l">参赛</text></view>
-      </view>
-      <view class="dp-drivers">
-        <view class="dpd"><text class="dpd-label">一号</text><text class="dpd-name">{{showTeam.d1}}</text></view>
-        <view class="dpd"><text class="dpd-label">二号</text><text class="dpd-name">{{showTeam.d2}}</text></view>
-        <view class="dpd"><text class="dpd-label">储备</text><text class="dpd-name">{{showTeam.res}}</text></view>
-      </view>
-      <text class="dp-desc">{{showTeam.desc}}</text>
-    </view>
-  </view>
-</scroll-view>
+  
