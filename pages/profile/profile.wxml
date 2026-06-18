@@ -43,3 +43,6 @@
     <text class="pro-btn">免费试用</text>
   </view>
 </view>
+<view class="footer" style="text-align:center;padding:32rpx 0;">
+  <text class="footer-text" bind:tap="goPrivacy">隐私政策</text>
+</view>
