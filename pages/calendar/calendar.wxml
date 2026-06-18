@@ -18,11 +18,9 @@
       <text class="ds-pos">{{item.pos}}</text>
       <image wx:if="{{item.img}}" class="ds-img" src="{{item.img}}" mode="aspectFill"/>
       <view wx:else class="ds-avatar" style="background:#E10600"><text>{{item.en}}</text></view>
-      <view class="ds-info">
-        <text class="ds-name">{{item.name}}</text>
-        <text class="ds-en">{{item.en}}</text>
-      </view>
+      <view class="ds-info"><text class="ds-name">{{item.name}}</text><text class="ds-en">{{item.en}}</text></view>
       <text class="ds-pts">{{item.pts}}</text>
     </view>
   </view>
+  <view style="height:160rpx"></view>
 </scroll-view>
