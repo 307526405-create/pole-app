@@ -1,42 +1,54 @@
 <view class="page">
-  <view class="profile-top">
-    <view class="avatar">🏎️</view>
+  <view class="header">
+    <view class="avt">🏎️</view>
     <text class="nick">车迷·老李</text>
     <text class="since">加入2赛季</text>
-    <text class="streak">🔥 连续预测9站</text>
-  </view>
-  
-  <view class="team-cards">
-    <view class="tc"><text class="tc-icon">🐎</text><text class="tc-name">Ferrari</text><text class="tc-sub">车队 #2 · 465分</text></view>
-    <view class="tc"><text class="tc-icon">🇲🇨</text><text class="tc-name">Leclerc</text><text class="tc-sub">车手 #5 · 242分</text></view>
   </view>
 
-  <view class="stats-row">
-    <view class="stat"><text class="stat-v" style="color:#E10600">156</text><text class="stat-l">积分</text></view>
-    <view class="stat"><text class="stat-v">42</text><text class="stat-l">排名</text></view>
-    <view class="stat"><text class="stat-v" style="color:#52C41A">47%</text><text class="stat-l">准确率</text></view>
+  <view class="stats">
+    <view class="st">
+      <text class="st-v">156</text>
+      <text class="st-l">积分</text>
+    </view>
+    <view class="st-div"></view>
+    <view class="st">
+      <text class="st-v">42</text>
+      <text class="st-l">排名</text>
+    </view>
+    <view class="st-div"></view>
+    <view class="st">
+      <text class="st-v green">47%</text>
+      <text class="st-l">准确率</text>
+    </view>
   </view>
 
   <view class="card">
-    <view class="card-title">📊 竞猜历史</view>
+    <view class="card-hd">支持的车队与车手</view>
+    <view class="fav-row">
+      <view class="fav"><text class="fav-icon">🐎</text><text class="fav-name">Ferrari</text><text class="fav-sub">车队第2</text></view>
+      <view class="fav"><text class="fav-icon">🇲🇨</text><text class="fav-name">Leclerc</text><text class="fav-sub">车手第5</text></view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-hd">竞猜历史</view>
     <view wx:for="{{history}}" wx:key="race" class="h-row">
-      <text class="h-race">{{item.race}}</text>
-      <text class="h-detail">{{item.detail}}</text>
-      <text class="h-score">{{item.score}}</text>
+      <text class="h-l">{{item.race}}</text>
+      <text class="h-m">{{item.detail}}</text>
+      <text class="h-r">{{item.score}}</text>
     </view>
-    <view wx:if="{{history.length === 0}}" class="empty">暂无竞猜记录</view>
   </view>
 
   <view class="card">
-    <view class="card-title">📅 赛季报告</view>
-    <view class="report-preview">
-      <text class="rp-text">你的2026赛季预测报告即将生成</text>
-      <text class="rp-sub">赛季结束后自动生成，可分享到朋友圈</text>
+    <view class="card-hd">赛季报告</view>
+    <view class="report">
+      <text class="rp-t">你的2026赛季预测报告</text>
+      <text class="rp-s">赛季结束后自动生成，可分享</text>
     </view>
   </view>
 
-  <view class="pro-card">
-    <view class="pro-info"><text class="pro-title">杆位 Pro</text><text class="pro-sub">圈速对比 · 历史数据 · 无广告</text></view>
+  <view class="pro">
+    <view class="pro-l"><text class="pro-t">杆位 Pro</text><text class="pro-s">圈速对比 · 历史数据 · 无广告</text></view>
     <text class="pro-btn">¥18/月</text>
   </view>
 </view>
