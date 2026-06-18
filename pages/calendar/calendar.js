@@ -22,17 +22,20 @@ const D_CN = {
   'Nico Hülkenberg':['尼科·霍肯伯格','Hülkenberg','https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/N/NICHUL01_Nico_Hulkenberg/nichul01.png.transform/2col-retina/image.png'],
   'Sergio Pérez':['塞尔吉奥·佩雷兹','Pérez','https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/S/SERPER01_Sergio_Perez/serper01.png.transform/2col-retina/image.png'],
   'Lance Stroll':['兰斯·斯特罗尔','Stroll','https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LANSTR01_Lance_Stroll/lanstr01.png.transform/2col-retina/image.png'],
-  'Arvid Lindblad':['阿尔维德·林德布拉德','Lindblad',''],
-  'Valtteri Bottas':['瓦尔特利·博塔斯','Bottas',''],
 }
 const T_CN = {
-  'Mercedes':['梅赛德斯','Mercedes'],'Ferrari':['法拉利','Ferrari'],'McLaren':['迈凯伦','McLaren'],
-  'Red Bull':['红牛','Red Bull'],'Alpine F1 Team':['阿尔派','Alpine'],
-  'RB F1 Team':['小红牛','RB'],'Haas F1 Team':['哈斯','Haas'],
-  'Williams':['威廉姆斯','Williams'],'Aston Martin':['阿斯顿·马丁','Aston Martin'],
-  'Audi':['奥迪','Audi'],'Cadillac F1 Team':['凯迪拉克','Cadillac'],
+  'Mercedes':['梅赛德斯','Mercedes','https://media.formula1.com/content/dam/fom-website/teams/2025/mercedes-logo.png.transform/2col-retina/image.png'],
+  'Ferrari':['法拉利','Ferrari','https://media.formula1.com/content/dam/fom-website/teams/2025/ferrari-logo.png.transform/2col-retina/image.png'],
+  'McLaren':['迈凯伦','McLaren','https://media.formula1.com/content/dam/fom-website/teams/2025/mclaren-logo.png.transform/2col-retina/image.png'],
+  'Red Bull':['红牛','Red Bull','https://media.formula1.com/content/dam/fom-website/teams/2025/red-bull-racing-logo.png.transform/2col-retina/image.png'],
+  'Alpine F1 Team':['阿尔派','Alpine',''],
+  'RB F1 Team':['小红牛','RB',''],
+  'Haas F1 Team':['哈斯','Haas',''],
+  'Williams':['威廉姆斯','Williams',''],
+  'Aston Martin':['阿斯顿·马丁','Aston Martin',''],
+  'Audi':['奥迪','Audi',''],
+  'Cadillac F1 Team':['凯迪拉克','Cadillac',''],
 }
-
 Page({onShow(){if(typeof this.getTabBar==='function'&&this.getTabBar())this.getTabBar().setData({selected:1})},data:{subtab:0,races:[],standings:[[],[]]},
 onLoad(){
   wx.request({url:API+'/races',success:(res)=>{const now=new Date();this.setData({races:(res.data.data||[]).map((r,i)=>({round:r.round,flag:FLAGS[r.country]||'🏁',gp:RACE_CN[r.name]||r.name,date:r.date.substring(5),circuit:r.circuit,status:new Date(r.date)<now?'done':(new Date(r.date)-now<7*86400000?'now':'next'),tag:new Date(r.date)<now?'已结束':(new Date(r.date)-now<7*86400000?'进行中':'即将')}))})}})
@@ -40,6 +43,6 @@ onLoad(){
     ds[0]=(res.data.data||[]).map(d=>{const t=D_CN[d.driver_name]||[d.driver_name,d.driver_code||'',''];return{pos:d.position,name:t[0],en:t[1],team:(T_CN[d.constructor]||[d.constructor])[0],pts:d.points,img:t[2]}})
     this.setData({standings:ds})}})
   wx.request({url:API+'/standings/constructors',success:(res)=>{const ds=this.data.standings
-    ds[1]=(res.data.data||[]).map(d=>{const t=T_CN[d.name]||[d.name,''];return{pos:d.position,name:t[0],en:t[1],pts:d.points,img:''}})
+    ds[1]=(res.data.data||[]).map(d=>{const t=T_CN[d.name]||[d.name,'',''];return{pos:d.position,name:t[0],en:t[1],pts:d.points,img:t[2]}})
     this.setData({standings:ds})}})
 },switchSub(e){this.setData({subtab:parseInt(e.currentTarget.dataset.idx)})}})
