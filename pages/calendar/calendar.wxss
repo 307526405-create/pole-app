@@ -22,3 +22,4 @@
 .ds-name { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
 .ds-en { font-size: 20rpx; color: #999; display: block; }
 .ds-pts { font-size: 28rpx; font-weight: 600; color: #333; }
+.cal-num { width: 36rpx; font-size: 24rpx; color: #999; font-weight: 600; text-align: center; }
