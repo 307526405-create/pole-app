@@ -5,27 +5,27 @@
   </view></view>
 
   <view class="hero-card" wx:if="{{nextRace}}">
-    <text class="badge">ROUND {{nextRace.round}} · {{nextRace.cnCountry}}</text>
+    <text class="badge">ROUND {{nextRace.round}} · {{nextRace.cnCountry}} · {{nextRace.date}} · {{nextRace.date}}</text>
     <text class="title">{{nextRace.cn}}</text>
     <text class="sub">{{nextRace.circuit}}</text>
-    <view class="pg"><view class="pg-fill" style="width:{{seasonPct}}%"></view><text class="pg-label">{{nextRace.round}}/22 站</text></view>
+    <view class="pg"><view class="pg-track"><view class="pg-fill" style="width:{{seasonPct}}%"></view></view><text class="pg-text">{{nextRace.round}}/22</text></view>
     
-    <view class="countdown">
-      <view class="cd"><text class="cd-num">{{cd.days}}</text><text class="cd-lbl">天</text></view>
-      <text class="cd-colon">:</text>
-      <view class="cd"><text class="cd-num">{{cd.hours}}</text><text class="cd-lbl">时</text></view>
-      <text class="cd-colon">:</text>
-      <view class="cd"><text class="cd-num">{{cd.minutes}}</text><text class="cd-lbl">分</text></view>
+    <view class="cd">
+      <view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view>
+      <text class="cd-sep">:</text>
+      <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
+      <text class="cd-sep">:</text>
+      <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
     </view>
     
-    <text class="deadline">竞猜截止 周六 22:59</text>
+    <view class="urgency"><text>⚡ 再不猜就来不及了</text></view>
     <button class="btn" bind:tap="onPredict">开始竞猜</button>
   </view>
 
   <view class="card quiz-card {{quizDone ? 'done' : ''}}"><view class="card-title">🎯 每日一题</view><text class="quiz-q">{{quiz.question}}</text><view class="quiz-opts" wx:if="{{!quizDone}}"><view class="qo" wx:for="{{quiz.options}}" wx:key="*this" bind:tap="pickQuiz" data-idx="{{index}}">{{item}}</view></view><view class="quiz-done" wx:if="{{quizDone}}"><text class="qd-icon">{{quizResult.correct ? '✅ 答对！+1分' : '❌ '+quiz.answer}}</text><text class="qd-exp">{{quiz.explanation}}</text></view></view>
   <view class="card"><view class="card-title">💡 冷知识</view><swiper class="trivia-swiper" indicator-dots autoplay interval="5000" circular><swiper-item wx:for="{{trivias}}" wx:key="*this"><text class="trivia-text">{{item}}</text></swiper-item></swiper></view>
   <view class="card"><view class="card-title">最新资讯</view>
-    <view class="info-item" wx:for="{{news}}" wx:key="title"><view class="info-header" bind:tap="toggleNews" data-idx="{{index}}"><view class="info-tag">{{item.tag}}</view><text class="info-title">{{item.title}}</text><text class="info-arrow">{{item.expanded ? '▾' : '▸'}}</text></view><text class="info-time">{{item.time}}</text><view class="info-body" wx:if="{{item.expanded}}"><text>{{item.summary}}</text></view></view>
+    <view class="info-item" wx:for="{{news}}" wx:key="title"><view class="info-header" bind:tap="toggleNews" data-idx="{{index}}"><view class="info-tag">{{item.tag}}</view><text class="info-title">{{item.title}}</text><text class="info-arrow">{{item.expanded ? '▾' : '▸'}}</text></view><view class="info-body" wx:if="{{item.expanded}}"><text>{{item.summary}}</text></view></view>
   </view>
   <view class="loot-float {{lootOpened ? 'opened' : ''}}" bind:tap="openLoot"><text class="loot-float-icon">{{lootOpened ? '✅' : '🎁'}}</text></view>
   <view class="loot-toast" wx:if="{{showLootToast}}"><text class="lt-icon">{{lootResult.icon}}</text><text class="lt-text">{{lootResult.text}}</text></view>
