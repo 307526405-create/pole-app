@@ -1,7 +1,8 @@
 Page({
   data: {
-    isOffSeason: false, checkedIn: false, streak: 5, lootOpened: false,
-    lootResult: { icon:'', text:'', sub:'' },
+    isOffSeason: false, checkedIn: false, streak: 5,
+    lootOpened: false, showLootToast: false,
+    lootResult: { icon:'', text:'' },
     dailyTrivia: '舒马赫在2004赛季赢得了前13站中的12站——这是F1历史上最具统治力的赛季开局。',
     todayInHistory: '2003年的今天，舒马赫在加拿大站夺冠，追平了塞纳的41胜纪录。',
     cd: { days: '02', hours: '18', minutes: '45' },
@@ -14,7 +15,6 @@ Page({
   onLoad() { this.startCountdown(); this.checkCheckin(); this.checkLoot() },
   onShow() { if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 0 }) },
   onShareAppMessage() { return { title: '杆位 - F1赛车竞猜', path: '/pages/index/index' } },
-  
   onCheckin() {
     if (this.data.checkedIn) return
     const today = new Date().toDateString(); wx.setStorageSync('checkin_date', today)
@@ -26,25 +26,24 @@ Page({
     const today = new Date().toDateString(); const last = wx.getStorageSync('checkin_date')
     if (last === today) { const streak = wx.getStorageSync('checkin_streak') || 1; this.setData({ checkedIn: true, streak }) }
   },
-  
   openLoot() {
     if (this.data.lootOpened) return
     const rewards = [
-      { icon: '🎉', text: '恭喜获得 +3 积分！', sub: '直接加到赛季总分' },
-      { icon: '⭐', text: '恭喜获得 +2 积分！', sub: '好运连连' },
-      { icon: '💪', text: '获得 +1 积分', sub: '每天都有机会' },
-      { icon: '🏎️', text: '今日冷知识：维斯塔潘是F1最年轻的分站冠军', sub: '18岁228天，2016西班牙站' },
-      { icon: '😊', text: '今天运气平平，明天再来！', sub: '积分奖励概率50%' },
+      { icon: '🎉', text: '恭喜获得 +3 积分！' },
+      { icon: '⭐', text: '恭喜获得 +2 积分！' },
+      { icon: '💪', text: '获得 +1 积分' },
+      { icon: '🏎️', text: '冷知识：维斯塔潘是F1最年轻分站冠军\\n18岁228天' },
+      { icon: '😊', text: '今天运气平平\\n明天再来！' },
     ]
     const r = rewards[Math.floor(Math.random() * rewards.length)]
     wx.setStorageSync('loot_date', new Date().toDateString())
-    this.setData({ lootOpened: true, lootResult: r })
+    this.setData({ lootOpened: true, lootResult: r, showLootToast: true })
+    setTimeout(() => this.setData({ showLootToast: false }), 2000)
   },
   checkLoot() {
     const today = new Date().toDateString(); const last = wx.getStorageSync('loot_date')
-    if (last === today) this.setData({ lootOpened: true, lootResult: { icon:'🎁',text:'今日已开启',sub:'明天再来！' } })
+    if (last === today) this.setData({ lootOpened: true })
   },
-  
   startCountdown() {
     const target = new Date('2026-06-20T23:00:00+08:00')
     const tick = () => {

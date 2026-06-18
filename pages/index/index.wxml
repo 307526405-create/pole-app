@@ -31,19 +31,6 @@
     <view class="offseason-tips"><view class="tip-item">🏎️ 冬测追踪 · 2月巴林</view></view>
   </view>
 
-  <!-- 每日盲盒 -->
-  <view class="loot-box" bind:tap="openLoot" wx:if="{{!lootOpened}}">
-    <view class="loot-icon">🎁</view>
-    <view class="loot-text">每日盲盒 · 点击打开</view>
-    <view class="loot-hint">可能获得积分奖励！</view>
-  </view>
-  <view class="loot-box opened" wx:if="{{lootOpened}}">
-    <view class="loot-icon">{{lootResult.icon}}</view>
-    <view class="loot-text">{{lootResult.text}}</view>
-    <view class="loot-hint">{{lootResult.sub}}</view>
-  </view>
-
-  <!-- 每日双卡 -->
   <view class="daily-row">
     <view class="daily-card"><view class="daily-badge">💡 冷知识</view><text class="daily-text">{{dailyTrivia}}</text></view>
     <view class="daily-card"><view class="daily-badge">📅 历史上的今天</view><text class="daily-text">{{todayInHistory}}</text></view>
@@ -70,6 +57,15 @@
       </view>
       <text class="info-time">{{item.time}}</text>
       <view class="info-body" wx:if="{{item.expanded}}"><text>{{item.summary}}</text></view>
+    </view>
+  </view>
+
+  <!-- 浮动盲盒球 -->
+  <view class="loot-float {{lootOpened ? 'opened' : ''}}" bind:tap="openLoot">
+    <text class="loot-float-icon">{{lootOpened ? '✅' : '🎁'}}</text>
+    <view class="loot-toast" wx:if="{{showLootToast}}">
+      <text class="lt-icon">{{lootResult.icon}}</text>
+      <text class="lt-text">{{lootResult.text}}</text>
     </view>
   </view>
 </view>
