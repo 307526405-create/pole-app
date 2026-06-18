@@ -5,7 +5,16 @@
   <text class="tab {{subtab==2?'active':''}}" bind:tap="switchSub" data-idx="2">百科</text>
 </view>
 <scroll-view class="content-scroll" scroll-y enhanced show-scrollbar="{{false}}">
-  <view wx:if="{{subtab==0}}">
+    <view wx:if="{{loading}}" class="state-box">
+    <text class="state-icon">⏳</text>
+    <text class="state-text">加载中...</text>
+  </view>
+  <view wx:elif="{{error}}" class="state-box">
+    <text class="state-icon">⚠️</text>
+    <text class="state-text">加载失败</text>
+    <view class="retry-btn" bind:tap="onRetry">重试</view>
+  </view>
+  <block wx:else><view wx:if="{{subtab==0}}">
     <view wx:for="{{races}}" wx:key="round">
       <view class="cal-row" bind:tap="toggleDetail" data-idx="{{index}}">
         <text class="cal-num">{{item.round}}</text>
@@ -140,4 +149,5 @@
     </view>
   </view>
 
+</block>
 </scroll-view>
