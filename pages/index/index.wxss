@@ -14,7 +14,7 @@
 .season-bar { height: 4rpx; background: rgba(255,255,255,0.1); border-radius: 2rpx; margin-bottom: 4rpx; }
 .season-fill { height: 4rpx; background: #E10600; border-radius: 2rpx; }
 .season-label { font-size: 18rpx; color: rgba(255,255,255,0.3); display: block; margin-bottom: 16rpx; }
-.hero-track { display: flex; gap: 32rpx; padding: 16rpx 0; border-top: 1rpx solid rgba(255,255,255,0.1); border-bottom: 1rpx solid rgba(255,255,255,0.1); margin-bottom: 24rpx; }
+.hero-track { display: flex; gap: 32rpx; padding: 16rpx 0; border-top: 1rpx solid rgba(255,255,255,0.1); border-bottom: 1rpx solid rgba(255,255,255,0.1); margin-bottom: 16rpx; }
 .ht-item { flex: 1; }
 .ht-lbl { font-size: 18rpx; color: rgba(255,255,255,0.3); display: block; letter-spacing: 1rpx; }
 .ht-val { font-size: 28rpx; font-weight: 600; display: block; margin: 4rpx 0; }
@@ -24,22 +24,25 @@
 .cd-num { font-size: 48rpx; font-weight: 600; display: block; line-height: 1; }
 .cd-label { font-size: 20rpx; color: rgba(255,255,255,0.4); display: block; margin-top: 4rpx; }
 .deadline-warn { display: block; text-align: center; font-size: 22rpx; color: #E10600; font-weight: 600; margin-bottom: 16rpx; }
-.hero-times { display: flex; gap: 32rpx; margin-bottom: 24rpx; }
-.ht-label { font-size: 24rpx; color: rgba(255,255,255,0.5); }
 .btn-go { width: 100%; height: 88rpx; background: #E10600; color: #fff; border: none; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
 .participants { display: block; text-align: center; font-size: 22rpx; color: rgba(255,255,255,0.4); margin-top: 12rpx; }
 button::after { border: none; }
 .offseason-tips { margin-top: 24rpx; display: flex; flex-direction: column; gap: 12rpx; }
 .tip-item { font-size: 24rpx; color: rgba(255,255,255,0.6); padding: 12rpx 16rpx; background: rgba(255,255,255,0.06); border-radius: 8rpx; }
 
-/* 每日双卡 */
-.daily-row { display: flex; gap: 16rpx; margin-bottom: 32rpx; }
+/* 每日盲盒 */
+.loot-box { background: linear-gradient(135deg, #FFF8E1, #FFF3CD); border-radius: 24rpx; padding: 32rpx; margin-bottom: 24rpx; text-align: center; border: 2rpx dashed #FFC107; cursor: pointer; }
+.loot-box.opened { background: linear-gradient(135deg, #F5F5F5, #fff); border-color: #E5E5E5; }
+.loot-icon { font-size: 48rpx; margin-bottom: 8rpx; }
+.loot-text { font-size: 28rpx; font-weight: 600; color: #333; }
+.loot-hint { font-size: 20rpx; color: #999; margin-top: 4rpx; }
+
+.daily-row { display: flex; gap: 16rpx; margin-bottom: 24rpx; }
 .daily-card { flex: 1; background: #fff; border-radius: 16rpx; padding: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
 .daily-badge { font-size: 20rpx; color: #E10600; font-weight: 600; margin-bottom: 12rpx; }
 .daily-text { font-size: 24rpx; color: #333; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-/* 我的统计mini */
-.card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 32rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
+.card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
 .card-title { font-size: 24rpx; color: #999; margin-bottom: 16rpx; font-weight: 600; }
 .my-stats-mini { display: flex; align-items: center; }
 .msm-item { flex: 1; text-align: center; }
@@ -56,17 +59,3 @@ button::after { border: none; }
 .info-arrow { font-size: 24rpx; color: #999; flex-shrink: 0; }
 .info-time { font-size: 20rpx; color: #999; display: block; margin: 6rpx 0 0; }
 .info-body { margin-top: 12rpx; padding: 16rpx; background: #F5F5F5; border-radius: 8rpx; font-size: 24rpx; color: #666; line-height: 1.6; }
-
-.score-row { display: flex; gap: 24rpx; align-items: center; margin-bottom: 8rpx; }
-.score-main { text-align: center; }
-.score-num { font-size: 48rpx; font-weight: 600; color: #52C41A; display: block; line-height: 1; }
-.score-sub { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; }
-.score-last { flex: 1; }
-.last-detail { display: flex; flex-wrap: wrap; gap: 8rpx; }
-.ld-item { font-size: 20rpx; color: #52C41A; }
-.ld-item.miss { color: #999; }
-.review-divider { height: 1rpx; background: #F0F0F0; margin: 20rpx 0; }
-.rd-row { display: flex; justify-content: space-between; padding: 8rpx 0; font-size: 28rpx; }
-.hit { color: #52C41A; font-weight: 600; }
-.miss { color: #999; }
-.share-btn { width: 100%; height: 88rpx; margin-top: 20rpx; background: #F5F5F5; color: #333; border: 1rpx solid #F0F0F0; border-radius: 16rpx; font-size: 28rpx; display: flex; align-items: center; justify-content: center; }
