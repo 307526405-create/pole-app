@@ -27,3 +27,4 @@ page { height: 100vh; overflow: hidden; }
 
 /* SVG白色Logo需要暗底 */
 .ds-img[src$=".svg"] { background: #333; padding: 4rpx; }
+.nav-bar { height: 132rpx; padding-top: 44rpx; }

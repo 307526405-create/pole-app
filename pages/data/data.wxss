@@ -21,3 +21,4 @@
 .tcs-val { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
 .tcs-lbl { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; }
 .circuit-map { width: 100%; margin-bottom: 16rpx; border-radius: 8rpx; }
+.nav-bar { height: 132rpx; padding-top: 44rpx; }
