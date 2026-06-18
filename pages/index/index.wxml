@@ -1,5 +1,5 @@
 <view class="page">
-  <view class="nav-bar"><text class="nav-title">杆位</text><text class="nav-pts">PTS 156</text></view>
+  <view class="nav-bar"><text class="nav-title">杆位</text><text class="nav-pts">PTS 156 ▲3</text></view>
 
   <view class="hero-card">
     <view class="hero-badge">ROUND 10 · 🇨🇦</view>
@@ -16,8 +16,11 @@
       <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
       <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
     </view>
+    <text class="deadline-warn">⏰ 竞猜截止：周六 22:59</text>
+
     <view class="hero-times"><text class="ht-label">排位赛 周六 23:00</text><text class="ht-label">正赛 周日 23:00</text></view>
     <button class="btn-go" bind:tap="onPredict">开始竞猜</button>
+    <text class="participants">已有 128 人参与竞猜</text>
   </view>
 
   <view class="card">
@@ -37,15 +40,17 @@
       <view class="score-last">
         <text class="last-label">上站 · 西班牙</text><text class="last-change">▲ +11</text>
         <view class="last-detail">
-          <text class="ld-item">✅ 杆位</text><text class="ld-item">✅ 2/3领奖台</text><text class="ld-item miss">— 最快圈</text>
+          <text class="ld-item">✅ 杆位</text>
+          <text class="ld-item">✅ 2/3领奖台</text>
+          <text class="ld-item miss">— 最快圈</text>
         </view>
       </view>
     </view>
     <view class="review-divider"></view>
     <view class="review-detail">
-      <view class="rd-row"><text>杆位</text><text class="hit">Verstappen ✅</text></view>
-      <view class="rd-row"><text>领奖台</text><text class="hit">2/3 正确 ✅</text></view>
-      <view class="rd-row"><text>最快圈</text><text class="miss">Norris 猜错</text></view>
+      <view class="rd-row"><text>杆位</text><text class="hit">Verstappen ✅</text><text class="rd-extra">23%猜对</text></view>
+      <view class="rd-row"><text>领奖台</text><text class="hit">2/3 正确 ✅</text><text class="rd-extra">8%全对</text></view>
+      <view class="rd-row"><text>最快圈</text><text class="miss">Norris 猜错</text><text class="rd-extra">41%猜对</text></view>
     </view>
     <button class="share-btn" open-type="share">分享到微信</button>
   </view>

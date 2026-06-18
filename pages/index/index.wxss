@@ -1,5 +1,4 @@
 .page { padding: 0 32rpx 120rpx; }
-
 .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 88rpx; }
 .nav-title { font-size: 36rpx; font-weight: 600; color: #333; }
 .nav-pts { font-size: 28rpx; color: #E10600; font-weight: 600; }
@@ -13,17 +12,17 @@
 .hero-badge { font-size: 20rpx; color: #E10600; font-weight: 600; margin-bottom: 8rpx; letter-spacing: 2rpx; }
 .hero-title { font-size: 40rpx; font-weight: 600; margin-bottom: 4rpx; position: relative; z-index: 1; }
 .hero-sub { font-size: 24rpx; color: rgba(255,255,255,0.5); margin-bottom: 16rpx; }
-
 .hero-track { display: flex; gap: 32rpx; padding: 16rpx 0; border-top: 1rpx solid rgba(255,255,255,0.1); border-bottom: 1rpx solid rgba(255,255,255,0.1); margin-bottom: 24rpx; }
 .ht-item { flex: 1; }
 .ht-lbl { font-size: 18rpx; color: rgba(255,255,255,0.3); display: block; letter-spacing: 1rpx; }
 .ht-val { font-size: 28rpx; font-weight: 600; display: block; margin: 4rpx 0; }
 .ht-drv { font-size: 20rpx; color: rgba(255,255,255,0.4); display: block; }
 
-.hero-countdown { display: flex; gap: 24rpx; margin-bottom: 24rpx; }
+.hero-countdown { display: flex; gap: 24rpx; margin-bottom: 12rpx; }
 .cd-item { text-align: center; }
 .cd-num { font-size: 48rpx; font-weight: 600; display: block; line-height: 1; }
 .cd-label { font-size: 20rpx; color: rgba(255,255,255,0.4); display: block; margin-top: 4rpx; }
+.deadline-warn { display: block; text-align: center; font-size: 22rpx; color: #E10600; font-weight: 600; margin-bottom: 16rpx; }
 .hero-times { display: flex; gap: 32rpx; margin-bottom: 24rpx; }
 .ht-label { font-size: 24rpx; color: rgba(255,255,255,0.5); }
 
@@ -32,6 +31,7 @@
   border-radius: 16rpx; font-size: 28rpx; font-weight: 600;
   display: flex; align-items: center; justify-content: center; position: relative; z-index: 1;
 }
+.participants { display: block; text-align: center; font-size: 22rpx; color: rgba(255,255,255,0.4); margin-top: 12rpx; }
 button::after { border: none; }
 
 .card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 32rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
@@ -39,7 +39,7 @@ button::after { border: none; }
 
 .info-item { padding: 16rpx 0; border-bottom: 1rpx solid #F0F0F0; }
 .info-item:last-child { border-bottom: none; padding-bottom: 0; }
-.info-header { display: flex; align-items: center; gap: 12rpx; cursor: pointer; }
+.info-header { display: flex; align-items: center; gap: 12rpx; }
 .info-tag { background: rgba(225,6,0,0.08); color: #E10600; font-size: 20rpx; font-weight: 600; padding: 2rpx 12rpx; border-radius: 4rpx; flex-shrink: 0; }
 .info-title { font-size: 28rpx; color: #333; flex: 1; }
 .info-arrow { font-size: 24rpx; color: #999; flex-shrink: 0; }
@@ -59,7 +59,8 @@ button::after { border: none; }
 .ld-item.miss { color: #999; }
 
 .review-divider { height: 1rpx; background: #F0F0F0; margin: 24rpx 0; }
-.rd-row { display: flex; justify-content: space-between; padding: 8rpx 0; font-size: 28rpx; }
+.rd-row { display: flex; justify-content: space-between; align-items: center; padding: 8rpx 0; font-size: 28rpx; }
+.rd-extra { font-size: 20rpx; color: #999; }
 .hit { color: #52C41A; font-weight: 600; }
 .miss { color: #999; }
 .share-btn {
