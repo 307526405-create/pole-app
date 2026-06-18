@@ -94,4 +94,20 @@
     </view>
   </view>
   <view style="height:160rpx"></view>
+  <view wx:if="{{showDriver}}" class="driver-popup" bind:tap="closeDriver">
+    <view class="dp-card" catchtap="">
+      <text class="dp-close" bind:tap="closeDriver">✕</text>
+      <image wx:if="{{showDriver.img}}" class="dp-img" src="{{showDriver.img}}" mode="aspectFill"/>
+      <view wx:else class="dp-avt" style="background:#E10600"><text>#{{showDriver.num}}</text></view>
+      <text class="dp-num">#{{showDriver.num}}</text>
+      <text class="dp-name">{{showDriver.name}}</text>
+      <text class="dp-team">{{showDriver.team}} · {{showDriver.nationality}}</text>
+      <view class="dp-stats">
+        <view class="dps"><text class="dps-v">{{showDriver.championships}}</text><text class="dps-l">世界冠军</text></view>
+        <view class="dps"><text class="dps-v">{{showDriver.wins}}</text><text class="dps-l">分站冠军</text></view>
+        <view class="dps"><text class="dps-v">{{showDriver.podiums}}</text><text class="dps-l">领奖台</text></view>
+      </view>
+      <text class="dp-desc">{{showDriver.desc}}</text>
+    </view>
+  </view>
 </scroll-view>
