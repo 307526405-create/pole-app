@@ -10,7 +10,7 @@
   "window": {
     "backgroundColor": "#F5F5F5",
     "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTitleText": "杆位",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
