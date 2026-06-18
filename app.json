@@ -8,10 +8,8 @@
     "pages/predict/predict"
   ],
   "window": {
-    "backgroundColor": "#F5F5F5",
-    "navigationBarBackgroundColor": "#FFFFFF",
-    "navigationBarTitleText": "杆位",
-    "navigationBarTextStyle": "black"
+    "navigationStyle": "custom",
+    "backgroundColor": "#F5F5F5"
   },
   "tabBar": {
     "custom": true,
@@ -37,9 +35,5 @@
         "text": "我的"
       }
     ]
-  },
-  "globalStyle": {
-    "navigationStyle": "custom",
-    "backgroundColor": "#F5F5F5"
   }
 }
