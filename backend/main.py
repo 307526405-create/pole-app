@@ -13,6 +13,7 @@ from pydantic import BaseModel, Field
 
 from db import init_db, save_prediction, get_prediction, get_result, save_result, update_points
 from data import get_races, get_driver_standings, get_constructor_standings
+from wiki import get_teams_wiki
 from predict import calculate_score
 
 
@@ -218,3 +219,23 @@ async def api_get_prediction_result(
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)
+
+@app.get("/api/wiki/teams")
+async def api_wiki_teams():
+    """车队百科"""
+    teams = await get_teams_wiki()
+    return {"code": 0, "data": teams, "count": len(teams)}
+
+@app.get("/api/wiki/drivers")
+async def api_wiki_drivers():
+    """车手百科（含生涯数据）"""
+    standings = await get_driver_standings("current")
+    return {"code": 0, "data": standings, "count": len(standings)}
+
+@app.get("/api/wiki/circuits")
+async def api_wiki_circuits():
+    """赛道百科"""
+    races = await get_races("current")
+    return {"code": 0, "data": races, "count": len(races)}
+
+return app
