@@ -77,7 +77,7 @@ Page({
   onPullDownRefresh(){this.onLoad()},
   switchSub(e){this.setData({subtab:parseInt(e.currentTarget.dataset.idx)})},
   switchRank(e){this.setData({rankTab:parseInt(e.currentTarget.dataset.idx)})},
-  goDriver(e){var i=e.currentTarget.dataset.idx;var d=this.data.wikiDrivers[i];var p=[];for(var k in d){p.push(k+"="+encodeURIComponent(d[k]||""))};wx.navigateTo({url:"/pages/driver/driver?"+p.join("&")})},switchWiki(e){this.setData({wikiTab:parseInt(e.currentTarget.dataset.idx)})},
+  goDriver(e){var i=e.currentTarget.dataset.idx;var d=this.data.wikiDrivers[i];getApp().globalData.driver=d;wx.navigateTo({url:"/pages/driver/driver"})},switchWiki(e){this.setData({wikiTab:parseInt(e.currentTarget.dataset.idx)})},
   toggleDetail(e){
     var i=e.currentTarget.dataset.idx
     var races=this.data.races
