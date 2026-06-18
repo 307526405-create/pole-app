@@ -8,7 +8,7 @@
   <view wx:if="{{subtab==0}}">
     <view class="team-card" wx:for="{{teams}}" wx:key="name">
       <view class="tc-header">
-        <view class="tch-logo" style="background:{{item.color}}"><text>{{item.initials}}</text></view>
+        <image class="tch-logo" src="{{item.logo}}" mode="aspectFit" style="background:{{item.color}}"/>
         <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.base}} · 🏎️ {{item.engine}}</text></view>
       </view>
       <text class="tc-desc">{{item.desc}}</text>
@@ -27,7 +27,7 @@
   <view wx:if="{{subtab==1}}">
     <view class="team-card" wx:for="{{drivers}}" wx:key="name">
       <view class="tc-header">
-        <view class="tch-logo" style="background:{{item.color}};font-size:28rpx"><text>#{{item.num}}</text></view>
+        <image class="tch-logo" src="{{item.img}}" mode="aspectFill" style="border-radius:50%"/>
         <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">{{item.team}} · {{item.nationality}}</text></view>
       </view>
       <text class="tc-desc">{{item.desc}}</text>
@@ -44,7 +44,7 @@
         <text class="tch-icon">{{item.flag}}</text>
         <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.location}} · {{item.length}} · {{item.turns}}弯 · DRS{{item.drs}}区</text></view>
       </view>
-      <view class="circuit-map">🏎️ 赛道图（后端加载中...）</view>
+      <image class="circuit-map" src="{{item.map}}" mode="aspectFill"/>
       <text class="tc-desc">{{item.desc}}</text>
       <view class="tc-stats">
         <view class="tcs-item"><text class="tcs-val">{{item.lapRecord}}</text><text class="tcs-lbl">最快圈</text></view>
