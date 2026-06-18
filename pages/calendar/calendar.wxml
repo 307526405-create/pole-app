@@ -1,1 +1,1 @@
-<view style="padding:32rpx"><text>{{title}}</text></view>
+<view style="padding:32rpx"><text style="font-size:28rpx;color:#999">{{title}}</text></view>

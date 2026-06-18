@@ -13,6 +13,7 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
+    "custom": true,
     "color": "#999999",
     "selectedColor": "#E10600",
     "backgroundColor": "#FFFFFF",
@@ -23,6 +24,5 @@
       { "pagePath": "pages/data/data", "text": "数据" },
       { "pagePath": "pages/profile/profile", "text": "我的" }
     ]
-  },
-  "usingComponents": {}
+  }
 }
