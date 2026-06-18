@@ -3,8 +3,12 @@ Page({
     isOffSeason: false, checkedIn: false, streak: 5, lootOpened: false, showLootToast: false,
     lootResult: { icon:'', text:'' },
     quizDone: false, quizResult: { correct: false },
-    quiz: { question: '舒马赫一共拿过几个F1世界冠军？', options: ['5个','6个','7个','8个'], answer: '7个', explanation: '舒马赫生涯共获得7次F1世界冠军（1994-95, 2000-04），是F1历史上夺冠次数最多的车手之一。' },
-    dailyTrivia: '舒马赫在2004赛季赢得了前13站中的12站——这是F1历史上最具统治力的赛季开局。',
+    quiz: { question: '舒马赫一共拿过几个F1世界冠军？', options: ['5个','6个','7个','8个'], answer: '7个', explanation: '舒马赫生涯共获得7次F1世界冠军（1994-95, 2000-04）。' },
+    trivias: [
+      '舒马赫在2004赛季赢得了前13站中的12站——F1历史上最具统治力的赛季开局。',
+      '维斯塔潘是F1史上最年轻的分站冠军（18岁228天，2016西班牙站）。',
+      '法拉利是F1唯一参加全部赛季的车队，自1950年至今从未缺席。',
+    ],
     cd: { days: '02', hours: '18', minutes: '45' },
     news: [
       { tag: '转会', title: '法拉利2027赛季确认继续使用自研引擎', time: '2小时前', summary: '法拉利车队官方宣布，2027赛季将继续使用自主研发的动力单元。', expanded: false },
@@ -34,12 +38,12 @@ Page({
     const idx = e.currentTarget.dataset.idx
     const correct = this.data.quiz.options[idx] === this.data.quiz.answer
     wx.setStorageSync('quiz_date', new Date().toDateString()); wx.setStorageSync('quiz_correct', String(correct))
-    this.setData({ quizDone: true, quizResult: { correct, answer: this.data.quiz.answer, explanation: this.data.quiz.explanation } })
+    this.setData({ quizDone: true, quizResult: { correct } })
     if (correct) wx.showToast({ title: '答对！+1分', icon: 'success' })
   },
   openLoot() {
     if (this.data.lootOpened) return
-    const rewards = [{ icon:'🎉', text:'恭喜获得 +3 积分！' },{ icon:'⭐', text:'恭喜获得 +2 积分！' },{ icon:'💪', text:'获得 +1 积分' },{ icon:'🏎️', text:'维斯塔潘是F1最年轻分站冠军' },{ icon:'😊', text:'今天运气平平，明天再来！' }]
+    const rewards = [{ icon:'🎉', text:'+3 积分！' },{ icon:'⭐', text:'+2 积分！' },{ icon:'💪', text:'+1 积分' },{ icon:'🏎️', text:'维斯塔潘最年轻分站冠军' },{ icon:'😊', text:'明天再来！' }]
     const r = rewards[Math.floor(Math.random()*rewards.length)]
     wx.setStorageSync('loot_date', new Date().toDateString())
     this.setData({ lootOpened: true, lootResult: r, showLootToast: true })

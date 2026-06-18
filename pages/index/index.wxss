@@ -27,23 +27,22 @@ button::after { border: none; }
 .offseason-tips { margin-top: 24rpx; }
 .tip-item { font-size: 24rpx; color: rgba(255,255,255,0.6); padding: 12rpx 16rpx; background: rgba(255,255,255,0.06); border-radius: 8rpx; }
 
-.daily-row { display: flex; gap: 16rpx; margin-bottom: 24rpx; }
-.daily-card { flex: 1; background: #fff; border-radius: 16rpx; padding: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
-.daily-card.quiz { background: linear-gradient(135deg, #FFF8E1, #fff); }
-.daily-card.quiz.done { background: #F5F5F5; }
-.daily-badge { font-size: 20rpx; color: #E10600; font-weight: 600; margin-bottom: 12rpx; }
-.daily-text { font-size: 24rpx; color: #333; line-height: 1.5; }
-.daily-quiz { font-size: 28rpx; font-weight: 600; color: #333; display: block; margin-bottom: 16rpx; line-height: 1.4; }
-.quiz-options { display: flex; flex-direction: column; gap: 8rpx; }
-.qo { padding: 16rpx; background: #F5F5F5; border-radius: 8rpx; font-size: 24rpx; color: #333; text-align: center; }
-.qo:active { background: #E10600; color: #fff; }
-.quiz-result { display: flex; flex-direction: column; gap: 8rpx; }
-.qr-icon { font-size: 36rpx; }
-.qr-text { font-size: 28rpx; font-weight: 600; color: #333; }
-.qr-exp { font-size: 22rpx; color: #999; line-height: 1.5; }
-
 .card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
 .card-title { font-size: 24rpx; color: #999; margin-bottom: 16rpx; font-weight: 600; }
+
+.quiz-card { background: linear-gradient(135deg, #FFF8E1, #fff); }
+.quiz-card.done { background: #F5F5F5; }
+.quiz-q { font-size: 28rpx; font-weight: 600; color: #333; display: block; margin-bottom: 16rpx; line-height: 1.4; }
+.quiz-opts { display: flex; flex-wrap: wrap; gap: 12rpx; }
+.qo { padding: 16rpx 32rpx; background: #F5F5F5; border-radius: 12rpx; font-size: 24rpx; color: #333; }
+.qo:active { background: #E10600; color: #fff; }
+.quiz-done { display: flex; flex-direction: column; gap: 8rpx; }
+.qd-icon { font-size: 28rpx; font-weight: 600; color: #333; }
+.qd-exp { font-size: 22rpx; color: #999; line-height: 1.5; }
+
+.trivia-swiper { height: 120rpx; }
+.trivia-text { font-size: 28rpx; color: #333; line-height: 1.6; padding: 0 8rpx; display: block; }
+
 .info-item { padding: 16rpx 0; border-bottom: 1rpx solid #F0F0F0; }
 .info-item:last-child { border-bottom: none; padding-bottom: 0; }
 .info-header { display: flex; align-items: center; gap: 12rpx; }

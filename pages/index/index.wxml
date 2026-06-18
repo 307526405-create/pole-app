@@ -23,31 +23,27 @@
     <text class="participants">128人已猜</text>
   </view>
 
-  <view class="hero-card offseason" wx:if="{{isOffSeason}}">
-    <view class="hero-badge">2027 SEASON</view>
-    <view class="hero-title">新赛季倒计时</view>
-    <view class="hero-countdown"><view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view></view>
-    <view class="offseason-tips"><view class="tip-item">🏎️ 冬测追踪 · 2月巴林</view></view>
+  <!-- 每日一题（全宽） -->
+  <view class="card quiz-card {{quizDone ? 'done' : ''}}">
+    <view class="card-title">🎯 每日一题</view>
+    <text class="quiz-q">{{quiz.question}}</text>
+    <view class="quiz-opts" wx:if="{{!quizDone}}">
+      <view class="qo" wx:for="{{quiz.options}}" wx:key="*this" bind:tap="pickQuiz" data-idx="{{index}}">{{item}}</view>
+    </view>
+    <view class="quiz-done" wx:if="{{quizDone}}">
+      <text class="qd-icon">{{quizResult.correct ? '✅ 答对！+1分' : '❌ '+quiz.answer}}</text>
+      <text class="qd-exp">{{quiz.explanation}}</text>
+    </view>
   </view>
 
-  <view class="daily-row">
-    <!-- 每日一题 -->
-    <view class="daily-card quiz {{quizDone ? 'done' : ''}}">
-      <view class="daily-badge">🎯 每日一题</view>
-      <text class="daily-quiz">{{quiz.question}}</text>
-      <view class="quiz-options" wx:if="{{!quizDone}}">
-        <view class="qo" wx:for="{{quiz.options}}" wx:key="*this" bind:tap="pickQuiz" data-idx="{{index}}">{{item}}</view>
-      </view>
-      <view class="quiz-result" wx:if="{{quizDone}}">
-        <text class="qr-icon">{{quizResult.correct ? '✅' : '❌'}}</text>
-        <text class="qr-text">{{quizResult.correct ? '答对！+1分' : quiz.answer}}</text>
-        <text class="qr-exp">{{quiz.explanation}}</text>
-      </view>
-    </view>
-    <view class="daily-card">
-      <view class="daily-badge">💡 冷知识</view>
-      <text class="daily-text">{{dailyTrivia}}</text>
-    </view>
+  <!-- 冷知识（全宽，横向滑动3条） -->
+  <view class="card">
+    <view class="card-title">💡 冷知识</view>
+    <swiper class="trivia-swiper" indicator-dots autoplay interval="5000" circular>
+      <swiper-item wx:for="{{trivias}}" wx:key="*this">
+        <text class="trivia-text">{{item}}</text>
+      </swiper-item>
+    </swiper>
   </view>
 
   <view class="card">
