@@ -1,9 +1,11 @@
 Page({
+  data: {},
   onShow() {
-    const pages = ['index', 'calendar', 'data', 'profile']
-    const idx = pages.indexOf('index')
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
-      this.getTabBar().setData({ selected: idx })
+      this.getTabBar().setData({ selected: 0 })
     }
-  }
+  },
+  onPredict() { wx.navigateTo({ url: '/pages/predict/predict' }) },
+  onCalendar() { wx.switchTab({ url: '/pages/calendar/calendar' }) },
+  onShare() { wx.showToast({ title: '已生成分享卡片', icon: 'success' }) }
 })
