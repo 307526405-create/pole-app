@@ -18,10 +18,21 @@
   </view>
 
   <view class="card">
-    <view class="card-title">最近预测</view>
-    <view class="dr-row"><text>🇪🇸 西班牙</text><text class="hit">+11</text></view>
-    <view class="dr-row"><text>🇲🇨 摩纳哥</text><text class="hit">+3</text></view>
-    <view class="dr-row"><text>🇺🇸 迈阿密</text><text class="hit">+16</text></view>
+    <view class="card-title">📊 竞猜历史</view>
+    <view wx:for="{{history}}" wx:key="race" class="h-row">
+      <text class="h-race">{{item.race}}</text>
+      <text class="h-detail">{{item.detail}}</text>
+      <text class="h-score">{{item.score}}</text>
+    </view>
+    <view wx:if="{{history.length === 0}}" class="empty">暂无竞猜记录</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">📅 赛季报告</view>
+    <view class="report-preview">
+      <text class="rp-text">你的2026赛季预测报告即将生成</text>
+      <text class="rp-sub">赛季结束后自动生成，可分享到朋友圈</text>
+    </view>
   </view>
 
   <view class="pro-card">

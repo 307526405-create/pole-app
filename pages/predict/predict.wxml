@@ -4,11 +4,12 @@
     <text class="cel-icon">🎉</text>
     <text class="cel-text">预测已提交！</text>
     <text class="cel-sub">最高可得 38 分</text>
+    <text class="cel-detail" wx:if="{{result}}">杆位:{{result.pole}} 领奖台:{{result.podium}} 最快圈:{{result.fl}}</text>
   </view>
 
   <view class="predict-step" wx:if="{{!showCelebrate}}">
     <text class="step-q">{{stepTitles[step]}}</text>
-    <text class="step-sub">猜对+3分 · 单站满分38分</text>
+    <text class="step-sub">猜对每题+3分 · 单站满分38分</text>
   </view>
   
   <view class="step-dots" wx:if="{{!showCelebrate}}">
