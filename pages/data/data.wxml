@@ -95,3 +95,49 @@
   </view>
   <view style="height:160rpx"></view>
   
+
+  <view wx:if="{{showDriver}}" class="modal-mask" bind:tap="closeDriver">
+    <view class="modal" catchtap="">
+      <text class="modal-close" bind:tap="closeDriver">✕</text>
+      <image wx:if="{{showDriver.img}}" class="modal-img" src="{{showDriver.img}}" mode="aspectFill"/>
+      <view wx:else class="modal-avt"><text>#{{showDriver.num}}</text></view>
+      <text class="modal-num">#{{showDriver.num}}</text>
+      <text class="modal-name">{{showDriver.name}}</text>
+      <text class="modal-sub">{{showDriver.team}} · {{showDriver.nationality}}</text>
+      <view class="modal-section"><text class="modal-sectitle">生涯荣誉</text>
+        <view class="modal-stats">
+          <view class="ms"><text class="ms-v">{{showDriver.championships}}</text><text class="ms-l">世界冠军</text></view>
+          <view class="ms"><text class="ms-v">{{showDriver.wins}}</text><text class="ms-l">分站冠军</text></view>
+          <view class="ms"><text class="ms-v">{{showDriver.podiums}}</text><text class="ms-l">领奖台</text></view>
+        </view>
+      </view>
+      <view class="modal-section"><text class="modal-sectitle">车手简介</text><text class="modal-desc">{{showDriver.desc}}</text></view>
+    </view>
+  </view>
+
+  <view wx:if="{{showTeam}}" class="modal-mask" bind:tap="closeTeam">
+    <view class="modal" catchtap="">
+      <text class="modal-close" bind:tap="closeTeam">✕</text>
+      <image wx:if="{{showTeam.logo}}" class="modal-logo" src="{{showTeam.logo}}" mode="aspectFit"/>
+      <view wx:else class="modal-avt" style="background:{{showTeam.color}}"><text>{{showTeam.name[0]}}</text></view>
+      <text class="modal-name">{{showTeam.name}}</text>
+      <text class="modal-sub">总部 {{showTeam.base}} · 引擎 {{showTeam.engine}}</text>
+      <view class="modal-section"><text class="modal-sectitle">车队数据</text>
+        <view class="modal-stats">
+          <view class="ms"><text class="ms-v">{{showTeam.championships}}</text><text class="ms-l">世界冠军</text></view>
+          <view class="ms"><text class="ms-v">{{showTeam.wins}}</text><text class="ms-l">分站冠军</text></view>
+          <view class="ms"><text class="ms-v">{{showTeam.since}}</text><text class="ms-l">参赛年份</text></view>
+        </view>
+      </view>
+      <view class="modal-section"><text class="modal-sectitle">车手阵容</text>
+        <view class="modal-drivers">
+          <view class="md"><text class="md-label">一号</text><text class="md-name">{{showTeam.d1}}</text></view>
+          <view class="md"><text class="md-label">二号</text><text class="md-name">{{showTeam.d2}}</text></view>
+          <view class="md"><text class="md-label">储备</text><text class="md-name">{{showTeam.res}}</text></view>
+        </view>
+      </view>
+      <view class="modal-section"><text class="modal-sectitle">车队简介</text><text class="modal-desc">{{showTeam.desc}}</text></view>
+    </view>
+  </view>
+
+</scroll-view>
