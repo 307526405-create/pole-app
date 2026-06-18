@@ -1,22 +1,10 @@
 const API = 'http://localhost:8080/api'
 
-// F1官方CDN图片
-const DRIVER_IMG = {
-  'Max Verstappen':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/M/MAXVER01_Max_Verstappen/maxver01.png.transform/2col-retina/image.png',
-  'Lando Norris':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LANNOR01_Lando_Norris/lannor01.png.transform/2col-retina/image.png',
-  'Oscar Piastri':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/O/OSCPIA01_Oscar_Piastri/oscpia01.png.transform/2col-retina/image.png',
-  'Charles Leclerc':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CHALEC01_Charles_Leclerc/chalec01.png.transform/2col-retina/image.png',
-  'Lewis Hamilton':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/L/LEWHAM01_Lewis_Hamilton/lewham01.png.transform/2col-retina/image.png',
-  'George Russell':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/G/GEORUS01_George_Russell/georus01.png.transform/2col-retina/image.png',
-  'Andrea Kimi Antonelli':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/A/ANDKIM01_Andrea_Kimi_Antonelli/andkim01.png.transform/2col-retina/image.png',
-  'Fernando Alonso':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/F/FERALO01_Fernando_Alonso/feralo01.png.transform/2col-retina/image.png',
-  'Carlos Sainz':'https://media.formula1.com/d_driver_fallback_image.png/content/dam/fom-website/drivers/C/CARSAI01_Carlos_Sainz/carsai01.png.transform/2col-retina/image.png',
+const D_CN = {
+  'Andrea Kimi Antonelli':'安托内利','Lewis Hamilton':'汉密尔顿','George Russell':'拉塞尔','Max Verstappen':'维斯塔潘','Lando Norris':'诺里斯','Oscar Piastri':'皮亚斯特里','Charles Leclerc':'勒克莱尔','Fernando Alonso':'阿隆索','Lance Stroll':'斯特罗尔','Alexander Albon':'阿尔本','Carlos Sainz':'赛恩斯','Yuki Tsunoda':'角田裕毅','Isack Hadjar':'哈贾尔','Pierre Gasly':'加斯利','Jack Doohan':'杜汉','Franco Colapinto':'科拉平托','Esteban Ocon':'奥康','Oliver Bearman':'贝尔曼','Nico Hülkenberg':'霍肯伯格','Gabriel Bortoleto':'博托莱托','Sergio Pérez':'佩雷兹','Liam Lawson':'劳森','周冠宇':'周冠宇','Guanyu Zhou':'周冠宇',
 }
-const TEAM_LOGO = {
-  'Mercedes':'https://media.formula1.com/content/dam/fom-website/teams/2025/mercedes-logo.png.transform/2col-retina/image.png',
-  'Ferrari':'https://media.formula1.com/content/dam/fom-website/teams/2025/ferrari-logo.png.transform/2col-retina/image.png',
-  'McLaren':'https://media.formula1.com/content/dam/fom-website/teams/2025/mclaren-logo.png.transform/2col-retina/image.png',
-  'Red Bull':'https://media.formula1.com/content/dam/fom-website/teams/2025/red-bull-racing-logo.png.transform/2col-retina/image.png',
+const T_CN = {
+  'Mercedes':'梅赛德斯','Ferrari':'法拉利','McLaren':'迈凯伦','Red Bull':'红牛','Red Bull Racing':'红牛','Alpine':'阿尔派','Alpine F1 Team':'阿尔派','Aston Martin':'阿斯顿马丁','Williams':'威廉姆斯','RB F1 Team':'小红牛','Racing Bulls':'小红牛','Haas':'哈斯','Haas F1 Team':'哈斯','Sauber':'索伯','Audi':'奥迪','Cadillac F1 Team':'凯迪拉克','Cadillac':'凯迪拉克',
 }
 
 Page({
@@ -33,12 +21,12 @@ Page({
     }})
     wx.request({ url: API + '/standings/drivers', success: (res) => { 
       const ds = this.data.standings
-      ds[0] = (res.data.data||[]).map(d => ({ pos: d.position, name: d.driver_name, team: d.constructor, pts: d.points, img: DRIVER_IMG[d.driver_name] || '' }))
+      ds[0] = (res.data.data||[]).map(d => ({ pos: d.position, name: D_CN[d.driver_name] || d.driver_name, team: T_CN[d.constructor] || d.constructor, pts: d.points, img: '' }))
       this.setData({ standings: ds })
     }})
     wx.request({ url: API + '/standings/constructors', success: (res) => { 
       const ds = this.data.standings
-      ds[1] = (res.data.data||[]).map(d => ({ pos: d.position, name: d.name, pts: d.points, img: TEAM_LOGO[d.name] || '' }))
+      ds[1] = (res.data.data||[]).map(d => ({ pos: d.position, name: T_CN[d.name] || d.name, pts: d.points, img: '' }))
       this.setData({ standings: ds })
     }})
   },
