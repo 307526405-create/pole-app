@@ -9,10 +9,9 @@
   ],
   "window": {
     "backgroundColor": "#F5F5F5",
-    "navigationBarBackgroundColor": "#F5F5F5",
-    "navigationBarTitleText": "",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "杆位",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "custom": true,
