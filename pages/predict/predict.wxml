@@ -1,11 +1,17 @@
 <view class="page">
-  <view class="predict-step">
+  <!-- 庆祝动画 -->
+  <view class="celebrate" wx:if="{{showCelebrate}}">
+    <text class="cel-icon">🎉</text>
+    <text class="cel-text">预测已提交！</text>
+    <text class="cel-sub">最高可得 38 分</text>
+  </view>
+
+  <view class="predict-step" wx:if="{{!showCelebrate}}">
     <text class="step-q">{{stepTitles[step]}}</text>
-    <text class="step-sub" wx:if="{{step<3}}">猜对+3分 · 单站满分38分</text>
-    <text class="step-sub" wx:if="{{step>=3}}">{{step===3 ? '猜对+3分 全对额外+3' : step===4 ? '猜对+3分 全对额外+5' : '猜对+3分'}}</text>
+    <text class="step-sub">猜对+3分 · 单站满分38分</text>
   </view>
   
-  <view class="step-dots">
+  <view class="step-dots" wx:if="{{!showCelebrate}}">
     <view class="dot done"></view>
     <view class="dot {{step>=1?'done':''}}"></view>
     <view class="dot {{step>=2?'done':''}}"></view>
@@ -14,7 +20,7 @@
     <view class="dot {{step>=5?'done':''}}"></view>
   </view>
 
-  <view class="driver-grid">
+  <view class="driver-grid" wx:if="{{!showCelebrate}}">
     <view wx:for="{{drivers}}" wx:key="num" class="driver-card {{item.selected?'sel':''}}" bind:tap="selectDriver" data-idx="{{index}}">
       <text class="dc-num">#{{item.num}}</text>
       <text class="dc-name">{{item.name}}</text>
@@ -22,14 +28,13 @@
     </view>
   </view>
 
-  <!-- 安全车/退赛选择 -->
-  <view class="option-grid" wx:if="{{step===5||step===6}}">
+  <view class="option-grid" wx:if="{{!showCelebrate && (step===5||step===6)}}">
     <view wx:for="{{options}}" wx:key="text" class="option-card {{item.selected?'sel':''}}" bind:tap="selectOption" data-idx="{{index}}">
       <text class="oc-text">{{item.text}}</text>
     </view>
   </view>
 
-  <view class="submit-area" wx:if="{{canSubmit}}">
+  <view class="submit-area" wx:if="{{!showCelebrate && canSubmit}}">
     <button class="submit-btn" bind:tap="submit">提交竞猜</button>
   </view>
 </view>

@@ -5,6 +5,8 @@
 .checkin-btn { background: #E10600; color: #fff; font-size: 22rpx; font-weight: 600; padding: 6rpx 16rpx; border-radius: 20rpx; }
 .checkin-btn.done { background: #F0F0F0; color: #999; }
 .nav-pts { font-size: 28rpx; color: #E10600; font-weight: 600; }
+.nav-brand { display: flex; align-items: baseline; gap: 8rpx; }
+.nav-en { font-size: 20rpx; color: #999; font-weight: 400; letter-spacing: 2rpx; }
 
 .hero-card { background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 100%); border-radius: 24rpx; padding: 32rpx; margin: 16rpx 0 24rpx; color: #fff; position: relative; overflow: hidden; }
 .hero-card::after { content:''; position:absolute; top:-40rpx; right:-40rpx; width:200rpx; height:200rpx; background:radial-gradient(circle, rgba(225,6,0,0.2), transparent 70%); }
@@ -18,7 +20,9 @@
 .hi-val.green { color: #52C41A; }
 .hero-countdown { display: flex; gap: 24rpx; margin-bottom: 12rpx; }
 .cd-item { text-align: center; }
-.cd-num { font-size: 48rpx; font-weight: 600; display: block; line-height: 1; }
+.cd-num { font-size: 48rpx; font-weight: 600; display: block; line-height: 1; transition: color .3s; }
+.cd-num.urgent { color: #E10600; animation: pulse 1s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.5 } }
 .cd-label { font-size: 20rpx; color: rgba(255,255,255,0.4); display: block; margin-top: 4rpx; }
 .deadline-warn { display: block; text-align: center; font-size: 22rpx; color: #E10600; font-weight: 600; margin-bottom: 16rpx; }
 .btn-go { width: 100%; height: 88rpx; background: #E10600; color: #fff; border: none; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; display: flex; align-items: center; justify-content: center; position: relative; z-index: 1; }
@@ -29,7 +33,6 @@ button::after { border: none; }
 
 .card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
 .card-title { font-size: 24rpx; color: #999; margin-bottom: 16rpx; font-weight: 600; }
-
 .quiz-card { background: linear-gradient(135deg, #FFF8E1, #fff); }
 .quiz-card.done { background: #F5F5F5; }
 .quiz-q { font-size: 28rpx; font-weight: 600; color: #333; display: block; margin-bottom: 16rpx; line-height: 1.4; }
@@ -39,7 +42,6 @@ button::after { border: none; }
 .quiz-done { display: flex; flex-direction: column; gap: 8rpx; }
 .qd-icon { font-size: 28rpx; font-weight: 600; color: #333; }
 .qd-exp { font-size: 22rpx; color: #999; line-height: 1.5; }
-
 .trivia-swiper { height: 120rpx; }
 .trivia-text { font-size: 28rpx; color: #333; line-height: 1.6; padding: 0 8rpx; display: block; }
 
@@ -60,6 +62,3 @@ button::after { border: none; }
 @keyframes pop { from { opacity:0; transform: translate(-50%,-50%) scale(.8); } to { opacity:1; transform: translate(-50%,-50%) scale(1); } }
 .lt-icon { font-size: 64rpx; display: block; margin-bottom: 16rpx; }
 .lt-text { font-size: 28rpx; font-weight: 600; color: #333; }
-
-.nav-brand { display: flex; align-items: baseline; gap: 8rpx; }
-.nav-en { font-size: 20rpx; color: #999; font-weight: 400; letter-spacing: 2rpx; }
