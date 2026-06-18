@@ -1,31 +1,33 @@
 .page { padding: 0 32rpx 120rpx; background: #F5F5F5; min-height: 100vh; }
 
-.header { text-align: center; padding: 56rpx 0 36rpx; }
-.avt { width: 80rpx; height: 80rpx; background: #E10600; border-radius: 40rpx; margin: 0 auto 14rpx; display: flex; align-items: center; justify-content: center; font-size: 36rpx; }
+.header { text-align: center; padding: 56rpx 0 24rpx; }
+.avt { width: 80rpx; height: 80rpx; background: #E10600; border-radius: 40rpx; margin: 0 auto 14rpx; display: flex; align-items: center; justify-content: center; font-size: 30rpx; font-weight: 700; color: #fff; }
 .nick { font-size: 34rpx; font-weight: 700; color: #1a1a1a; display: block; }
-.since { font-size: 24rpx; color: #999; display: block; margin-top: 4rpx; }
+.streak-badge { display: inline-block; margin-top: 12rpx; background: #FFF3E0; color: #E65100; font-size: 22rpx; font-weight: 600; padding: 6rpx 20rpx; border-radius: 20rpx; }
 
-.stats { display: flex; align-items: center; justify-content: center; margin-bottom: 40rpx; gap: 0; }
-.st { text-align: center; min-width: 140rpx; }
-.st-v { font-size: 44rpx; font-weight: 700; color: #1a1a1a; display: block; font-family: -apple-system; }
+.stats { display: flex; justify-content: center; margin-bottom: 40rpx; gap: 32rpx; }
+.st { text-align: center; }
+.st-v { font-size: 44rpx; font-weight: 700; color: #1a1a1a; display: block; font-family: SF Mono,monospace; }
 .st-v.green { color: #52C41A; }
 .st-l { font-size: 22rpx; color: #999; display: block; margin-top: 4rpx; }
-.st-div { width: 1rpx; height: 56rpx; background: #E8E8E8; }
 
 .card { background: #fff; border-radius: 20rpx; padding: 28rpx; margin-bottom: 24rpx; }
 .card-hd { font-size: 28rpx; font-weight: 600; color: #1a1a1a; margin-bottom: 20rpx; }
 
 .fav-row { display: flex; gap: 16rpx; }
-.fav { flex: 1; background: #F8F8F8; border-radius: 14rpx; padding: 20rpx 16rpx; text-align: center; }
+.fav { flex: 1; background: #F8F8F8; border-radius: 14rpx; padding: 20rpx 0; text-align: center; }
+.fav.ferrari { background: #FFF0F0; }
 .fav-icon { font-size: 36rpx; display: block; margin-bottom: 8rpx; }
 .fav-name { font-size: 26rpx; font-weight: 600; color: #333; display: block; }
-.fav-sub { font-size: 22rpx; color: #999; display: block; margin-top: 4rpx; }
 
 .h-row { display: flex; align-items: center; padding: 16rpx 0; }
 .h-row + .h-row { border-top: 1rpx solid #F5F5F5; }
-.h-l { font-size: 24rpx; color: #999; width: 130rpx; }
-.h-m { font-size: 24rpx; color: #555; flex: 1; }
-.h-r { font-size: 28rpx; font-weight: 700; color: #52C41A; font-family: -apple-system; }
+.h-l { font-size: 24rpx; color: #999; width: 120rpx; }
+.h-m { flex: 1; display: flex; gap: 8rpx; flex-wrap: wrap; }
+.h-tag { font-size: 22rpx; padding: 2rpx 10rpx; border-radius: 6rpx; background: #F5F5F5; color: #666; }
+.h-tag.hit { background: #E8F5E9; color: #2E7D32; }
+.h-tag.miss { background: #FFF0F0; color: #C62828; }
+.h-r { font-size: 28rpx; font-weight: 700; color: #52C41A; font-family: SF Mono,monospace; }
 
 .report { background: #F8F8F8; border-radius: 14rpx; padding: 24rpx; text-align: center; }
 .rp-t { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
@@ -35,5 +37,4 @@
 .pro-l { flex: 1; }
 .pro-t { font-size: 28rpx; font-weight: 600; color: #1a1a1a; display: block; }
 .pro-s { font-size: 22rpx; color: #999; display: block; margin-top: 4rpx; }
-.pro-btn { background: #E10600; color: #fff; padding: 14rpx 28rpx; border-radius: 24rpx; font-size: 26rpx; font-weight: 600; }
-.pro-btn.free { background: #E8F5E9; color: #2E7D32; }
+.pro-btn { background: #E8F5E9; color: #2E7D32; padding: 14rpx 28rpx; border-radius: 24rpx; font-size: 26rpx; font-weight: 600; }
