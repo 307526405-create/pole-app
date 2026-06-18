@@ -158,3 +158,11 @@ def _count_name_matches(predicted: list, actual: list) -> int:
         if name and name in actual_set:
             matches += 1
     return min(matches, 3)  # 最多 3 人
+
+DRIVER_HEAT = {}
+
+def record_heat(driver_name):
+    DRIVER_HEAT[driver_name] = DRIVER_HEAT.get(driver_name, 0) + 1
+
+def get_heat():
+    return sorted(DRIVER_HEAT.items(), key=lambda x: x[1], reverse=True)[:10]
