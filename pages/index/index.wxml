@@ -1,6 +1,6 @@
 <view class="page">
   <view class="nav-bar"><text class="nav-title">杆位</text><view class="nav-right">
-    <view class="checkin-btn {{checkedIn ? 'done' : ''}}" bind:tap="onCheckin">{{checkedIn ? '🔥 连续'+streak+'天' : '签到 +1'}}</view>
+    <view class="checkin-btn {{checkedIn ? 'done' : ''}}" bind:tap="onCheckin">{{checkedIn ? '🔥 '+streak+'天' : '签到'}}</view>
     <text class="nav-pts">PTS 156</text>
   </view></view>
 
@@ -8,28 +8,25 @@
     <view class="hero-badge">ROUND 10 · 🇨🇦</view>
     <view class="hero-title">加拿大大奖赛</view>
     <view class="hero-sub">维伦纽夫赛道 · 4.36km · 14弯 · DRS 3区</view>
-    <view class="season-bar"><view class="season-fill" style="width:42%"></view></view>
-    <text class="season-label">赛季进度 10/24</text>
-    <view class="hero-track">
-      <view class="ht-item"><text class="ht-lbl">最快圈纪录</text><text class="ht-val">1:11.441</text><text class="ht-drv">Verstappen 2024</text></view>
-      <view class="ht-item"><text class="ht-lbl">轮胎策略</text><text class="ht-val">1停为主</text><text class="ht-drv">C3/C4/C5</text></view>
+    
+    <!-- 赛道数据+上站得分 合并一行 -->
+    <view class="hero-info-row">
+      <view class="hi-item"><text class="hi-lbl">最快圈纪录</text><text class="hi-val">1:11.441</text></view>
+      <view class="hi-item"><text class="hi-lbl">轮胎策略</text><text class="hi-val">1停为主</text></view>
+      <view class="hi-item"><text class="hi-lbl">上站西班牙</text><text class="hi-val green">+11</text></view>
     </view>
+
     <view class="hero-countdown">
       <view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view>
       <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
       <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
     </view>
-    <text class="deadline-warn">⏰ 竞猜截止：周六 22:59</text>
+    <text class="deadline-warn">⏰ 竞猜截止 周六 22:59</text>
     <button class="btn-go" bind:tap="onPredict">开始竞猜</button>
-    <text class="participants">已有 128 人参与竞猜</text>
+    <text class="participants">128人已猜</text>
   </view>
 
-  <!-- 上站结算横条 -->
-  <view class="last-race-strip" bind:tap="onPredict">
-    <text class="lrs-left">⬆ 西班牙站 +11</text>
-    <text class="lrs-right">杆位✅ 领奖台2/3 ✅</text>
-  </view>
-
+  <!-- 休赛期 -->
   <view class="hero-card offseason" wx:if="{{isOffSeason}}">
     <view class="hero-badge">2027 SEASON</view>
     <view class="hero-title">新赛季倒计时</view>
@@ -37,24 +34,13 @@
     <view class="offseason-tips"><view class="tip-item">🏎️ 冬测追踪 · 2月巴林</view></view>
   </view>
 
+  <!-- 每日双卡 -->
   <view class="daily-row">
     <view class="daily-card"><view class="daily-badge">💡 冷知识</view><text class="daily-text">{{dailyTrivia}}</text></view>
     <view class="daily-card"><view class="daily-badge">📅 历史上的今天</view><text class="daily-text">{{todayInHistory}}</text></view>
   </view>
 
-  <view class="card">
-    <view class="card-title">📈 我的竞猜</view>
-    <view class="my-stats-mini">
-      <view class="msm-item"><text class="msm-val">156</text><text class="msm-lbl">积分</text></view>
-      <view class="msm-div"></view>
-      <view class="msm-item"><text class="msm-val green">47%</text><text class="msm-lbl">准确率</text></view>
-      <view class="msm-div"></view>
-      <view class="msm-item"><text class="msm-val">5</text><text class="msm-lbl">连对杆位</text></view>
-      <view class="msm-div"></view>
-      <view class="msm-item"><text class="msm-val">#42</text><text class="msm-lbl">排名</text></view>
-    </view>
-  </view>
-
+  <!-- 资讯 -->
   <view class="card">
     <view class="card-title">最新资讯</view>
     <view class="info-item" wx:for="{{news}}" wx:key="title">
@@ -66,11 +52,12 @@
     </view>
   </view>
 
+  <!-- 浮动盲盒 -->
   <view class="loot-float {{lootOpened ? 'opened' : ''}}" bind:tap="openLoot">
     <text class="loot-float-icon">{{lootOpened ? '✅' : '🎁'}}</text>
-    <view class="loot-toast" wx:if="{{showLootToast}}">
-      <text class="lt-icon">{{lootResult.icon}}</text>
-      <text class="lt-text">{{lootResult.text}}</text>
-    </view>
+  </view>
+  <view class="loot-toast" wx:if="{{showLootToast}}">
+    <text class="lt-icon">{{lootResult.icon}}</text>
+    <text class="lt-text">{{lootResult.text}}</text>
   </view>
 </view>
