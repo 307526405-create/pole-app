@@ -1,10 +1,13 @@
 {
   "description": "杆位 - F1赛车竞猜小程序",
-  "packOptions": { "ignore": [], "include": [] },
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
   "setting": {
     "bundle": false,
     "userConfirmedBundleSwitch": false,
-    "urlCheck": true,
+    "urlCheck": false,
     "scopeDataCheck": false,
     "coverView": true,
     "es6": true,
