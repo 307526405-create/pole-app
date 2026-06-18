@@ -1,24 +1,34 @@
-.page { padding: 0 32rpx; background: #F5F5F5; min-height: 100vh; }
-.predict-step { text-align: center; padding: 48rpx 0 16rpx; }
-.step-q { font-size: 36rpx; font-weight: 600; color: #333; display: block; }
-.step-sub { font-size: 24rpx; color: #999; display: block; margin-top: 8rpx; }
-.step-dots { display: flex; justify-content: center; gap: 16rpx; margin-bottom: 32rpx; }
-.dot { width: 12rpx; height: 12rpx; background: #E5E5E5; border-radius: 50%; }
-.dot.done { background: #E10600; }
-.driver-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12rpx; }
-.driver-card { background: #fff; border-radius: 12rpx; padding: 24rpx 16rpx; text-align: center; border: 2rpx solid transparent; transition: all .1s; }
-.driver-card.sel { border-color: #52C41A; background: rgba(82,196,26,0.04); }
-.dc-num { font-size: 24rpx; color: #999; display: block; margin-bottom: 8rpx; }
-.dc-name { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
-.dc-team { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; }
-.submit-area { position: fixed; bottom: 0; left: 0; right: 0; padding: 24rpx 32rpx; padding-bottom: calc(24rpx + env(safe-area-inset-bottom)); background: #fff; border-top: 1rpx solid #F0F0F0; }
-.submit-btn { height: 88rpx; background: #E10600; color: #fff; border: none; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; display: flex; align-items: center; justify-content: center; width: 100%; }
-button::after { border: none; }
-.page { padding-bottom: 120rpx; }
+.page { background:#F5F5F5; min-height:100vh; padding-bottom:120rpx; }
+.nav-bar { display:flex; align-items:center; height:88rpx; padding:0 32rpx; }
+.back { font-size:36rpx; color:#333; margin-right:16rpx; }
+.nav-title { font-size:32rpx; font-weight:600; color:#333; }
 
-.celebrate { text-align: center; padding: 200rpx 48rpx 0; animation: celebIn .5s ease; }
-@keyframes celebIn { from { opacity:0; transform: scale(.8); } to { opacity:1; transform: scale(1); } }
-.cel-icon { font-size: 120rpx; display: block; margin-bottom: 24rpx; animation: celebBounce .6s ease infinite alternate; }
-@keyframes celebBounce { from { transform: translateY(0); } to { transform: translateY(-16rpx); } }
-.cel-text { font-size: 40rpx; font-weight: 700; color: #333; display: block; }
-.cel-sub { font-size: 28rpx; color: #E10600; font-weight: 600; display: block; margin-top: 12rpx; }
+.step-indicator { text-align:center; padding:24rpx 32rpx 0; }
+.step-q { font-size:32rpx; font-weight:700; color:#1a1a1a; display:block; }
+.step-sub { font-size:22rpx; color:#999; display:block; margin-top:6rpx; }
+
+.step-dots { display:flex; justify-content:center; gap:16rpx; padding:20rpx 0; }
+.dot { width:14rpx; height:14rpx; border-radius:7rpx; background:#E0E0E0; }
+.dot.done { background:#E10600; }
+
+.driver-grid { display:flex; flex-wrap:wrap; padding:0 24rpx; gap:12rpx; }
+.driver-card { width:calc(33.33% - 8rpx); background:#fff; border-radius:12rpx; padding:24rpx 12rpx; text-align:center; box-sizing:border-box; box-shadow:0 2rpx 8rpx rgba(0,0,0,0.04); }
+.driver-card.sel { background:#FFF0F0; border:2rpx solid #E10600; }
+.dc-num { font-size:24rpx; color:#E10600; font-weight:700; display:block; }
+.dc-name { font-size:24rpx; font-weight:600; color:#333; display:block; margin-top:6rpx; }
+.dc-team { font-size:20rpx; color:#999; display:block; margin-top:2rpx; }
+
+.option-grid { display:flex; flex-direction:column; padding:0 32rpx; gap:16rpx; margin-top:24rpx; }
+.option-card { background:#fff; border-radius:12rpx; padding:32rpx; text-align:center; box-shadow:0 2rpx 8rpx rgba(0,0,0,0.04); }
+.option-card.sel { background:#FFF0F0; border:2rpx solid #E10600; }
+.oc-text { font-size:28rpx; font-weight:600; color:#333; }
+
+.submit-area { padding:32rpx; }
+.submit-btn { width:100%; height:96rpx; background:#E10600; color:#fff; border:none; border-radius:16rpx; font-size:32rpx; font-weight:700; }
+button::after { border:none; }
+
+.celebrate { text-align:center; padding:200rpx 32rpx 0; }
+.cel-icon { font-size:120rpx; display:block; animation:bounce .6s ease; }
+.cel-text { font-size:36rpx; font-weight:700; color:#333; display:block; margin-top:24rpx; }
+.cel-sub { font-size:28rpx; color:#E10600; font-weight:600; display:block; margin-top:12rpx; }
+@keyframes bounce { 0%,100%{transform:scale(1)}50%{transform:scale(1.2)} }
