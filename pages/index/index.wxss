@@ -88,7 +88,7 @@ button::after { border: none; }
 
 
 .nav-bar { display: flex; justify-content: space-between; align-items: center; height: 88rpx; }
-.nav-title { font-size: 36rpx; font-weight: 600; color: #333; }
+.nav-title { font-size: 40rpx; font-weight: 800; color: #E10600; letter-spacing: -1rpx; }
 .nav-right { display: flex; align-items: center; gap: 12rpx; }
 .checkin-btn { background: #E10600; color: #fff; font-size: 20rpx; padding: 6rpx 16rpx; border-radius: 20rpx; }
 .checkin-btn.done { background: #F0F0F0; color: #999; }
