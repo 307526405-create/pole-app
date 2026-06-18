@@ -9,7 +9,7 @@
     <view wx:for="{{races}}" wx:key="round" class="cal-row" bind:tap="toggleDetail" data-idx="{{index}}">
       <text class="cal-num">{{item.round}}</text>
       <text class="cal-flag">{{item.flag}}</text>
-      <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-detail">{{item.date}} · {{item.circuit}}</text></view>
+      <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-date">{{item.date}}</text><text class="cal-circuit">{{item.circuit}}</text></view>
       <text class="cal-tag {{item.status}}">{{item.tag}}</text>
     </view>
     <!-- 展开详情 -->
