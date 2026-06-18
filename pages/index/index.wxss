@@ -66,3 +66,7 @@ button::after { border: none; }
 
 /* 导航栏对齐胶囊按钮 */
 .nav-bar { height: 132rpx; padding-top: 44rpx; }
+
+/* 精确对齐胶囊 */
+.nav-bar { height: auto; padding: 0; position: relative; }
+.nav-brand { position: absolute; left: 32rpx; top: 50%; transform: translateY(-50%); align-items: center; }
