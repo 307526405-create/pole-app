@@ -1,10 +1,12 @@
-.page { padding: 0 32rpx 120rpx; }
-.nav-bar { display: flex; justify-content: space-between; align-items: center; height: 88rpx; }
+.page { display: flex; flex-direction: column; height: 100vh; }
+.nav-bar { flex-shrink: 0; display: flex; align-items: center; height: 88rpx; padding: 0 32rpx; }
 .nav-title { font-size: 36rpx; font-weight: 600; color: #333; }
-.tabs { display: flex; gap: 0; margin-bottom: 16rpx; background: #fff; border-radius: 8rpx; padding: 4rpx; }
+.tabs-fixed { flex-shrink: 0; display: flex; gap: 0; margin: 0 32rpx 16rpx; background: #fff; border-radius: 8rpx; padding: 4rpx; }
 .tab { flex: 1; text-align: center; padding: 16rpx 0; font-size: 24rpx; color: #999; font-weight: 600; border-radius: 6rpx; }
 .tab.active { background: #F5F5F5; color: #E10600; }
-.cal-row { display: flex; align-items: center; padding: 24rpx 0; border-bottom: 1rpx solid #F0F0F0; gap: 16rpx; }
+.content-scroll { flex: 1; padding: 0 32rpx 120rpx; }
+.cal-row { display: flex; align-items: center; padding: 24rpx 0; border-bottom: 1rpx solid #F0F0F0; gap: 12rpx; }
+.cal-num { width: 36rpx; font-size: 24rpx; color: #999; font-weight: 600; text-align: center; }
 .cal-flag { font-size: 36rpx; width: 48rpx; text-align: center; }
 .cal-info { flex: 1; }
 .cal-gp { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
@@ -22,4 +24,3 @@
 .ds-name { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
 .ds-en { font-size: 20rpx; color: #999; display: block; }
 .ds-pts { font-size: 28rpx; font-weight: 600; color: #333; }
-.cal-num { width: 36rpx; font-size: 24rpx; color: #999; font-weight: 600; text-align: center; }
