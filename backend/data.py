@@ -128,6 +128,16 @@ async def get_races(season: Union[int, str] = "current") -> list[dict]:
     mr_data = await _fetch_jolpica(endpoint)
     races = _parse_race_list(mr_data)
 
+    # 2026官方赛历修正：jolpica缺失巴林站(R4)和沙特站(R5)，手动注入
+    if season == 2026 or season == "current":
+        bahrain = {"round": 4, "name": "Bahrain Grand Prix", "circuit": "Bahrain International Circuit", "country": "Bahrain", "date": "2026-04-12", "time": "15:00:00Z", "season": 2026}
+        saudi = {"round": 5, "name": "Saudi Arabian Grand Prix", "circuit": "Jeddah Corniche Circuit", "country": "Saudi Arabia", "date": "2026-04-19", "time": "17:00:00Z", "season": 2026}
+        races.insert(3, bahrain)  # 在索引3(R1R2R3之后)插入R4
+        races.insert(4, saudi)    # 插入R5
+        # 重新编号后续比赛（R6起全部+2）
+        for i, r in enumerate(races):
+            r["round"] = i + 1
+
     _set_cache(cache_key, races, CACHE_TTL_RACES)
     return races
 
