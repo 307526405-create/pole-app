@@ -43,7 +43,7 @@
       <text class="sub-tab {{wikiTab==2?'active':''}}" bind:tap="switchWiki" data-idx="2">赛道</text>
     </view>
     <view wx:if="{{wikiTab==0}}">
-      <view class="team-card" wx:for="{{teams}}" wx:key="name">
+      <view class="team-card" wx:for="{{teams}}" wx:key="name" bind:tap="goTeam" data-idx="{{index}}">
         <view class="tc-header">
           <image wx:if="{{item.logo}}" class="tch-logo" src="{{item.logo}}" mode="aspectFit"/>
           <view wx:else class="tch-logo" style="background:{{item.color}}"><text>{{item.name[0]}}</text></view>
@@ -63,7 +63,7 @@
       </view>
     </view>
     <view wx:if="{{wikiTab==1}}">
-      <view class="team-card" wx:for="{{wikiDrivers}}" wx:key="name">
+      <view class="team-card" wx:for="{{wikiDrivers}}" wx:key="name" bind:tap="goDriver" data-idx="{{index}}">
         <view class="tc-header">
           <image wx:if="{{item.img}}" class="tch-logo" src="{{item.img}}" mode="aspectFill" style="border-radius:50%"/>
           <view wx:else class="tch-logo" style="background:#E10600;border-radius:50%"><text>#{{item.num}}</text></view>
