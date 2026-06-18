@@ -26,7 +26,7 @@ Page({
     wx.request({ url: API + '/races', success: (res) => { 
       const now = new Date()
       this.setData({ races: (res.data.data||[]).map(r => ({
-        flag: '🏁', gp: r.name, date: r.date.substring(5), circuit: r.circuit,
+        flag: '🏁', gp: r.cn || r.name, date: r.date.substring(5), circuit: r.circuit,
         status: new Date(r.date) < now ? 'done' : (new Date(r.date)-now < 7*86400000 ? 'now' : 'next'),
         tag: new Date(r.date) < now ? '已结束' : (new Date(r.date)-now < 7*86400000 ? '进行中' : '即将')
       })) })

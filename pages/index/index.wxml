@@ -5,7 +5,7 @@
   </view></view>
 
   <view class="hero-card" wx:if="{{nextRace}}">
-    <text class="badge">ROUND {{nextRace.round}} · {{nextRace.cnCountry}}</text>
+    <text class="badge">第{{nextRace.round}}站 · {{nextRace.cnCountry}}</text>
     <text class="title">{{nextRace.cn}}</text>
     <text class="sub">{{nextRace.circuit}} · {{nextRace.date}}</text>
     <view class="pg"><view class="pg-track"><view class="pg-fill" style="width:{{seasonPct}}%"></view></view><text class="pg-text">{{nextRace.round}}/22</text></view>
