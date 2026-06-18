@@ -9,7 +9,6 @@
     <view class="st"><text class="st-v">156</text><text class="st-l">赛季积分</text></view>
     <view class="st"><text class="st-v">42</text><text class="st-l">排名 / 1280</text></view>
     <view class="st"><text class="st-v green">47%</text><text class="st-l">预测准确率</text></view>
-    <view wx:if="{{history.length===0}}" class="empty-text" style="text-align:center;padding:40rpx 0;font-size:24rpx;color:#999">暂无竞猜记录</view>
   </view>
 
   <view class="card">
@@ -18,7 +17,6 @@
       <view class="fav ferrari"><text class="fav-icon">🐎</text><text class="fav-name">Ferrari</text></view>
       <view class="fav"><text class="fav-icon">16</text><text class="fav-name">Leclerc</text></view>
     </view>
-    <view wx:if="{{history.length===0}}" class="empty-text" style="text-align:center;padding:40rpx 0;font-size:24rpx;color:#999">暂无竞猜记录</view>
   </view>
 
   <view class="card">
@@ -30,7 +28,6 @@
       </view>
       <text class="h-r">+{{item.score}}</text>
     </view>
-    <view wx:if="{{history.length===0}}" class="empty-text" style="text-align:center;padding:40rpx 0;font-size:24rpx;color:#999">暂无竞猜记录</view>
   </view>
 
   <view class="card">

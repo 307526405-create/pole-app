@@ -14,7 +14,7 @@ Page({
           (d.driver_name||'').toLowerCase().includes(kw.toLowerCase()) ||
           (d.constructor||'').toLowerCase().includes(kw.toLowerCase())
         ).map(d => ({ name: d.driver_name, sub: d.constructor }))
-        this.setData({ results })},fail:function(){wx.showToast({title:"搜索失败",icon:"none"})}
+        this.setData({ results })
       }
     })
   },

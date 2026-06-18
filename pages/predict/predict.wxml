@@ -39,4 +39,3 @@
     <button class="submit-btn" bind:tap="submit">提交竞猜</button>
   </view>
 </view>
-<canvas canvas-id="shareCanvas" style="position:fixed;top:-9999px;left:-9999px;width:600px;height:400px;"></canvas>

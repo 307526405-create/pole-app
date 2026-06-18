@@ -6,7 +6,7 @@ const CN = {
 
 Page({
   data: { nextRace:null, lastRace:null, seasonPct:0, loading:true, error:false,
-    checkedIn:false, streak:0, lootOpened:false, showLootToast:false, lootResult:{},
+    checkedIn:false, streak:5, lootOpened:false, showLootToast:false, lootResult:{},
     quizDone:false, quizResult:{}, quiz:{question:'舒马赫一共拿过几个F1世界冠军？',options:['5个','6个','7个','8个'],answer:'7个',explanation:'舒马赫生涯共获得7次F1世界冠军。'},
     trivias:['舒马赫在2004赛季赢得了前13站中的12站。','维斯塔潘是F1最年轻的分站冠军(18岁228天)。','法拉利是唯一参加全部赛季的车队。'],
     cd:{days:'00',hours:'00',minutes:'00'},cdUrgent:false,news:[] },
