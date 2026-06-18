@@ -1,29 +1,30 @@
 .page { padding: 0 32rpx 120rpx; background: #F5F5F5; min-height: 100vh; }
-
-.header { text-align: center; padding: 48rpx 0 32rpx; }
-.avatar { width: 88rpx; height: 88rpx; background: #E10600; border-radius: 44rpx; margin: 0 auto 12rpx; display: flex; align-items: center; justify-content: center; font-size: 40rpx; }
-.name { font-size: 32rpx; font-weight: 600; color: #333; display: block; }
-.sub { font-size: 22rpx; color: #999; display: block; margin-top: 4rpx; }
-
-.mini-stats { display: flex; justify-content: center; gap: 24rpx; margin-top: 24rpx; }
-.ms { text-align: center; }
-.ms-v { font-size: 40rpx; font-weight: 700; color: #333; display: block; font-family: monospace; }
-.ms-v.green { color: #52C41A; }
-.ms-l { font-size: 20rpx; color: #999; display: block; margin-top: 2rpx; }
-
-.section-title { font-size: 22rpx; color: #999; font-weight: 600; margin: 24rpx 0 12rpx; }
-
-.card { background: #fff; border-radius: 16rpx; overflow: hidden; box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04); }
-
-.h-row { display: flex; align-items: center; padding: 20rpx 32rpx; border-bottom: 1rpx solid #F5F5F5; }
-.h-row:last-child { border-bottom: none; }
-.h-race { font-size: 24rpx; color: #999; width: 140rpx; }
-.h-detail { font-size: 22rpx; color: #666; flex: 1; }
-.h-score { font-size: 28rpx; font-weight: 700; color: #52C41A; font-family: monospace; }
-.empty { text-align: center; padding: 48rpx 0; font-size: 24rpx; color: #999; }
-
-.menu-row { display: flex; align-items: center; padding: 24rpx 32rpx; border-bottom: 1rpx solid #F5F5F5; }
-.menu-row:last-child { border-bottom: none; }
-.menu-text { font-size: 28rpx; font-weight: 600; color: #333; }
-.menu-sub { flex: 1; font-size: 22rpx; color: #999; margin-left: 16rpx; }
-.menu-arrow { font-size: 22rpx; color: #E10600; font-weight: 600; }
+.profile-top { text-align: center; padding: 32rpx 0 24rpx; }
+.avatar { width: 96rpx; height: 96rpx; background: #E10600; border-radius: 50%; margin: 0 auto 12rpx; display: flex; align-items: center; justify-content: center; font-size: 48rpx; }
+.nick { font-size: 36rpx; font-weight: 600; color: #333; display: block; }
+.since { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; }
+.streak { display: inline-block; margin-top: 8rpx; background: rgba(225,6,0,0.08); color: #E10600; font-size: 20rpx; font-weight: 600; padding: 4rpx 16rpx; border-radius: 16rpx; }
+.team-cards { display: flex; gap: 16rpx; margin-bottom: 24rpx; }
+.tc { flex: 1; background: #fff; border-radius: 12rpx; padding: 24rpx; text-align: center; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
+.tc-icon { font-size: 48rpx; display: block; margin-bottom: 8rpx; }
+.tc-name { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
+.tc-sub { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; }
+.stats-row { display: flex; gap: 8rpx; margin-bottom: 24rpx; }
+.stat { flex: 1; background: #fff; border-radius: 10rpx; padding: 24rpx; text-align: center; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
+.stat-v { font-size: 36rpx; font-weight: 600; color: #333; display: block; }
+.stat-l { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; }
+.card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
+.card-title { font-size: 24rpx; color: #999; margin-bottom: 16rpx; font-weight: 600; }
+.h-row { display: flex; justify-content: space-between; align-items: center; padding: 12rpx 0; border-top: 1rpx solid #F0F0F0; }
+.h-race { font-size: 24rpx; color: #999; width: 120rpx; }
+.h-detail { font-size: 24rpx; color: #666; flex: 1; }
+.h-score { font-size: 28rpx; font-weight: 600; color: #52C41A; }
+.empty { text-align: center; padding: 40rpx 0; font-size: 24rpx; color: #999; }
+.report-preview { text-align: center; padding: 24rpx; background: #F5F5F5; border-radius: 8rpx; }
+.rp-text { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
+.rp-sub { font-size: 20rpx; color: #999; display: block; margin-top: 8rpx; }
+.pro-card { background: #fff; border-radius: 16rpx; padding: 32rpx; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
+.pro-info { flex: 1; }
+.pro-title { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
+.pro-sub { font-size: 20rpx; color: #999; display: block; margin-top: 4rpx; }
+.pro-btn { background: #E10600; color: #fff; padding: 16rpx 32rpx; border-radius: 12rpx; font-size: 28rpx; font-weight: 600; }
