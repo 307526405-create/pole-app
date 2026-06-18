@@ -4,13 +4,34 @@
     <text class="tab {{tab==0?'active':''}}" bind:tap="switchTab" data-idx="0">车手</text>
     <text class="tab {{tab==1?'active':''}}" bind:tap="switchTab" data-idx="1">车队</text>
     <text class="tab {{tab==2?'active':''}}" bind:tap="switchTab" data-idx="2">上站</text>
+    <text class="tab {{tab==3?'active':''}}" bind:tap="switchTab" data-idx="3">介绍</text>
   </view>
-  <view wx:for="{{data[tab]}}" wx:key="pos" class="ds-row">
-    <text class="ds-pos">{{item.pos}}</text>
-    <view class="ds-info">
-      <text class="ds-name">{{item.name}}</text>
-      <text class="ds-team" wx:if="{{item.team}}">{{item.team}}</text>
+
+  <!-- 车手/车队/上站 -->
+  <view wx:if="{{tab<3}}">
+    <view wx:for="{{data[tab]}}" wx:key="pos" class="ds-row">
+      <text class="ds-pos">{{item.pos}}</text>
+      <view class="ds-info"><text class="ds-name">{{item.name}}</text><text class="ds-team" wx:if="{{item.team}}">{{item.team}}</text></view>
+      <text class="ds-pts" wx:if="{{item.pts}}">{{item.pts}}</text>
     </view>
-    <text class="ds-pts" wx:if="{{item.pts}}">{{item.pts}}</text>
+  </view>
+
+  <!-- 车队介绍 -->
+  <view wx:if="{{tab==3}}">
+    <view class="team-card" wx:for="{{teams}}" wx:key="name">
+      <view class="tc-header">
+        <text class="tch-icon">{{item.icon}}</text>
+        <view class="tch-info">
+          <text class="tch-name">{{item.name}}</text>
+          <text class="tch-base">📍 {{item.base}}</text>
+        </view>
+      </view>
+      <text class="tc-desc">{{item.desc}}</text>
+      <view class="tc-stats">
+        <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">车队冠军</text></view>
+        <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站冠军</text></view>
+        <view class="tcs-item"><text class="tcs-val">{{item.since}}</text><text class="tcs-lbl">参赛</text></view>
+      </view>
+    </view>
   </view>
 </view>
