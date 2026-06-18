@@ -1,56 +1,90 @@
-<view class="page">
-  <view class="nav-bar"><text class="nav-title">发现</text></view>
-  <view class="tabs">
-    <text class="tab {{subtab==0?'active':''}}" bind:tap="switchSub" data-idx="0">车队</text>
-    <text class="tab {{subtab==1?'active':''}}" bind:tap="switchSub" data-idx="1">车手</text>
-    <text class="tab {{subtab==2?'active':''}}" bind:tap="switchSub" data-idx="2">赛道</text>
-  </view>
-  <view wx:if="{{subtab==0}}">
-    <view class="team-card" wx:for="{{teams}}" wx:key="name">
-      <view class="tc-header">
-        <image class="tch-logo" src="{{item.logo}}" mode="aspectFit" style="background:{{item.color}}"/>
-        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.base}} · 🏎️ {{item.engine}}</text></view>
-      </view>
-      <text class="tc-desc">{{item.desc}}</text>
-      <view class="tc-drivers">
-        <view class="tcd-item"><text class="tcd-label">一号</text><text class="tcd-name">{{item.d1}}</text></view>
-        <view class="tcd-item"><text class="tcd-label">二号</text><text class="tcd-name">{{item.d2}}</text></view>
-        <view class="tcd-item"><text class="tcd-label">储备</text><text class="tcd-name">{{item.res}}</text></view>
-      </view>
-      <view class="tc-stats">
-        <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">冠军</text></view>
-        <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站</text></view>
-        <view class="tcs-item"><text class="tcs-val">{{item.since}}</text><text class="tcs-lbl">参赛</text></view>
-      </view>
-    </view>
-  </view>
-  <view wx:if="{{subtab==1}}">
-    <view class="team-card" wx:for="{{drivers}}" wx:key="name">
-      <view class="tc-header">
-        <image class="tch-logo" src="{{item.img}}" mode="aspectFill" style="border-radius:50%"/>
-        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">{{item.team}} · {{item.nationality}}</text></view>
-      </view>
-      <text class="tc-desc">{{item.desc}}</text>
-      <view class="tc-stats">
-        <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">冠军</text></view>
-        <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站</text></view>
-        <view class="tcs-item"><text class="tcs-val">{{item.podiums}}</text><text class="tcs-lbl">领奖台</text></view>
-      </view>
-    </view>
-  </view>
-  <view wx:if="{{subtab==2}}">
-    <view class="team-card" wx:for="{{circuits}}" wx:key="name">
-      <view class="tc-header">
-        <text class="tch-icon">{{item.flag}}</text>
-        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.location}} · {{item.length}} · {{item.turns}}弯 · DRS{{item.drs}}区</text></view>
-      </view>
-      <image class="circuit-map" src="{{item.map}}" mode="aspectFill"/>
-      <text class="tc-desc">{{item.desc}}</text>
-      <view class="tc-stats">
-        <view class="tcs-item"><text class="tcs-val">{{item.lapRecord}}</text><text class="tcs-lbl">最快圈</text></view>
-        <view class="tcs-item"><text class="tcs-val">{{item.firstGP}}</text><text class="tcs-lbl">首场</text></view>
-        <view class="tcs-item"><text class="tcs-val">{{item.capacity}}</text><text class="tcs-lbl">观众</text></view>
-      </view>
-    </view>
-  </view>
+<view class="nav-bar"><text class="nav-title">数据</text></view>
+<view class="tabs-fixed">
+  <text class="tab {{subtab==0?'active':''}}" bind:tap="switchSub" data-idx="0">赛程</text>
+  <text class="tab {{subtab==1?'active':''}}" bind:tap="switchSub" data-idx="1">积分</text>
+  <text class="tab {{subtab==2?'active':''}}" bind:tap="switchSub" data-idx="2">百科</text>
 </view>
+<scroll-view class="content-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+  <!-- 赛程 -->
+  <view wx:if="{{subtab==0}}">
+    <view wx:for="{{races}}" wx:key="round" class="cal-row">
+      <text class="cal-num">{{item.round}}</text>
+      <text class="cal-flag">{{item.flag}}</text>
+      <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-detail">{{item.date}} · {{item.circuit}}</text></view>
+      <text class="cal-tag {{item.status}}">{{item.tag}}</text>
+    </view>
+  </view>
+  <!-- 积分 -->
+  <view wx:if="{{subtab==1}}">
+    <view class="sub-tabs">
+      <text class="sub-tab {{rankTab==0?'active':''}}" bind:tap="switchRank" data-idx="0">车手</text>
+      <text class="sub-tab {{rankTab==1?'active':''}}" bind:tap="switchRank" data-idx="1">车队</text>
+    </view>
+    <view wx:for="{{standings[rankTab]}}" wx:key="pos" class="ds-row">
+      <text class="ds-pos">{{item.pos}}</text>
+      <image wx:if="{{item.img}}" class="ds-img" src="{{item.img}}" mode="aspectFill"/>
+      <view wx:else class="ds-avatar" style="background:#E10600"><text>{{item.en}}</text></view>
+      <view class="ds-info"><text class="ds-name">{{item.name}}</text><text class="ds-en">{{item.en}}</text></view>
+      <text class="ds-pts">{{item.pts}}</text>
+    </view>
+  </view>
+  <!-- 百科 -->
+  <view wx:if="{{subtab==2}}">
+    <view class="sub-tabs">
+      <text class="sub-tab {{wikiTab==0?'active':''}}" bind:tap="switchWiki" data-idx="0">车队</text>
+      <text class="sub-tab {{wikiTab==1?'active':''}}" bind:tap="switchWiki" data-idx="1">车手</text>
+      <text class="sub-tab {{wikiTab==2?'active':''}}" bind:tap="switchWiki" data-idx="2">赛道</text>
+    </view>
+    <view wx:if="{{wikiTab==0}}">
+      <view class="team-card" wx:for="{{teams}}" wx:key="name">
+        <view class="tc-header">
+          <image wx:if="{{item.logo}}" class="tch-logo" src="{{item.logo}}" mode="aspectFit"/>
+          <view wx:else class="tch-logo" style="background:{{item.color}}"><text>{{item.name[0]}}</text></view>
+          <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.base}} · 🏎️ {{item.engine}}</text></view>
+        </view>
+        <text class="tc-desc">{{item.desc}}</text>
+        <view class="tc-drivers">
+          <view class="tcd-item"><text class="tcd-label">一号</text><text class="tcd-name">{{item.d1}}</text></view>
+          <view class="tcd-item"><text class="tcd-label">二号</text><text class="tcd-name">{{item.d2}}</text></view>
+          <view class="tcd-item"><text class="tcd-label">储备</text><text class="tcd-name">{{item.res}}</text></view>
+        </view>
+        <view class="tc-stats">
+          <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">冠军</text></view>
+          <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站</text></view>
+          <view class="tcs-item"><text class="tcs-val">{{item.since}}</text><text class="tcs-lbl">参赛</text></view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{wikiTab==1}}">
+      <view class="team-card" wx:for="{{wikiDrivers}}" wx:key="name">
+        <view class="tc-header">
+          <image wx:if="{{item.img}}" class="tch-logo" src="{{item.img}}" mode="aspectFill" style="border-radius:50%"/>
+          <view wx:else class="tch-logo" style="background:#E10600;border-radius:50%"><text>#{{item.num}}</text></view>
+          <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">{{item.team}} · {{item.nationality}}</text></view>
+        </view>
+        <text class="tc-desc">{{item.desc}}</text>
+        <view class="tc-stats">
+          <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">冠军</text></view>
+          <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站</text></view>
+          <view class="tcs-item"><text class="tcs-val">{{item.podiums}}</text><text class="tcs-lbl">领奖台</text></view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{wikiTab==2}}">
+      <view class="team-card" wx:for="{{circuits}}" wx:key="name">
+        <view class="tc-header">
+          <text class="tch-icon">{{item.flag}}</text>
+          <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.location}} · {{item.length}} · {{item.turns}}弯 · DRS{{item.drs}}区</text></view>
+        </view>
+        <image wx:if="{{item.map}}" class="circuit-map" src="{{item.map}}" mode="widthFix"/>
+        <text class="tc-desc">{{item.desc}}</text>
+        <view class="tc-stats">
+          <view class="tcs-item"><text class="tcs-val">{{item.lapRecord}}</text><text class="tcs-lbl">最快圈</text></view>
+          <view class="tcs-item"><text class="tcs-val">{{item.firstGP}}</text><text class="tcs-lbl">首场</text></view>
+          <view class="tcs-item"><text class="tcs-val">{{item.capacity}}</text><text class="tcs-lbl">观众</text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view style="height:160rpx"></view>
+</scroll-view>

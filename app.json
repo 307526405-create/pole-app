@@ -1,11 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/search/search",
-    "pages/calendar/calendar",
     "pages/data/data",
     "pages/profile/profile",
-    "pages/predict/predict"
+    "pages/predict/predict",
+    "pages/search/search"
   ],
   "window": {
     "backgroundColor": "#F5F5F5",
@@ -25,12 +24,8 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/calendar/calendar",
-        "text": "赛程"
-      },
-      {
         "pagePath": "pages/data/data",
-        "text": "发现"
+        "text": "数据"
       },
       {
         "pagePath": "pages/profile/profile",
