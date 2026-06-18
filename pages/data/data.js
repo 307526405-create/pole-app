@@ -46,7 +46,7 @@ Page({
     wx.request({url:API+"/standings/drivers",success(r){var d=t.data.standings;d[0]=(r.data.data||[]).map(function(dd){var m=D_CN[dd.driver_name]||[dd.driver_name,dd.driver_code||"",""];return{pos:dd.position,name:m[0],en:m[1],team:(T_CN[dd.constructor]||[dd.constructor])[0],pts:dd.points,img:m[2]}});t.setData({standings:d})}})
     wx.request({url:API+"/standings/constructors",success(r){var d=t.data.standings;d[1]=(r.data.data||[]).map(function(dd){var m=T_CN[dd.name]||[dd.name,"",""];return{pos:dd.position,name:m[0],en:m[1],pts:dd.points,img:m[2]}});t.setData({standings:d})}})
   },
-  switchSub(e){this.setData({subtab:parseInt(e.currentTarget.dataset.idx)})},
+  onPullDownRefresh(){this.onLoad()},switchSub(e){this.setData({subtab:parseInt(e.currentTarget.dataset.idx)})},
   switchRank(e){this.setData({rankTab:parseInt(e.currentTarget.dataset.idx)})},
   switchWiki(e){this.setData({wikiTab:parseInt(e.currentTarget.dataset.idx)})}
 })
