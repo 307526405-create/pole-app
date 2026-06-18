@@ -14,3 +14,4 @@
 .submit-area { position: fixed; bottom: 0; left: 0; right: 0; padding: 24rpx 32rpx; padding-bottom: calc(24rpx + env(safe-area-inset-bottom)); background: #fff; border-top: 1rpx solid #F0F0F0; }
 .submit-btn { height: 88rpx; background: #E10600; color: #fff; border: none; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; display: flex; align-items: center; justify-content: center; width: 100%; }
 button::after { border: none; }
+.page { padding-bottom: 120rpx; }

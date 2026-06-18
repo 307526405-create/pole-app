@@ -11,3 +11,4 @@
 .cal-tag.done { background: #F5F5F5; color: #999; }
 .cal-tag.now { background: #E10600; color: #fff; }
 .cal-tag.next { background: rgba(225,6,0,0.06); color: #E10600; }
+.page { padding-bottom: 120rpx; }
