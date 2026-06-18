@@ -18,7 +18,7 @@ Page({
   onLoad(){
     var that=this
     wx.request({url:API+'/standings/drivers',success(res){
-      that.setData({drivers:(res.data.data||[]).map(function(d){return{num:PERM_NUM[d.driver_name]||d.position,name:d.driver_name,team:d.constructor,selected:false}})})
+      that.setData({drivers:(res.data.data||[]).map(function(d){return{num:PERM_NUM[d.driver_name]||d.position,name:d.driver_name,team:d.constructor,selected:false},fail:function(){wx.showToast({title:"加载失败",icon:"none"})}})})
     }})
     wx.request({url:API+'/races',success(res){
       var next=(res.data.data||[]).find(function(r){return new Date(r.date)>new Date()})
@@ -82,7 +82,7 @@ Page({
       that.setData({showCelebrate:true})
       setTimeout(function(){
         that.setData({showCelebrate:false,step:0,canSubmit:false,drivers:d.drivers.map(function(dr){dr.selected=false;return dr}),options:[],submitData:{pole:'',podium:[],fastest_lap:'',safety_car:'',retirements:''}})
-        wx.showShareMenu({withShareTicket:true})
+        wx.showShareMenu({withShareTicket:true})},fail:function(){wx.showToast({title:"提交失败",icon:"none"})})
         wx.switchTab({url:'/pages/index/index'})
       },2000)
     }})
