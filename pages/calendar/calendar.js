@@ -1,11 +1,5 @@
 const API = 'http://localhost:8080/api'
-
-const TEAM_COLORS = {
-  'Mercedes':'#00D2BE','Ferrari':'#DC0000','McLaren':'#FF8700','Red Bull':'#3671C6','Red Bull Racing':'#3671C6',
-  'Alpine':'#0090FF','Alpine F1 Team':'#0090FF','Aston Martin':'#006F62','Williams':'#005AFF',
-  'RB F1 Team':'#6692FF','Racing Bulls':'#6692FF','Haas':'#FFFFFF','Haas F1 Team':'#FFFFFF',
-  'Sauber':'#52E252','Audi':'#000000','Cadillac F1 Team':'#C0A060','Cadillac':'#C0A060'
-}
+const { DRIVER_IMG, TEAM_LOGO } = require('../../utils/images')
 
 Page({
   onShow() { if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 1 }) },
@@ -21,23 +15,27 @@ Page({
     }})
     wx.request({ url: API + '/standings/drivers', success: (res) => { 
       const ds = this.data.standings
-      ds[0] = (res.data.data||[]).map(d => {
-        const cn = d.driver_name || ''
-        const team = d.constructor || ''
-        const initials = cn.split(' ').map(w => w[0]).join('').substring(0,2)
-        return { pos: d.position, name: cn, team: team, pts: d.points, initials: initials, color: TEAM_COLORS[team] || '#999' }
-      })
+      ds[0] = (res.data.data||[]).map(d => ({
+        pos: d.position, name: d.driver_name, team: d.constructor, pts: d.points,
+        img: DRIVER_IMG[d.driver_name] || ''
+      }))
       this.setData({ standings: ds })
     }})
     wx.request({ url: API + '/standings/constructors', success: (res) => { 
       const ds = this.data.standings
-      ds[1] = (res.data.data||[]).map(d => {
-        const cn = d.name || ''
-        const initials = cn.substring(0,2).toUpperCase()
-        return { pos: d.position, name: cn, team: '', pts: d.points, initials: initials, color: TEAM_COLORS[cn] || '#999' }
-      })
+      ds[1] = (res.data.data||[]).map(d => ({
+        pos: d.position, name: d.name, team: '', pts: d.points,
+        img: TEAM_LOGO[d.name] || ''
+      }))
       this.setData({ standings: ds })
     }})
+  },
+  onImgErr(e) {
+    // 加载失败用颜色块兜底
+    const { idx, tab } = e.currentTarget.dataset
+    const ds = this.data.standings
+    if (ds[tab-1] && ds[tab-1][idx]) ds[tab-1][idx].img = ''
+    this.setData({ standings: ds })
   },
   switchSub(e) { this.setData({ subtab: parseInt(e.currentTarget.dataset.idx) }) }
 })

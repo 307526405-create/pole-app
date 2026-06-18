@@ -15,7 +15,7 @@
   <view wx:if="{{subtab>0}}">
     <view wx:for="{{standings[subtab-1]}}" wx:key="pos" class="ds-row">
       <text class="ds-pos">{{item.pos}}</text>
-      <view class="ds-avatar" style="background:{{item.color}}"><text>{{item.initials}}</text></view>
+      <image class="ds-img" src="{{item.img}}" mode="aspectFill" binderror="onImgErr" data-idx="{{index}}" data-tab="{{subtab}}"/>
       <view class="ds-info"><text class="ds-name">{{item.name}}</text><text class="ds-team" wx:if="{{item.team}}">{{item.team}}</text></view>
       <text class="ds-pts">{{item.pts}}</text>
     </view>
