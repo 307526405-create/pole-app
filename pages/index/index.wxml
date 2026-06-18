@@ -1,0 +1,90 @@
+<view class="page">
+  <!-- 比赛卡片 -->
+  <view class="race-card">
+    <view class="race-header">
+      <text class="race-round">ROUND 10 · 🇨🇦</text>
+    </view>
+    <view class="race-title">加拿大大奖赛</view>
+    <view class="race-meta">维伦纽夫赛道 · 4.36km · 14弯 · DRS 3区</view>
+    
+    <view class="track-stats">
+      <view class="ts-item">
+        <text class="ts-label">最快圈纪录</text>
+        <text class="ts-value">1:11.441</text>
+        <text class="ts-driver">Verstappen 2024</text>
+      </view>
+      <view class="ts-item">
+        <text class="ts-label">轮胎策略</text>
+        <text class="ts-value">1停为主</text>
+        <text class="ts-driver">C3/C4/C5</text>
+      </view>
+    </view>
+
+    <view class="race-times">
+      <view class="time-item">
+        <text class="time-label">排位赛</text>
+        <text class="time-value">周六 23:00</text>
+      </view>
+      <view class="time-item">
+        <text class="time-label">正赛</text>
+        <text class="time-value">周日 23:00</text>
+      </view>
+    </view>
+
+    <view class="race-btns">
+      <van-button type="danger" block round size="large" bind:click="onPredict">开始竞猜</van-button>
+      <van-button plain block round size="large" bind:click="onCalendar">赛程日历</van-button>
+    </view>
+  </view>
+
+  <!-- 积分面板 -->
+  <view class="card">
+    <view class="score-panel">
+      <view class="sp-left">
+        <text class="sp-label">上站·西班牙</text>
+        <text class="sp-change">▲ +11</text>
+      </view>
+      <view class="sp-center">
+        <text class="sp-num">156</text>
+        <text class="sp-sub">排名 #42 / 1280</text>
+      </view>
+      <view class="sp-right">
+        <view class="sp-row"><text>✅ 杆位</text></view>
+        <view class="sp-row"><text>✅ 2/3 领奖台</text></view>
+        <view class="sp-row"><text class="miss">— 最快圈</text></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 联赛排行 -->
+  <view class="card">
+    <view class="card-title">F1车迷群 · 联赛排名</view>
+    <van-cell-group>
+      <van-cell title="虎哥" label="虎虎生威 Racing" value="192" border="{{ true }}">
+        <van-tag type="success" slot="right-icon">▲8</van-tag>
+      </van-cell>
+      <van-cell title="小美" label="Leclerc Forever" value="178" border="{{ true }}">
+        <van-tag type="success" slot="right-icon">▲5</van-tag>
+      </van-cell>
+      <van-cell title="我" label="杆位车队" value="156">
+        <van-tag type="success" slot="right-icon">▲11</van-tag>
+      </van-cell>
+    </van-cell-group>
+  </view>
+
+  <!-- 快讯 -->
+  <scroll-view class="news-scroll" scroll-x>
+    <view class="news-item"><text class="news-dot"></text>法拉利确认2027自研引擎</view>
+    <view class="news-item"><text class="news-dot"></text>诺里斯连续24站得分</view>
+    <view class="news-item"><text class="news-dot"></text>奥迪F1 2026入场</view>
+  </scroll-view>
+
+  <!-- 上站回顾 -->
+  <view class="card review">
+    <view class="card-title">西班牙大奖赛 · 回顾</view>
+    <view class="review-row"><text>杆位</text><text class="hit">Verstappen ✅</text></view>
+    <view class="review-row"><text>领奖台</text><text class="hit">2/3 正确 ✅</text></view>
+    <view class="review-row"><text>最快圈</text><text class="miss">Norris 猜错</text></view>
+    <van-button plain block round size="large" bind:click="onShare">分享到微信群</van-button>
+  </view>
+</view>

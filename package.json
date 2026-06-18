@@ -1,0 +1,8 @@
+{
+  "name": "pole-app",
+  "version": "1.0.0",
+  "description": "杆位 - F1赛车竞猜小程序",
+  "dependencies": {
+    "@vant/weapp": "^1.11.7"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/calendar/calendar",
+    "pages/data/data",
+    "pages/profile/profile",
+    "pages/predict/predict"
+  ],
+  "window": {
+    "backgroundColor": "#F5F5F5",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "杆位",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#E10600",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/index/index", "text": "首页" },
+      { "pagePath": "pages/calendar/calendar", "text": "赛程" },
+      { "pagePath": "pages/data/data", "text": "数据" },
+      { "pagePath": "pages/profile/profile", "text": "我的" }
+    ]
+  },
+  "usingComponents": {}
+}
