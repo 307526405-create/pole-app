@@ -89,17 +89,17 @@ Page({
     }
     var d=r.date||""
     var schedule=isSprint?[
-      {name:"一练 FP1",time:d},
-      {name:"冲刺排位 SQ",time:d},
-      {name:"冲刺赛 Sprint",time:d},
-      {name:"排位赛 Q",time:d},
-      {name:"正赛 Race",time:d}
+      {name:"一练 FP1",time:"周五 17:30"},
+      {name:"冲刺排位 SQ",time:"周五 17:30"},
+      {name:"冲刺赛 Sprint",time:"周五 17:30"},
+      {name:"排位赛 Q",time:"周五 17:30"},
+      {name:"正赛 Race",time:"周五 17:30"}
     ]:[
-      {name:"一练 FP1",time:d},
-      {name:"二练 FP2",time:d},
-      {name:"三练 FP3",time:d},
-      {name:"排位赛 Q",time:d},
-      {name:"正赛 Race",time:d}
+      {name:"一练 FP1",time:"周五 17:30"},
+      {name:"二练 FP2",time:"周五 17:30"},
+      {name:"三练 FP3",time:"周五 17:30"},
+      {name:"排位赛 Q",time:"周五 17:30"},
+      {name:"正赛 Race",time:"周五 17:30"}
     ]
     // 关闭其他展开的
     for(var k=0;k<races.length;k++){
