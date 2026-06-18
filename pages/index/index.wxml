@@ -18,7 +18,7 @@
       <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
       <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
     </view>
-    <text class="deadline-warn">⏰ 竞猜截止 周六 22:59</text>
+    <text class="deadline-warn">竞猜截止 周六 22:59</text>
     <button class="btn-go" bind:tap="onPredict">开始竞猜</button>
     <text class="participants">128人已猜</text>
   </view>
@@ -30,18 +30,19 @@
     <view class="offseason-tips"><view class="tip-item">🏎️ 冬测追踪 · 2月巴林</view></view>
   </view>
 
-  <!-- 每日一题 + 冷知识 -->
   <view class="daily-row">
-    <view class="daily-card quiz" bind:tap="answerQuiz" wx:if="{{!quizDone}}">
+    <!-- 每日一题 -->
+    <view class="daily-card quiz {{quizDone ? 'done' : ''}}">
       <view class="daily-badge">🎯 每日一题</view>
       <text class="daily-quiz">{{quiz.question}}</text>
-      <view class="quiz-options">
-        <view class="qo" wx:for="{{quiz.options}}" wx:key="*this">{{item}}</view>
+      <view class="quiz-options" wx:if="{{!quizDone}}">
+        <view class="qo" wx:for="{{quiz.options}}" wx:key="*this" bind:tap="pickQuiz" data-idx="{{index}}">{{item}}</view>
       </view>
-    </view>
-    <view class="daily-card quiz done" wx:if="{{quizDone}}">
-      <view class="daily-badge">{{quizResult.correct ? '✅ 答对！+1分' : '❌ 正确答案是 '+quiz.answer}}</view>
-      <text class="daily-text">{{quiz.explanation}}</text>
+      <view class="quiz-result" wx:if="{{quizDone}}">
+        <text class="qr-icon">{{quizResult.correct ? '✅' : '❌'}}</text>
+        <text class="qr-text">{{quizResult.correct ? '答对！+1分' : quiz.answer}}</text>
+        <text class="qr-exp">{{quiz.explanation}}</text>
+      </view>
     </view>
     <view class="daily-card">
       <view class="daily-badge">💡 冷知识</view>

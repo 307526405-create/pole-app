@@ -19,7 +19,7 @@ Page({
     if (this.data.checkedIn) return
     const today = new Date().toDateString(); wx.setStorageSync('checkin_date', today)
     const streak = (wx.getStorageSync('checkin_streak') || 0) + 1; wx.setStorageSync('checkin_streak', streak)
-    this.setData({ checkedIn: true, streak }); wx.showToast({ title: `签到成功！连续${streak}天`, icon: 'success' })
+    this.setData({ checkedIn: true, streak }); wx.showToast({ title: `连续${streak}天`, icon: 'success' })
   },
   checkCheckin() {
     const today = new Date().toDateString(); const last = wx.getStorageSync('checkin_date')
@@ -27,25 +27,19 @@ Page({
   },
   checkQuiz() {
     const today = new Date().toDateString(); const last = wx.getStorageSync('quiz_date')
-    if (last === today) this.setData({ quizDone: true, quizResult: { correct: wx.getStorageSync('quiz_correct') === 'true' } })
+    if (last === today) this.setData({ quizDone: true, quizResult: { correct: wx.getStorageSync('quiz_correct')==='true' } })
   },
-  answerQuiz() {
+  pickQuiz(e) {
     if (this.data.quizDone) return
-    wx.showActionSheet({
-      itemList: this.data.quiz.options,
-      success: (res) => {
-        const chosen = this.data.quiz.options[res.tapIndex]
-        const correct = chosen === this.data.quiz.answer
-        wx.setStorageSync('quiz_date', new Date().toDateString()); wx.setStorageSync('quiz_correct', String(correct))
-        this.setData({ quizDone: true, quizResult: { correct } })
-        if (correct) wx.showToast({ title: '答对！+1分', icon: 'success' })
-        else wx.showToast({ title: '正确答案是 '+this.data.quiz.answer, icon: 'none' })
-      }
-    })
+    const idx = e.currentTarget.dataset.idx
+    const correct = this.data.quiz.options[idx] === this.data.quiz.answer
+    wx.setStorageSync('quiz_date', new Date().toDateString()); wx.setStorageSync('quiz_correct', String(correct))
+    this.setData({ quizDone: true, quizResult: { correct, answer: this.data.quiz.answer, explanation: this.data.quiz.explanation } })
+    if (correct) wx.showToast({ title: '答对！+1分', icon: 'success' })
   },
   openLoot() {
     if (this.data.lootOpened) return
-    const rewards = [{ icon:'🎉', text:'恭喜获得 +3 积分！' },{ icon:'⭐', text:'恭喜获得 +2 积分！' },{ icon:'💪', text:'获得 +1 积分' },{ icon:'🏎️', text:'冷知识：维斯塔潘是F1最年轻分站冠军' },{ icon:'😊', text:'今天运气平平，明天再来！' }]
+    const rewards = [{ icon:'🎉', text:'恭喜获得 +3 积分！' },{ icon:'⭐', text:'恭喜获得 +2 积分！' },{ icon:'💪', text:'获得 +1 积分' },{ icon:'🏎️', text:'维斯塔潘是F1最年轻分站冠军' },{ icon:'😊', text:'今天运气平平，明天再来！' }]
     const r = rewards[Math.floor(Math.random()*rewards.length)]
     wx.setStorageSync('loot_date', new Date().toDateString())
     this.setData({ lootOpened: true, lootResult: r, showLootToast: true })
