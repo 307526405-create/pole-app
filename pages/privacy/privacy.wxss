@@ -1,0 +1,7 @@
+.page { background: #F5F5F5; min-height: 100vh; }
+.nav-bar { display: flex; align-items: center; height: 88rpx; padding: 0 32rpx; }
+.back { font-size: 36rpx; color: #333; margin-right: 16rpx; }
+.nav-title { font-size: 32rpx; font-weight: 600; color: #333; }
+.content { padding: 32rpx; height: calc(100vh - 88rpx); }
+.h2 { font-size: 28rpx; font-weight: 600; color: #333; display: block; margin: 32rpx 0 16rpx; }
+.p { font-size: 26rpx; color: #555; line-height: 1.8; display: block; margin-bottom: 12rpx; }

@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="nav-bar">
+    <text class="back" bind:tap="onBack">←</text>
+    <text class="nav-title">隐私政策</text>
+  </view>
+  <scroll-view class="content" scroll-y>
+    <text class="p">广东雅和网络科技有限公司（以下简称"我们"）深知个人信息对您的重要性，我们将按法律法规要求，保护您的个人信息安全。</text>
+    <text class="h2">一、我们收集的信息</text>
+    <text class="p">1. 微信昵称和头像：用于在社区中展示您的身份。</text>
+    <text class="p">2. 竞猜记录：用于计算积分和排名。</text>
+    <text class="h2">二、信息的使用</text>
+    <text class="p">我们使用收集的信息来提供、维护和改进我们的服务，包括竞猜排名、赛季报告生成。</text>
+    <text class="h2">三、信息的存储</text>
+    <text class="p">您的数据存储在安全服务器上，我们采取合理的措施保护您的个人信息不被未经授权的访问。</text>
+    <text class="h2">四、联系我们</text>
+    <text class="p">如有任何隐私相关问题，请联系：guangdongyahe@126.com</text>
+    <text class="h2">五、更新日期</text>
+    <text class="p">本政策最后更新于 2026年6月19日</text>
+  </scroll-view>
+</view>

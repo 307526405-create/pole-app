@@ -1,0 +1,1 @@
+Page({ onBack() { wx.navigateBack() } })
