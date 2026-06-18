@@ -8,12 +8,9 @@ Page({
     quiz: { question: '舒马赫一共拿过几个F1世界冠军？', options: ['5个','6个','7个','8个'], answer: '7个', explanation: '舒马赫生涯共获得7次F1世界冠军。' },
     trivias: ['舒马赫在2004赛季赢得了前13站中的12站。','维斯塔潘是F1最年轻的分站冠军(18岁228天)。','法拉利是唯一参加全部赛季的车队。'],
     nextRace: null, cd: { days:'00', hours:'00', minutes:'00' }, cdUrgent: false,
-    lastResult: null, news: []
+    lastRace: null
   },
-  onLoad() {
-    this.fetchRaceData()
-    this.checkCheckin(); this.checkLoot(); this.checkQuiz()
-  },
+  onLoad() { this.fetchRaceData(); this.checkCheckin(); this.checkLoot(); this.checkQuiz() },
   onShow() { if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 0 }) },
   onShareAppMessage() { return { title: '杆位 - F1赛车竞猜', path: '/pages/index/index' } },
 
@@ -21,21 +18,12 @@ Page({
     wx.request({
       url: API + '/races',
       success: (res) => {
-        const races = res.data.races || []
+        const races = (res.data.data || []).map(r => ({ ...r, gp: r.name, date: r.date, circuit: r.circuit }))
         const now = new Date()
-        // 找下一站（最近的未来比赛）
         const next = races.find(r => new Date(r.date) > now) || races[races.length-1]
         const last = races.filter(r => new Date(r.date) <= now).pop()
-        
-        this.setData({
-          nextRace: next,
-          lastRace: last,
-          news: [
-            { tag: '赛事', title: (last ? last.gp + '已完赛' : '赛季即将开始'), time: last ? last.date : '', summary: '', expanded: false },
-            { tag: '前瞻', title: (next ? '下一站：' + next.gp + ' · ' + next.circuit : ''), time: next ? next.date : '', summary: '', expanded: false },
-          ]
-        })
-        if (next) this.startCountdown(new Date(next.qualifying || next.date))
+        this.setData({ nextRace: next, lastRace: last })
+        if (next) this.startCountdown(new Date(next.date))
       }
     })
   },
@@ -50,7 +38,6 @@ Page({
     tick(); this._timer = setInterval(tick, 30000)
   },
   onUnload() { if (this._timer) clearInterval(this._timer) },
-
   onCheckin() {
     if (this.data.checkedIn) return
     const today = new Date().toDateString(); wx.setStorageSync('checkin_date', today)
@@ -79,6 +66,5 @@ Page({
     this.setData({ lootOpened: true, lootResult: r, showLootToast: true }); setTimeout(() => this.setData({ showLootToast: false }), 2000)
   },
   checkLoot() { if (wx.getStorageSync('loot_date') === new Date().toDateString()) this.setData({ lootOpened: true }) },
-  toggleNews(e) { const idx = e.currentTarget.dataset.idx; const news = this.data.news; news[idx].expanded = !news[idx].expanded; this.setData({ news }) },
   onPredict() { wx.navigateTo({ url: '/pages/predict/predict' }) }
 })

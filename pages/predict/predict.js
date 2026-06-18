@@ -1,21 +1,15 @@
 const API = 'http://localhost:8080/api'
 
 Page({
-  data: {
-    step: 0, showCelebrate: false, canSubmit: false, raceRound: 8,
+  data: { step: 0, showCelebrate: false, canSubmit: false, raceRound: 8,
     stepTitles: ['1/6 杆位', '2/6 排位赛前三（选3人）', '3/6 正赛领奖台（选3人）', '4/6 最快圈', '5/6 安全车次数', '6/6 退赛车数'],
     drivers: [], options: [],
-    picks: { pole: '', podium: [], fastest: '', safety_car: '', retirements: '' }
   },
   onLoad() {
-    wx.request({
-      url: API + '/standings/drivers',
-      success: (res) => {
-        const drivers = (res.data.standings || []).map(d => ({ num: d.pos || d.number || '?', name: d.name || d.driver || 'Unknown', team: d.team || d.constructor || '', selected: false }))
-        this.setData({ drivers })
-      }
-    })
-    wx.request({ url: API + '/races', success: (res) => { const next = (res.data.races||[]).find(r => new Date(r.date) > new Date()); if (next) this.setData({ raceRound: next.round || 8 }) }})
+    wx.request({ url: API + '/standings/drivers', success: (res) => {
+      this.setData({ drivers: (res.data.data||[]).map(d => ({ num: d.position, name: d.driver_name, team: d.constructor, selected: false })) })
+    }})
+    wx.request({ url: API + '/races', success: (res) => { const next = (res.data.data||[]).find(r => new Date(r.date) > new Date()); if (next) this.setData({ raceRound: next.round }) }})
   },
   selectDriver(e) {
     const idx = e.currentTarget.dataset.idx; const { step, drivers } = this.data
@@ -36,17 +30,7 @@ Page({
     setTimeout(() => { if (this.data.step === 5) { this.setData({ step: 6, options: [{text:'0-2辆',selected:false},{text:'3-5辆',selected:false},{text:'6辆以上',selected:false}] }) } else { this.setData({ canSubmit: true }) } }, 300)
   },
   submit() {
-    const selDrivers = this.data.drivers.filter(d => d.selected)
-    const data = {
-      race_round: this.data.raceRound,
-      pole: this.data.step >= 1 ? selDrivers[0]?.name || '' : '',
-      podium: this.data.step >= 2 ? selDrivers.slice(0,3).map(d => d.name) : [],
-      fastest_lap: this.data.step >= 4 ? selDrivers[0]?.name || '' : '',
-      safety_car: this.data.options.find(o=>o.selected)?.text || '',
-      retirements: this.data.options.find(o=>o.selected)?.text || ''
-    }
-    wx.request({
-      url: API + '/predict', method: 'POST', data: { ...data, wx_openid: 'test_user' },
+    wx.request({ url: API + '/predict', method: 'POST', data: { race_round: this.data.raceRound, pole: '', podium: [], fastest_lap: '', safety_car: '', retirements: '', wx_openid: 'test' },
       success: () => {
         this.setData({ showCelebrate: true })
         setTimeout(() => { this.setData({ showCelebrate: false, step: 0, canSubmit: false, drivers: this.data.drivers.map(d=>({...d,selected:false})), options: [] }); wx.switchTab({ url: '/pages/index/index' }) }, 2000)

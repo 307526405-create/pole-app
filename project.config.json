@@ -37,13 +37,18 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "checkSiteMap": false
   },
   "compileType": "miniprogram",
   "libVersion": "3.8.0",
   "appid": "",
   "projectname": "pole-app",
-  "condition": {},
+  "condition": {
+    "miniprogram": {
+      "list": []
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
