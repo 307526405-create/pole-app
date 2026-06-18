@@ -19,7 +19,7 @@
     </view>
     
     <text class="deadline-warn">竞猜截止 排位赛前1小时</text>
-    <button class="btn-go" bind:tap="onPredict">立即参与</button>
+    <button class="btn-go" bind:tap="onPredict">立即竞猜</button>
     <text class="participants">128人已猜</text>
   </view>
 
