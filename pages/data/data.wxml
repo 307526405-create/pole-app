@@ -1,6 +1,5 @@
 <view class="page">
   <view class="nav-bar"><text class="nav-title">发现</text></view>
-
   <view class="tabs">
     <text class="tab {{subtab==0?'active':''}}" bind:tap="switchSub" data-idx="0">车队</text>
     <text class="tab {{subtab==1?'active':''}}" bind:tap="switchSub" data-idx="1">车手</text>
@@ -12,12 +11,17 @@
     <view class="team-card" wx:for="{{teams}}" wx:key="name">
       <view class="tc-header">
         <text class="tch-icon">{{item.icon}}</text>
-        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.base}}</text></view>
+        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.base}} · 🏎️ {{item.engine}}</text></view>
       </view>
       <text class="tc-desc">{{item.desc}}</text>
+      <view class="tc-drivers">
+        <view class="tcd-item"><text class="tcd-label">一号</text><text class="tcd-name">{{item.d1}}</text></view>
+        <view class="tcd-item"><text class="tcd-label">二号</text><text class="tcd-name">{{item.d2}}</text></view>
+        <view class="tcd-item"><text class="tcd-label">储备</text><text class="tcd-name">{{item.res}}</text></view>
+      </view>
       <view class="tc-stats">
-        <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">车队冠军</text></view>
-        <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站冠军</text></view>
+        <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">冠军</text></view>
+        <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站</text></view>
         <view class="tcs-item"><text class="tcs-val">{{item.since}}</text><text class="tcs-lbl">参赛</text></view>
       </view>
     </view>
@@ -28,12 +32,12 @@
     <view class="team-card" wx:for="{{drivers}}" wx:key="name">
       <view class="tc-header">
         <text class="tch-icon" style="font-size:36rpx">#{{item.num}}</text>
-        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">{{item.team}}</text></view>
+        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">{{item.team}} · {{item.nationality}}</text></view>
       </view>
       <text class="tc-desc">{{item.desc}}</text>
       <view class="tc-stats">
-        <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">世界冠军</text></view>
-        <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站冠军</text></view>
+        <view class="tcs-item"><text class="tcs-val">{{item.championships}}</text><text class="tcs-lbl">冠军</text></view>
+        <view class="tcs-item"><text class="tcs-val">{{item.wins}}</text><text class="tcs-lbl">分站</text></view>
         <view class="tcs-item"><text class="tcs-val">{{item.podiums}}</text><text class="tcs-lbl">领奖台</text></view>
       </view>
     </view>
@@ -44,9 +48,15 @@
     <view class="team-card" wx:for="{{circuits}}" wx:key="name">
       <view class="tc-header">
         <text class="tch-icon">{{item.flag}}</text>
-        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.location}} · {{item.length}} · {{item.turns}}弯</text></view>
+        <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.location}} · {{item.length}} · {{item.turns}}弯 · DRS{{item.drs}}区</text></view>
       </view>
+      <view class="circuit-map">🏎️ 赛道图（加载中...）</view>
       <text class="tc-desc">{{item.desc}}</text>
+      <view class="tc-stats">
+        <view class="tcs-item"><text class="tcs-val">{{item.lapRecord}}</text><text class="tcs-lbl">最快圈</text></view>
+        <view class="tcs-item"><text class="tcs-val">{{item.firstGP}}</text><text class="tcs-lbl">首场</text></view>
+        <view class="tcs-item"><text class="tcs-val">{{item.capacity}}</text><text class="tcs-lbl">观众</text></view>
+      </view>
     </view>
   </view>
 </view>
