@@ -25,5 +25,6 @@ Page({
   openLoot(){if(this.data.lootOpened)return;const r=[{icon:'🎉',text:'+3 积分！'},{icon:'⭐',text:'+2 积分！'},{icon:'💪',text:'+1 积分'}][Math.floor(Math.random()*3)];wx.setStorageSync('loot_date',new Date().toDateString());this.setData({lootOpened:true,lootResult:r,showLootToast:true});setTimeout(()=>this.setData({showLootToast:false}),2000)},
   checkLoot(){if(wx.getStorageSync('loot_date')===new Date().toDateString())this.setData({lootOpened:true})},
   toggleNews(e){const i=e.currentTarget.dataset.idx;this.data.news[i].expanded=!this.data.news[i].expanded;this.setData({news:this.data.news})},
+  onSearch(){wx.navigateTo({url:'/pages/search/search'})},
   onPredict(){wx.navigateTo({url:'/pages/predict/predict'})}
 })
