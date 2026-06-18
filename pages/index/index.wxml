@@ -1,51 +1,64 @@
 <view class="page">
   <view class="nav-bar"><text class="nav-title">杆位</text><text class="nav-pts">PTS 156</text></view>
 
-  <view class="race-card">
-    <view class="race-round">ROUND 10 · 🇨🇦</view>
-    <view class="race-title">加拿大大奖赛</view>
-    <view class="race-meta">维伦纽夫赛道 · 4.36km · 14弯 · DRS 3区</view>
-    <view class="track-stats">
-      <view class="ts-item"><text class="ts-label">最快圈纪录</text><text class="ts-value">1:11.441</text><text class="ts-driver">Verstappen 2024</text></view>
-      <view class="ts-item"><text class="ts-label">轮胎策略</text><text class="ts-value">1停为主</text><text class="ts-driver">C3/C4/C5</text></view>
+  <!-- 比赛英雄卡片 -->
+  <view class="hero-card">
+    <view class="hero-badge">ROUND 10 · 🇨🇦</view>
+    <view class="hero-title">加拿大大奖赛</view>
+    <view class="hero-sub">维伦纽夫赛道 · 4.36km · 14弯</view>
+    <view class="hero-countdown">
+      <view class="cd-item"><text class="cd-num">02</text><text class="cd-label">天</text></view>
+      <view class="cd-item"><text class="cd-num">18</text><text class="cd-label">时</text></view>
+      <view class="cd-item"><text class="cd-num">45</text><text class="cd-label">分</text></view>
     </view>
-    <view class="race-times">
-      <view class="time-item"><text class="time-label">排位赛</text><text class="time-value">周六 23:00</text></view>
-      <view class="time-item"><text class="time-label">正赛</text><text class="time-value">周日 23:00</text></view>
+    <view class="hero-times">
+      <text class="ht-label">排位赛 周六 23:00</text>
+      <text class="ht-label">正赛 周日 23:00</text>
     </view>
     <button class="btn-go" bind:tap="onPredict">开始竞猜</button>
   </view>
 
-  <view class="card">
-    <view class="score-panel">
-      <view class="sp-left"><text class="sp-label">上站·西班牙</text><text class="sp-change">▲ +11</text></view>
-      <view class="sp-center"><text class="sp-num">156</text><text class="sp-sub">排名 #42 / 1280</text></view>
-      <view class="sp-right">
-        <view class="sp-row"><text>✅ 杆位</text></view>
-        <view class="sp-row"><text>✅ 2/3 领奖台</text></view>
-        <view class="sp-row"><text class="miss">— 最快圈</text></view>
-      </view>
-    </view>
-  </view>
-
-  <view class="card">
-    <view class="card-title">F1车迷群 · 联赛排名</view>
-    <view class="list-item"><text class="list-pos">1</text><view class="list-info"><text class="list-name">虎哥</text><text class="list-sub">虎虎生威 Racing</text></view><view class="list-right"><text class="list-pts">192</text><text class="list-chg">▲8</text></view></view>
-    <view class="list-item"><text class="list-pos">2</text><view class="list-info"><text class="list-name">小美</text><text class="list-sub">Leclerc Forever</text></view><view class="list-right"><text class="list-pts">178</text><text class="list-chg">▲5</text></view></view>
-    <view class="list-item" style="border:none"><text class="list-pos">3</text><view class="list-info"><text class="list-name">我</text><text class="list-sub">杆位车队</text></view><view class="list-right"><text class="list-pts">156</text><text class="list-chg">▲11</text></view></view>
-  </view>
-
+  <!-- 快讯 -->
   <scroll-view class="news-scroll" scroll-x>
     <view class="news-item"><view class="news-dot"></view><text>法拉利确认2027自研引擎</text></view>
     <view class="news-item"><view class="news-dot"></view><text>诺里斯连续24站得分</text></view>
     <view class="news-item"><view class="news-dot"></view><text>奥迪F1 2026入场</text></view>
   </scroll-view>
 
-  <view class="card review">
-    <view class="card-title">西班牙大奖赛 · 回顾</view>
-    <view class="review-row"><text>杆位</text><text class="hit">Verstappen ✅</text></view>
-    <view class="review-row"><text>领奖台</text><text class="hit">2/3 正确 ✅</text></view>
-    <view class="review-row"><text>最快圈</text><text class="miss">Norris 猜错</text></view>
+  <!-- 资讯卡片 -->
+  <view class="card">
+    <view class="card-title">最新资讯</view>
+    <view class="info-item" wx:for="{{news}}" wx:key="title">
+      <view class="info-tag">{{item.tag}}</view>
+      <text class="info-title">{{item.title}}</text>
+      <text class="info-time">{{item.time}}</text>
+    </view>
+  </view>
+
+  <!-- 我的赛季+上站回顾 -->
+  <view class="card">
+    <view class="score-row">
+      <view class="score-main">
+        <text class="score-num">156</text>
+        <text class="score-sub">赛季积分</text>
+        <text class="score-rank">排名 #42 / 1280</text>
+      </view>
+      <view class="score-last">
+        <text class="last-label">上站 · 西班牙</text>
+        <text class="last-change">▲ +11</text>
+        <view class="last-detail">
+          <text class="ld-item">✅ 杆位</text>
+          <text class="ld-item">✅ 2/3领奖台</text>
+          <text class="ld-item miss">— 最快圈</text>
+        </view>
+      </view>
+    </view>
+    <view class="review-divider"></view>
+    <view class="review-detail">
+      <view class="rd-row"><text>杆位</text><text class="hit">Verstappen ✅</text></view>
+      <view class="rd-row"><text>领奖台</text><text class="hit">2/3 正确 ✅</text></view>
+      <view class="rd-row"><text>最快圈</text><text class="miss">Norris 猜错</text></view>
+    </view>
     <button class="share-btn" bind:tap="onShare">分享到微信群</button>
   </view>
 </view>
