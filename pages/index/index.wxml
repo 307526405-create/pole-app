@@ -6,18 +6,9 @@
     <view class="hero-title">加拿大大奖赛</view>
     <view class="hero-sub">维伦纽夫赛道 · 4.36km · 14弯 · DRS 3区</view>
     
-    <!-- 赛道数据 -->
     <view class="hero-track">
-      <view class="ht-item">
-        <text class="ht-lbl">最快圈纪录</text>
-        <text class="ht-val">1:11.441</text>
-        <text class="ht-drv">Verstappen 2024</text>
-      </view>
-      <view class="ht-item">
-        <text class="ht-lbl">轮胎策略</text>
-        <text class="ht-val">1停为主</text>
-        <text class="ht-drv">C3/C4/C5</text>
-      </view>
+      <view class="ht-item"><text class="ht-lbl">最快圈纪录</text><text class="ht-val">1:11.441</text><text class="ht-drv">Verstappen 2024</text></view>
+      <view class="ht-item"><text class="ht-lbl">轮胎策略</text><text class="ht-val">1停为主</text><text class="ht-drv">C3/C4/C5</text></view>
     </view>
 
     <view class="hero-countdown">
@@ -25,44 +16,28 @@
       <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
       <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
     </view>
-    <view class="hero-times">
-      <text class="ht-label">排位赛 周六 23:00</text>
-      <text class="ht-label">正赛 周日 23:00</text>
-    </view>
+    <view class="hero-times"><text class="ht-label">排位赛 周六 23:00</text><text class="ht-label">正赛 周日 23:00</text></view>
     <button class="btn-go" bind:tap="onPredict">开始竞猜</button>
   </view>
 
-  <!-- 资讯（可展开） -->
   <view class="card">
     <view class="card-title">最新资讯</view>
     <view class="info-item" wx:for="{{news}}" wx:key="title">
       <view class="info-header" bind:tap="toggleNews" data-idx="{{index}}">
-        <view class="info-tag">{{item.tag}}</view>
-        <text class="info-title">{{item.title}}</text>
-        <text class="info-arrow">{{item.expanded ? '▾' : '▸'}}</text>
+        <view class="info-tag">{{item.tag}}</view><text class="info-title">{{item.title}}</text><text class="info-arrow">{{item.expanded ? '▾' : '▸'}}</text>
       </view>
       <text class="info-time">{{item.time}}</text>
-      <view class="info-body" wx:if="{{item.expanded}}">
-        <text>{{item.summary}}</text>
-      </view>
+      <view class="info-body" wx:if="{{item.expanded}}"><text>{{item.summary}}</text></view>
     </view>
   </view>
 
-  <!-- 我的赛季+上站回顾 -->
   <view class="card">
     <view class="score-row">
-      <view class="score-main">
-        <text class="score-num">156</text>
-        <text class="score-sub">赛季积分</text>
-        <text class="score-rank">排名 #42 / 1280</text>
-      </view>
+      <view class="score-main"><text class="score-num">156</text><text class="score-sub">赛季积分</text><text class="score-rank">排名 #42 / 1280</text></view>
       <view class="score-last">
-        <text class="last-label">上站 · 西班牙</text>
-        <text class="last-change">▲ +11</text>
+        <text class="last-label">上站 · 西班牙</text><text class="last-change">▲ +11</text>
         <view class="last-detail">
-          <text class="ld-item">✅ 杆位</text>
-          <text class="ld-item">✅ 2/3领奖台</text>
-          <text class="ld-item miss">— 最快圈</text>
+          <text class="ld-item">✅ 杆位</text><text class="ld-item">✅ 2/3领奖台</text><text class="ld-item miss">— 最快圈</text>
         </view>
       </view>
     </view>
@@ -72,6 +47,6 @@
       <view class="rd-row"><text>领奖台</text><text class="hit">2/3 正确 ✅</text></view>
       <view class="rd-row"><text>最快圈</text><text class="miss">Norris 猜错</text></view>
     </view>
-    <button class="share-btn" bind:tap="onShare">分享到微信群</button>
+    <button class="share-btn" open-type="share">分享到微信</button>
   </view>
 </view>
