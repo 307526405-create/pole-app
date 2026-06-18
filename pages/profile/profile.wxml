@@ -48,7 +48,7 @@
   </view>
 
   <view class="pro">
-    <view class="pro-l"><text class="pro-t">杆位 Pro</text><text class="pro-s">圈速对比 · 历史数据 · 无广告</text></view>
-    <text class="pro-btn">¥18/月</text>
+    <view class="pro-l"><text class="pro-t">杆位 Pro</text><text class="pro-s">圈速对比 · 历史数据 · 更多功能</text></view>
+    <text class="pro-btn free">免费试用中</text>
   </view>
 </view>
