@@ -1,5 +1,5 @@
 <view class="page">
-  <view class="nav-bar"><text class="nav-title">杆位</text><view class="nav-right">
+  <view class="nav-bar"><view class="nav-brand"><text class="nav-title">杆位</text><text class="nav-en">POLE</text></view><view class="nav-right">
     <view class="checkin-btn {{checkedIn ? 'done' : ''}}" bind:tap="onCheckin">{{checkedIn ? '🔥 '+streak+'天' : '签到'}}</view>
     <text class="nav-pts">PTS 156</text>
   </view></view>
@@ -23,7 +23,13 @@
     <text class="participants">128人已猜</text>
   </view>
 
-  <!-- 每日一题（全宽） -->
+  <view class="hero-card offseason" wx:if="{{isOffSeason}}">
+    <view class="hero-badge">2027 SEASON</view>
+    <view class="hero-title">新赛季倒计时</view>
+    <view class="hero-countdown"><view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view></view>
+    <view class="offseason-tips"><view class="tip-item">🏎️ 冬测追踪 · 2月巴林</view></view>
+  </view>
+
   <view class="card quiz-card {{quizDone ? 'done' : ''}}">
     <view class="card-title">🎯 每日一题</view>
     <text class="quiz-q">{{quiz.question}}</text>
@@ -36,13 +42,10 @@
     </view>
   </view>
 
-  <!-- 冷知识（全宽，横向滑动3条） -->
   <view class="card">
     <view class="card-title">💡 冷知识</view>
     <swiper class="trivia-swiper" indicator-dots autoplay interval="5000" circular>
-      <swiper-item wx:for="{{trivias}}" wx:key="*this">
-        <text class="trivia-text">{{item}}</text>
-      </swiper-item>
+      <swiper-item wx:for="{{trivias}}" wx:key="*this"><text class="trivia-text">{{item}}</text></swiper-item>
     </swiper>
   </view>
 
