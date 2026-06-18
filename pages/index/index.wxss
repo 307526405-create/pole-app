@@ -59,3 +59,7 @@ button::after { border: none; }
 .lt-icon { font-size: 64rpx; display: block; margin-bottom: 16rpx; }
 .lt-text { font-size: 28rpx; font-weight: 600; color: #333; }
 .search-icon { font-size: 32rpx; margin-right: 4rpx; }
+
+.search-icon { width: 40rpx; height: 40rpx; position: relative; margin-right: 8rpx; flex-shrink: 0; }
+.si-circle { width: 28rpx; height: 28rpx; border: 3rpx solid #999; border-radius: 50%; position: absolute; top: 0; left: 0; }
+.si-handle { width: 3rpx; height: 14rpx; background: #999; border-radius: 2rpx; position: absolute; bottom: 0; right: 0; transform: rotate(-45deg); transform-origin: top right; }

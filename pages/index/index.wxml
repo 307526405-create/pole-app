@@ -1,6 +1,6 @@
 <view class="page">
   <view class="nav-bar"><view class="nav-brand"><text class="nav-title">杆位</text><text class="nav-en">POLE</text></view><view class="nav-right">
-    <text class="search-icon" bind:tap="onSearch">🔍</text>
+    <view class="search-icon" bind:tap="onSearch"><view class="si-circle"></view><view class="si-handle"></view></view>
     <view class="checkin-btn {{checkedIn ? 'done' : ''}}" bind:tap="onCheckin">{{checkedIn ? '🔥 '+streak+'天' : '签到'}}</view>
     <text class="nav-pts">PTS 156</text>
   </view></view>
