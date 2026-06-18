@@ -6,25 +6,20 @@
 </view>
 <scroll-view class="content-scroll" scroll-y enhanced show-scrollbar="{{false}}">
   <view wx:if="{{subtab==0}}">
-    <view wx:for="{{races}}" wx:key="round" class="cal-row" bind:tap="toggleDetail" data-idx="{{index}}">
-      <text class="cal-num">{{item.round}}</text>
-      <text class="cal-flag">{{item.flag}}</text>
-      <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-date">{{item.date}}</text><text class="cal-circuit">{{item.circuit}}</text></view>
-      <text class="cal-tag {{item.status}}">{{item.tag}}</text>
-    </view>
-    <!-- 展开详情 -->
-    <view wx:if="{{detailRace}}" class="race-detail">
-      <view class="rd-header">
-        <text class="rd-title">{{detailRace.gp}}</text>
-        <text class="rd-close" bind:tap="closeDetail">✕</text>
+    <view wx:for="{{races}}" wx:key="round">
+      <view class="cal-row" bind:tap="toggleDetail" data-idx="{{index}}">
+        <text class="cal-num">{{item.round}}</text>
+        <text class="cal-flag">{{item.flag}}</text>
+        <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-date">{{item.date}}</text><text class="cal-circuit">{{item.circuit}}</text></view>
+        <text class="cal-tag {{item.status}}">{{item.tag}}</text>
       </view>
-      <view class="rd-schedule">
-        <view wx:for="{{detailRace.schedule}}" wx:key="name" class="rd-row">
+      <view wx:if="{{item.showDetail}}" class="race-detail">
+        <view wx:for="{{item.schedule}}" wx:key="name" class="rd-row">
           <text class="rd-session">{{item.name}}</text>
           <text class="rd-time">{{item.time}}</text>
         </view>
+        <view wx:if="{{item.isSprint}}" class="rd-sprint">🏃 冲刺赛周末</view>
       </view>
-      <view wx:if="{{detailRace.isSprint}}" class="rd-sprint">🏃 冲刺赛周末</view>
     </view>
   </view>
   <!-- 积分和百科保持不变 -->

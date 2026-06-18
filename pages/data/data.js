@@ -80,7 +80,8 @@ Page({
   switchWiki(e){this.setData({wikiTab:parseInt(e.currentTarget.dataset.idx)})},
   toggleDetail(e){
     var i=e.currentTarget.dataset.idx
-    var r=this.data.races[i]
+    var races=this.data.races
+    var r=races[i]
     var sprintNames=["中国大奖赛","迈阿密大奖赛","加拿大大奖赛","英国大奖赛","荷兰大奖赛","卡塔尔大奖赛"]
     var isSprint=false
     for(var j=0;j<sprintNames.length;j++){
@@ -100,7 +101,13 @@ Page({
       {name:"排位赛 Q",time:d},
       {name:"正赛 Race",time:d}
     ]
-    this.setData({detailRace:{gp:r.gp,date:r.date,circuit:r.circuit,schedule:schedule,isSprint:isSprint}})
-  },
-  closeDetail(){this.setData({detailRace:null})}
+    // 关闭其他展开的
+    for(var k=0;k<races.length;k++){
+      if(k!==i) races[k].showDetail=false
+    }
+    races[i].showDetail=!races[i].showDetail
+    races[i].schedule=schedule
+    races[i].isSprint=isSprint
+    this.setData({races:races})
+  }
 })
