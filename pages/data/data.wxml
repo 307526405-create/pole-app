@@ -10,8 +10,8 @@
       <view class="cal-row" bind:tap="toggleDetail" data-idx="{{index}}">
         <text class="cal-num">{{item.round}}</text>
         <text class="cal-flag">{{item.flag}}</text>
-        <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-date">{{item.date}}</text><text class="cal-circuit">{{item.circuit}}</text></view>
-        <text class="cal-tag {{item.status}}">{{item.tag}}</text>
+        <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-date">{{item.date}} · 周五-周日</text><text class="cal-circuit">{{item.circuit}}</text></view>
+        <text class="cal-tag {{item.status}}">{{item.tag}}</text><text class="cal-arrow">{{item.showDetail ? "▾" : "▸"}}</text>
       </view>
       <view wx:if="{{item.showDetail}}" class="race-detail">
         <view wx:for="{{item.schedule}}" wx:key="name" class="rd-row">
