@@ -22,7 +22,7 @@ const D_CN={'Andrea Kimi Antonelli':['安德烈亚·基米·安托内利','12','
 'Sergio Pérez':['塞尔吉奥·佩雷兹','11','https://media.formula1.com/image/upload/c_fill,w_400,h_400,g_face/q_auto/v1740000001/common/f1/2026/cadillac/serper01/2026cadillacserper01right.webp'],
 'Lance Stroll':['兰斯·斯特罗尔','18','https://media.formula1.com/image/upload/c_fill,w_400,h_400,g_face/q_auto/v1740000001/common/f1/2026/astonmartin/lanstr01/2026astonmartinlanstr01right.webp'],
 'Arvid Lindblad':['阿尔维德·林德布拉德','41','https://media.formula1.com/image/upload/c_fill,w_400,h_400,g_face/q_auto/v1740000001/common/f1/2026/racingbulls/arvlin01/2026racingbullsarvlin01right.webp'],
-'Valtteri Bottas':['瓦尔特利·博塔斯','77','https://media.formula1.com/image/upload/c_fill,w_400,h_400,g_face/q_auto/v1740000001/common/f1/2026/cadillac/valbot01/2026cadillacvalbot01right.webp']}}
+'Valtteri Bottas':['瓦尔特利·博塔斯','77','https://media.formula1.com/image/upload/c_fill,w_400,h_400,g_face/q_auto/v1740000001/common/f1/2026/cadillac/valbot01/2026cadillacvalbot01right.webp']}
 const T_CN={'Mercedes':['梅赛德斯','MERC','https://media.formula1.com/content/dam/fom-website/teams/2025/mercedes-logo.png.transform/2col-retina/image.png'],
 'Ferrari':['法拉利','FER','https://media.formula1.com/content/dam/fom-website/teams/2025/ferrari-logo.png.transform/2col-retina/image.png'],
 'McLaren':['迈凯伦','MCL','https://media.formula1.com/content/dam/fom-website/teams/2025/mclaren-logo.png.transform/2col-retina/image.png'],
@@ -33,7 +33,7 @@ const T_CN={'Mercedes':['梅赛德斯','MERC','https://media.formula1.com/conten
 'Williams':['威廉姆斯','WIL','https://media.formula1.com/content/dam/fom-website/teams/2025/williams-logo.png.transform/2col-retina/image.png'],
 'Aston Martin':['阿斯顿·马丁','AST','https://media.formula1.com/content/dam/fom-website/teams/2025/aston-martin-logo.png.transform/2col-retina/image.png'],
 'Audi':['奥迪','AUD','/static/logos/audi.svg'],
-'Cadillac F1 Team':['凯迪拉克','CAD','/static/logos/cadillac.svg']}}
+'Cadillac F1 Team':['凯迪拉克','CAD','/static/logos/cadillac.svg']}
 Page({
   onShow(){if(typeof this.getTabBar==="function"&&this.getTabBar())this.getTabBar().setData({selected:1})},
   data:{subtab:0,rankTab:0,wikiTab:0,races:[],standings:[[],[]],
