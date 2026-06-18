@@ -21,3 +21,4 @@
 .ds-name { font-size: 28rpx; font-weight: 600; color: #333; display: block; }
 .ds-team { font-size: 20rpx; color: #999; display: block; }
 .ds-pts { font-size: 28rpx; font-weight: 600; color: #333; }
+.ds-img { width: 48rpx; height: 48rpx; border-radius: 50%; flex-shrink: 0; }
