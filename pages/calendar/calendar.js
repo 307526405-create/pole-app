@@ -38,4 +38,55 @@ const T_CN={
 'Audi':['奥迪','AUD','/static/logos/audi.svg'],
 'Cadillac F1 Team':['凯迪拉克','CAD','/static/logos/cadillac.svg'],
 }
-Page({onShow(){if(typeof this.getTabBar==="function"&&this.getTabBar())this.getTabBar().setData({selected:1})},data:{subtab:0,races:[],standings:[[],[]]},onLoad(){var t=this;wx.request({url:API+"/races",success(r){var n=new Date;t.setData({races:(r.data.data||[]).map(function(r){return{round:r.round,flag:FLAGS[r.country]||"🏁",gp:RACE_CN[r.name]||r.name,date:r.date.substring(5),circuit:r.circuit,status:new Date(r.date)<n?"done":"next",tag:new Date(r.date)<n?"已结束":"即将"}})})}}),wx.request({url:API+"/standings/drivers",success(r){var d=t.data.standings;d[0]=(r.data.data||[]).map(function(r){var m=D_CN[r.driver_name]||[r.driver_name,r.driver_code||"",""];return{pos:r.position,name:m[0],en:m[1],team:(T_CN[r.constructor]||[r.constructor])[0],pts:r.points,img:m[2]}});t.setData({standings:d})}}),wx.request({url:API+"/standings/constructors",success(r){var d=t.data.standings;d[1]=(r.data.data||[]).map(function(r){var m=T_CN[r.name]||[r.name,"",""];return{pos:r.position,name:m[0],en:m[1],pts:r.points,img:m[2]}});t.setData({standings:d})}})},switchSub(e){this.setData({subtab:parseInt(e.currentTarget.dataset.idx)})}})
+Page({
+  onShow() { if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 1 }) },
+  data: { subtab: 0, races: [], standings: [[], []] },
+  onLoad() {
+    var t = this
+    wx.request({
+      url: API + '/races',
+      success(r) {
+        var n = new Date()
+        t.setData({
+          races: (r.data.data || []).map(function(rr) {
+            var isTbd = rr.name && (rr.name.indexOf('Bahrain') >= 0 || rr.name.indexOf('Saudi') >= 0)
+            var status = isTbd ? 'tbd' : (new Date(rr.date) < n ? 'done' : 'next')
+            var tag = isTbd ? '待定' : (new Date(rr.date) < n ? '已结束' : '即将')
+            return {
+              round: rr.round,
+              flag: FLAGS[rr.country] || '🏁',
+              gp: RACE_CN[rr.name] || rr.name,
+              date: rr.date.substring(5),
+              circuit: rr.circuit,
+              status: status,
+              tag: tag
+            }
+          })
+        })
+      }
+    })
+    wx.request({
+      url: API + '/standings/drivers',
+      success(r) {
+        var d = t.data.standings
+        d[0] = (r.data.data || []).map(function(dd) {
+          var m = D_CN[dd.driver_name] || [dd.driver_name, dd.driver_code || '', '']
+          return { pos: dd.position, name: m[0], en: m[1], team: (T_CN[dd.constructor] || [dd.constructor])[0], pts: dd.points, img: m[2] }
+        })
+        t.setData({ standings: d })
+      }
+    })
+    wx.request({
+      url: API + '/standings/constructors',
+      success(r) {
+        var d = t.data.standings
+        d[1] = (r.data.data || []).map(function(dd) {
+          var m = T_CN[dd.name] || [dd.name, '', '']
+          return { pos: dd.position, name: m[0], en: m[1], pts: dd.points, img: m[2] }
+        })
+        t.setData({ standings: d })
+      }
+    })
+  },
+  switchSub(e) { this.setData({ subtab: parseInt(e.currentTarget.dataset.idx) }) }
+})
