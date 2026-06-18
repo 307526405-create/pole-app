@@ -8,14 +8,11 @@
     <view class="hero-badge">ROUND 10 · 🇨🇦</view>
     <view class="hero-title">加拿大大奖赛</view>
     <view class="hero-sub">维伦纽夫赛道 · 4.36km · 14弯 · DRS 3区</view>
-    
-    <!-- 赛道数据+上站得分 合并一行 -->
     <view class="hero-info-row">
       <view class="hi-item"><text class="hi-lbl">最快圈纪录</text><text class="hi-val">1:11.441</text></view>
       <view class="hi-item"><text class="hi-lbl">轮胎策略</text><text class="hi-val">1停为主</text></view>
       <view class="hi-item"><text class="hi-lbl">上站西班牙</text><text class="hi-val green">+11</text></view>
     </view>
-
     <view class="hero-countdown">
       <view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view>
       <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
@@ -26,7 +23,6 @@
     <text class="participants">128人已猜</text>
   </view>
 
-  <!-- 休赛期 -->
   <view class="hero-card offseason" wx:if="{{isOffSeason}}">
     <view class="hero-badge">2027 SEASON</view>
     <view class="hero-title">新赛季倒计时</view>
@@ -34,13 +30,25 @@
     <view class="offseason-tips"><view class="tip-item">🏎️ 冬测追踪 · 2月巴林</view></view>
   </view>
 
-  <!-- 每日双卡 -->
+  <!-- 每日一题 + 冷知识 -->
   <view class="daily-row">
-    <view class="daily-card"><view class="daily-badge">💡 冷知识</view><text class="daily-text">{{dailyTrivia}}</text></view>
-    <view class="daily-card"><view class="daily-badge">📅 历史上的今天</view><text class="daily-text">{{todayInHistory}}</text></view>
+    <view class="daily-card quiz" bind:tap="answerQuiz" wx:if="{{!quizDone}}">
+      <view class="daily-badge">🎯 每日一题</view>
+      <text class="daily-quiz">{{quiz.question}}</text>
+      <view class="quiz-options">
+        <view class="qo" wx:for="{{quiz.options}}" wx:key="*this">{{item}}</view>
+      </view>
+    </view>
+    <view class="daily-card quiz done" wx:if="{{quizDone}}">
+      <view class="daily-badge">{{quizResult.correct ? '✅ 答对！+1分' : '❌ 正确答案是 '+quiz.answer}}</view>
+      <text class="daily-text">{{quiz.explanation}}</text>
+    </view>
+    <view class="daily-card">
+      <view class="daily-badge">💡 冷知识</view>
+      <text class="daily-text">{{dailyTrivia}}</text>
+    </view>
   </view>
 
-  <!-- 资讯 -->
   <view class="card">
     <view class="card-title">最新资讯</view>
     <view class="info-item" wx:for="{{news}}" wx:key="title">
@@ -52,7 +60,6 @@
     </view>
   </view>
 
-  <!-- 浮动盲盒 -->
   <view class="loot-float {{lootOpened ? 'opened' : ''}}" bind:tap="openLoot">
     <text class="loot-float-icon">{{lootOpened ? '✅' : '🎁'}}</text>
   </view>

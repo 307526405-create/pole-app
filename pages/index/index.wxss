@@ -11,13 +11,11 @@
 .hero-badge { font-size: 20rpx; color: #E10600; font-weight: 600; margin-bottom: 8rpx; letter-spacing: 2rpx; }
 .hero-title { font-size: 40rpx; font-weight: 600; margin-bottom: 4rpx; position: relative; z-index: 1; }
 .hero-sub { font-size: 24rpx; color: rgba(255,255,255,0.5); margin-bottom: 16rpx; }
-
 .hero-info-row { display: flex; gap: 16rpx; padding: 16rpx 0; border-top: 1rpx solid rgba(255,255,255,0.1); border-bottom: 1rpx solid rgba(255,255,255,0.1); margin-bottom: 24rpx; }
 .hi-item { flex: 1; text-align: center; }
 .hi-lbl { font-size: 18rpx; color: rgba(255,255,255,0.3); display: block; margin-bottom: 4rpx; }
 .hi-val { font-size: 28rpx; font-weight: 600; display: block; }
 .hi-val.green { color: #52C41A; }
-
 .hero-countdown { display: flex; gap: 24rpx; margin-bottom: 12rpx; }
 .cd-item { text-align: center; }
 .cd-num { font-size: 48rpx; font-weight: 600; display: block; line-height: 1; }
@@ -31,12 +29,16 @@ button::after { border: none; }
 
 .daily-row { display: flex; gap: 16rpx; margin-bottom: 24rpx; }
 .daily-card { flex: 1; background: #fff; border-radius: 16rpx; padding: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
+.daily-card.quiz { background: linear-gradient(135deg, #FFF8E1, #fff); }
+.daily-card.quiz.done { background: #F5F5F5; }
 .daily-badge { font-size: 20rpx; color: #E10600; font-weight: 600; margin-bottom: 12rpx; }
 .daily-text { font-size: 24rpx; color: #333; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.daily-quiz { font-size: 28rpx; font-weight: 600; color: #333; display: block; margin-bottom: 16rpx; line-height: 1.4; }
+.quiz-options { display: flex; flex-direction: column; gap: 8rpx; }
+.qo { padding: 12rpx 16rpx; background: #F5F5F5; border-radius: 8rpx; font-size: 24rpx; color: #666; }
 
 .card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 24rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
 .card-title { font-size: 24rpx; color: #999; margin-bottom: 16rpx; font-weight: 600; }
-
 .info-item { padding: 16rpx 0; border-bottom: 1rpx solid #F0F0F0; }
 .info-item:last-child { border-bottom: none; padding-bottom: 0; }
 .info-header { display: flex; align-items: center; gap: 12rpx; }
