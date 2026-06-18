@@ -4,11 +4,26 @@
   <view class="hero-card">
     <view class="hero-badge">ROUND 10 · 🇨🇦</view>
     <view class="hero-title">加拿大大奖赛</view>
-    <view class="hero-sub">维伦纽夫赛道 · 4.36km · 14弯</view>
+    <view class="hero-sub">维伦纽夫赛道 · 4.36km · 14弯 · DRS 3区</view>
+    
+    <!-- 赛道数据 -->
+    <view class="hero-track">
+      <view class="ht-item">
+        <text class="ht-lbl">最快圈纪录</text>
+        <text class="ht-val">1:11.441</text>
+        <text class="ht-drv">Verstappen 2024</text>
+      </view>
+      <view class="ht-item">
+        <text class="ht-lbl">轮胎策略</text>
+        <text class="ht-val">1停为主</text>
+        <text class="ht-drv">C3/C4/C5</text>
+      </view>
+    </view>
+
     <view class="hero-countdown">
-      <view class="cd-item"><text class="cd-num">02</text><text class="cd-label">天</text></view>
-      <view class="cd-item"><text class="cd-num">18</text><text class="cd-label">时</text></view>
-      <view class="cd-item"><text class="cd-num">45</text><text class="cd-label">分</text></view>
+      <view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view>
+      <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
+      <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
     </view>
     <view class="hero-times">
       <text class="ht-label">排位赛 周六 23:00</text>
@@ -17,13 +32,19 @@
     <button class="btn-go" bind:tap="onPredict">开始竞猜</button>
   </view>
 
-  <!-- 资讯 -->
+  <!-- 资讯（可展开） -->
   <view class="card">
     <view class="card-title">最新资讯</view>
     <view class="info-item" wx:for="{{news}}" wx:key="title">
-      <view class="info-tag">{{item.tag}}</view>
-      <text class="info-title">{{item.title}}</text>
+      <view class="info-header" bind:tap="toggleNews" data-idx="{{index}}">
+        <view class="info-tag">{{item.tag}}</view>
+        <text class="info-title">{{item.title}}</text>
+        <text class="info-arrow">{{item.expanded ? '▾' : '▸'}}</text>
+      </view>
       <text class="info-time">{{item.time}}</text>
+      <view class="info-body" wx:if="{{item.expanded}}">
+        <text>{{item.summary}}</text>
+      </view>
     </view>
   </view>
 
