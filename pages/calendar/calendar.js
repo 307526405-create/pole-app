@@ -1,4 +1,5 @@
 const API = 'http://localhost:8080/api'
+const { DRIVER_CN, TEAM_CN } = require('../../utils/translate')
 
 Page({
   onShow() { if (typeof this.getTabBar === 'function' && this.getTabBar()) this.getTabBar().setData({ selected: 1 }) },
@@ -12,8 +13,16 @@ Page({
         tag: new Date(r.date) < now ? '已结束' : (new Date(r.date)-now < 7*86400000 ? '进行中' : '即将')
       })) })
     }})
-    wx.request({ url: API + '/standings/drivers', success: (res) => { const ds = this.data.standings; ds[0] = (res.data.data||[]).map(d => ({ pos: d.position, name: d.driver_name, team: d.constructor, pts: d.points })); this.setData({ standings: ds }) }})
-    wx.request({ url: API + '/standings/constructors', success: (res) => { const ds = this.data.standings; ds[1] = (res.data.data||[]).map(d => ({ pos: d.position, name: d.constructor_name, team: '', pts: d.points })); this.setData({ standings: ds }) }})
+    wx.request({ url: API + '/standings/drivers', success: (res) => { 
+      const ds = this.data.standings
+      ds[0] = (res.data.data||[]).map(d => ({ pos: d.position, name: DRIVER_CN[d.driver_name] || d.driver_name, team: TEAM_CN[d.constructor] || d.constructor, pts: d.points }))
+      this.setData({ standings: ds })
+    }})
+    wx.request({ url: API + '/standings/constructors', success: (res) => { 
+      const ds = this.data.standings
+      ds[1] = (res.data.data||[]).map(d => ({ pos: d.position, name: TEAM_CN[d.name] || d.name, team: '', pts: d.points }))
+      this.setData({ standings: ds })
+    }})
   },
   switchSub(e) { this.setData({ subtab: parseInt(e.currentTarget.dataset.idx) }) }
 })
