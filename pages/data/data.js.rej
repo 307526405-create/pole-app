@@ -1,0 +1,5 @@
+@@ -1,3 +1,4 @@
++toggleDetail(e){const i=e.currentTarget.dataset.idx;const r=this.data.races[i];const isSprint=['中国大奖赛','迈阿密大奖赛','加拿大大奖赛','英国大奖赛','荷兰大奖赛','卡塔尔大奖赛'].some(s=>r.gp&&r.gp.includes(s));const schedule=isSprint?[{name:'一练 FP1',time:r.date},{name:'冲刺排位 SQ',time:r.date},{name:'冲刺赛 Sprint',time:r.date},{name:'排位赛 Q',time:r.date},{name:'正赛 Race',time:r.date}]:[{name:'一练 FP1',time:r.date},{name:'二练 FP2',time:r.date},{name:'三练 FP3',time:r.date},{name:'排位赛 Q',time:r.date},{name:'正赛 Race',time:r.date}];this.setData({detailRace:{...r,schedule,isSprint}})},closeDetail(){this.setData({detailRace:null})},switchSub
+ 
+ 
+ 
