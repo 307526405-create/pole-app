@@ -1,3 +1,9 @@
+/* 字体规范：36/28/24/20rpx */
+/* 36rpx = 大标题 */
+/* 28rpx = 正文/按钮/Tab */
+/* 24rpx = 次要文字/标签 */
+/* 20rpx = 最小文字/提示 */
+
 .page { padding: 0 32rpx; }
 
 .race-card {
@@ -5,14 +11,14 @@
   margin: 16rpx 0 32rpx; border-left: 8rpx solid #E10600;
   box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05);
 }
-.race-round { font-size: 24rpx; color: #E10600; font-weight: 600; letter-spacing: 2rpx; }
-.race-title { font-size: 40rpx; font-weight: 600; color: #333; margin: 8rpx 0 4rpx; }
+.race-round { font-size: 20rpx; color: #E10600; font-weight: 600; }
+.race-title { font-size: 36rpx; font-weight: 600; color: #333; margin: 8rpx 0 4rpx; }
 .race-meta { font-size: 24rpx; color: #666; margin-bottom: 24rpx; }
 
 .track-stats { display: flex; gap: 32rpx; padding: 16rpx 0; border-top: 1rpx solid #F0F0F0; border-bottom: 1rpx solid #F0F0F0; margin-bottom: 24rpx; }
 .ts-item { flex: 1; }
 .ts-label { font-size: 20rpx; color: #999; display: block; }
-.ts-value { font-size: 32rpx; font-weight: 600; color: #333; display: block; margin: 4rpx 0; }
+.ts-value { font-size: 28rpx; font-weight: 600; color: #333; display: block; margin: 4rpx 0; }
 .ts-driver { font-size: 20rpx; color: #666; display: block; }
 
 .race-times { display: flex; gap: 48rpx; margin-bottom: 24rpx; }
@@ -32,7 +38,7 @@
 .sp-label { font-size: 20rpx; color: #999; display: block; }
 .sp-change { font-size: 28rpx; font-weight: 600; color: #52C41A; display: block; margin-top: 4rpx; }
 .sp-center { text-align: center; }
-.sp-num { font-size: 72rpx; font-weight: 600; color: #333; line-height: 1; display: block; }
+.sp-num { font-size: 36rpx; font-weight: 600; color: #333; line-height: 1; display: block; }
 .sp-sub { font-size: 24rpx; color: #666; margin-top: 4rpx; display: block; }
 .sp-right { flex: 1; }
 .sp-row { font-size: 24rpx; padding: 6rpx 0; color: #52C41A; }
@@ -45,4 +51,3 @@
 .review-row { display: flex; justify-content: space-between; padding: 16rpx 0; border-top: 1rpx solid #F0F0F0; font-size: 28rpx; }
 .hit { color: #52C41A; font-weight: 600; }
 .miss { color: #999; }
-.review .van-button { margin-top: 24rpx; }
