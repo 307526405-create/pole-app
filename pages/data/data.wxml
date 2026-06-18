@@ -5,12 +5,10 @@
     <text class="tab {{subtab==1?'active':''}}" bind:tap="switchSub" data-idx="1">车手</text>
     <text class="tab {{subtab==2?'active':''}}" bind:tap="switchSub" data-idx="2">赛道</text>
   </view>
-
-  <!-- 车队 -->
   <view wx:if="{{subtab==0}}">
     <view class="team-card" wx:for="{{teams}}" wx:key="name">
       <view class="tc-header">
-        <text class="tch-icon">{{item.icon}}</text>
+        <view class="tch-logo" style="background:{{item.color}}"><text>{{item.initials}}</text></view>
         <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.base}} · 🏎️ {{item.engine}}</text></view>
       </view>
       <text class="tc-desc">{{item.desc}}</text>
@@ -26,12 +24,10 @@
       </view>
     </view>
   </view>
-
-  <!-- 车手 -->
   <view wx:if="{{subtab==1}}">
     <view class="team-card" wx:for="{{drivers}}" wx:key="name">
       <view class="tc-header">
-        <text class="tch-icon" style="font-size:36rpx">#{{item.num}}</text>
+        <view class="tch-logo" style="background:{{item.color}};font-size:28rpx"><text>#{{item.num}}</text></view>
         <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">{{item.team}} · {{item.nationality}}</text></view>
       </view>
       <text class="tc-desc">{{item.desc}}</text>
@@ -42,15 +38,13 @@
       </view>
     </view>
   </view>
-
-  <!-- 赛道 -->
   <view wx:if="{{subtab==2}}">
     <view class="team-card" wx:for="{{circuits}}" wx:key="name">
       <view class="tc-header">
         <text class="tch-icon">{{item.flag}}</text>
         <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.location}} · {{item.length}} · {{item.turns}}弯 · DRS{{item.drs}}区</text></view>
       </view>
-      <view class="circuit-map">🏎️ 赛道图（加载中...）</view>
+      <view class="circuit-map">🏎️ 赛道图（后端加载中...）</view>
       <text class="tc-desc">{{item.desc}}</text>
       <view class="tc-stats">
         <view class="tcs-item"><text class="tcs-val">{{item.lapRecord}}</text><text class="tcs-lbl">最快圈</text></view>

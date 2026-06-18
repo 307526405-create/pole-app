@@ -8,13 +8,14 @@
   <view wx:if="{{subtab==0}}">
     <view wx:for="{{races}}" wx:key="round" class="cal-row">
       <text class="cal-flag">{{item.flag}}</text>
-      <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-detail">{{item.date}} · {{item.circuit}} · {{item.length}}</text></view>
+      <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-detail">{{item.date}} · {{item.circuit}}</text></view>
       <text class="cal-tag {{item.status}}">{{item.tag}}</text>
     </view>
   </view>
   <view wx:if="{{subtab>0}}">
     <view wx:for="{{standings[subtab-1]}}" wx:key="pos" class="ds-row">
       <text class="ds-pos">{{item.pos}}</text>
+      <view class="ds-avatar" style="background:{{item.color}}"><text>{{item.initials}}</text></view>
       <view class="ds-info"><text class="ds-name">{{item.name}}</text><text class="ds-team" wx:if="{{item.team}}">{{item.team}}</text></view>
       <text class="ds-pts">{{item.pts}}</text>
     </view>
