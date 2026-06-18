@@ -5,7 +5,7 @@
 .checkin-btn { background: #E10600; color: #fff; font-size: 20rpx; padding: 6rpx 16rpx; border-radius: 20rpx; }
 .checkin-btn.done { background: #F0F0F0; color: #999; }
 .nav-pts { font-size: 28rpx; color: #E10600; font-weight: 600; }
-.nav-brand { display: flex; align-items: baseline; gap: 8rpx; }
+
 .nav-en { font-size: 22rpx; color: #666; letter-spacing: 3rpx; border-left: 2rpx solid #E10600; padding-left: 12rpx; }
 
 .hero-card { background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 100%); border-radius: 24rpx; padding: 40rpx 32rpx 36rpx; margin: 12rpx 0 24rpx; color: #fff; position: relative; overflow: hidden; text-align: center; }
@@ -69,7 +69,13 @@ button::after { border: none; }
 
 /* 精确对齐胶囊 */
 
-.nav-brand { position: absolute; left: 32rpx; top: 50%; transform: translateY(-50%); align-items: center; }
 
-.nav-bar { position: relative; margin: 0 -32rpx; }
-.nav-brand { position: absolute; left: 32rpx; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 8rpx; }
+
+
+
+
+.nav-bar { display: flex; justify-content: space-between; align-items: center; height: 88rpx; }
+.nav-brand { display: flex; align-items: baseline; gap: 8rpx; }
+.search-icon { width: 36rpx; height: 36rpx; position: relative; margin-right: 12rpx; flex-shrink: 0; }
+.si-ring { width: 24rpx; height: 24rpx; border: 3rpx solid #666; border-radius: 50%; position: absolute; top: 0; left: 0; }
+.si-line { width: 3rpx; height: 12rpx; background: #666; border-radius: 2rpx; position: absolute; bottom: 2rpx; right: 2rpx; transform: rotate(-45deg); }
