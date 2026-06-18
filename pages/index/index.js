@@ -1,11 +1,25 @@
 const API = 'http://localhost:8080/api'
 
+const RACE_CN = {
+  'Australian Grand Prix':'澳大利亚大奖赛', 'Chinese Grand Prix':'中国大奖赛',
+  'Japanese Grand Prix':'日本大奖赛', 'Miami Grand Prix':'迈阿密大奖赛',
+  'Canadian Grand Prix':'加拿大大奖赛', 'Monaco Grand Prix':'摩纳哥大奖赛',
+  'Barcelona Grand Prix':'巴塞罗那大奖赛', 'Austrian Grand Prix':'奥地利大奖赛',
+  'British Grand Prix':'英国大奖赛', 'Belgian Grand Prix':'比利时大奖赛',
+  'Hungarian Grand Prix':'匈牙利大奖赛', 'Dutch Grand Prix':'荷兰大奖赛',
+  'Italian Grand Prix':'意大利大奖赛', 'Spanish Grand Prix':'西班牙大奖赛',
+  'Azerbaijan Grand Prix':'阿塞拜疆大奖赛', 'Singapore Grand Prix':'新加坡大奖赛',
+  'United States Grand Prix':'美国大奖赛', 'Mexico City Grand Prix':'墨西哥城大奖赛',
+  'Brazilian Grand Prix':'巴西大奖赛', 'Las Vegas Grand Prix':'拉斯维加斯大奖赛',
+  'Qatar Grand Prix':'卡塔尔大奖赛', 'Abu Dhabi Grand Prix':'阿布扎比大奖赛',
+}
+
 Page({
   data: {
     nextRace: null, lastRace: null,
     checkedIn: false, streak: 5, lootOpened: false, showLootToast: false, lootResult: {},
     quizDone: false, quizResult: {},
-    quiz: { question: '舒马赫一共拿过几个F1世界冠军？', options: ['5个','6个','7个','8个'], answer: '7个', explanation: '舒马赫生涯共获得7次F1世界冠军（1994-95, 2000-04）。' },
+    quiz: { question: '舒马赫一共拿过几个F1世界冠军？', options: ['5个','6个','7个','8个'], answer: '7个', explanation: '舒马赫生涯共获得7次F1世界冠军。' },
     trivias: ['舒马赫在2004赛季赢得了前13站中的12站。','维斯塔潘是F1最年轻的分站冠军(18岁228天)。','法拉利是唯一参加全部赛季的车队。'],
     cd: { days:'00', hours:'00', minutes:'00' }, cdUrgent: false, news: []
   },
@@ -15,15 +29,15 @@ Page({
 
   fetchData() {
     wx.request({ url: API + '/races', success: (res) => {
-      const races = res.data.data || []
+      const races = (res.data.data||[]).map(r => ({ ...r, cn: RACE_CN[r.name] || r.name }))
       const now = new Date()
       const next = races.find(r => new Date(r.date) > now) || races[races.length-1]
       const last = races.filter(r => new Date(r.date) <= now).pop()
       this.setData({ nextRace: next || null, lastRace: last || null })
       if (next) this.startCountdown(new Date(next.date + 'T' + (next.time || '00:00:00')))
       this.setData({ news: [
-        { tag: '赛事', title: (last ? last.name + '已完赛' : '赛季即将开始'), time: '', summary: '', expanded: false },
-        { tag: '前瞻', title: (next ? '下一站：' + next.name : ''), time: '', summary: '', expanded: false },
+        { tag: '赛事', title: (last ? last.cn + '已完赛' : '赛季即将开始'), summary: '', expanded: false },
+        { tag: '前瞻', title: (next ? '下一站：' + next.cn : ''), summary: '', expanded: false },
       ]})
     }})
   },

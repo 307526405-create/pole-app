@@ -5,12 +5,12 @@
   </view></view>
 
   <view class="hero-card" wx:if="{{nextRace}}">
-    <view class="hero-badge">ROUND {{nextRace.round}} · 🏁</view>
-    <view class="hero-title">{{nextRace.name}}</view>
-    <view class="hero-sub">{{nextRace.circuit}} · {{nextRace.country}}</view>
+    <view class="hero-badge">ROUND {{nextRace.round}}</view>
+    <view class="hero-title">{{nextRace.cn}}</view>
+    <view class="hero-sub">{{nextRace.circuit}}</view>
     <view class="hero-info-row">
       <view class="hi-item"><text class="hi-lbl">日期</text><text class="hi-val">{{nextRace.date}}</text></view>
-      <view class="hi-item" wx:if="{{lastRace}}"><text class="hi-lbl">上站</text><text class="hi-val green">{{lastRace.name}}</text></view>
+      <view class="hi-item" wx:if="{{lastRace}}"><text class="hi-lbl">上站</text><text class="hi-val green">{{lastRace.cn}}</text></view>
     </view>
     <view class="hero-countdown">
       <view class="cd-item"><text class="cd-num {{cdUrgent ? 'urgent' : ''}}">{{cd.days}}</text><text class="cd-label">天</text></view>
