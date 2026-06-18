@@ -60,9 +60,9 @@ button::after { border: none; }
 .lt-text { font-size: 28rpx; font-weight: 600; color: #333; }
 
 
-.search-icon { width: 36rpx; height: 36rpx; position: relative; margin-right: 12rpx; flex-shrink: 0; }
-.si-ring { width: 24rpx; height: 24rpx; border: 3rpx solid #666; border-radius: 50%; position: absolute; top: 0; left: 0; }
-.si-line { width: 3rpx; height: 12rpx; background: #666; border-radius: 2rpx; position: absolute; bottom: 2rpx; right: 2rpx; transform: rotate(-45deg); }
+
+
+
 
 /* 导航栏对齐胶囊按钮 */
 
@@ -74,8 +74,15 @@ button::after { border: none; }
 
 
 
-.nav-bar { display: flex; justify-content: space-between; align-items: center; height: 88rpx; }
-.nav-brand { display: flex; align-items: baseline; gap: 8rpx; }
+
+
+
+
+
+
+.nav-bar { display: flex; align-items: center; height: 88rpx; padding: 0 40rpx; padding-right: 190rpx; }
+.nav-brand { display: flex; align-items: baseline; gap: 8rpx; flex-shrink: 0; }
 .search-icon { width: 36rpx; height: 36rpx; position: relative; margin-right: 12rpx; flex-shrink: 0; }
 .si-ring { width: 24rpx; height: 24rpx; border: 3rpx solid #666; border-radius: 50%; position: absolute; top: 0; left: 0; }
 .si-line { width: 3rpx; height: 12rpx; background: #666; border-radius: 2rpx; position: absolute; bottom: 2rpx; right: 2rpx; transform: rotate(-45deg); }
+.nav-right { display: flex; align-items: center; gap: 12rpx; flex-shrink: 0; }
