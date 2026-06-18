@@ -5,16 +5,29 @@
   <text class="tab {{subtab==2?'active':''}}" bind:tap="switchSub" data-idx="2">百科</text>
 </view>
 <scroll-view class="content-scroll" scroll-y enhanced show-scrollbar="{{false}}">
-  <!-- 赛程 -->
   <view wx:if="{{subtab==0}}">
-    <view wx:for="{{races}}" wx:key="round" class="cal-row">
+    <view wx:for="{{races}}" wx:key="round" class="cal-row" bind:tap="toggleDetail" data-idx="{{index}}">
       <text class="cal-num">{{item.round}}</text>
       <text class="cal-flag">{{item.flag}}</text>
       <view class="cal-info"><text class="cal-gp">{{item.gp}}</text><text class="cal-detail">{{item.date}} · {{item.circuit}}</text></view>
       <text class="cal-tag {{item.status}}">{{item.tag}}</text>
     </view>
+    <!-- 展开详情 -->
+    <view wx:if="{{detailRace}}" class="race-detail">
+      <view class="rd-header">
+        <text class="rd-title">{{detailRace.gp}}</text>
+        <text class="rd-close" bind:tap="closeDetail">✕</text>
+      </view>
+      <view class="rd-schedule">
+        <view wx:for="{{detailRace.schedule}}" wx:key="name" class="rd-row">
+          <text class="rd-session">{{item.name}}</text>
+          <text class="rd-time">{{item.time}}</text>
+        </view>
+      </view>
+      <view wx:if="{{detailRace.isSprint}}" class="rd-sprint">🏃 冲刺赛周末</view>
+    </view>
   </view>
-  <!-- 积分 -->
+  <!-- 积分和百科保持不变 -->
   <view wx:if="{{subtab==1}}">
     <view class="sub-tabs">
       <text class="sub-tab {{rankTab==0?'active':''}}" bind:tap="switchRank" data-idx="0">车手</text>
@@ -28,7 +41,6 @@
       <text class="ds-pts">{{item.pts}}</text>
     </view>
   </view>
-  <!-- 百科 -->
   <view wx:if="{{subtab==2}}">
     <view class="sub-tabs">
       <text class="sub-tab {{wikiTab==0?'active':''}}" bind:tap="switchWiki" data-idx="0">车队</text>
