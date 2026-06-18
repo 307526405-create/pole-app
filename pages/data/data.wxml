@@ -111,7 +111,7 @@
           <view class="ms"><text class="ms-v">{{showDriver.podiums}}</text><text class="ms-l">领奖台</text></view>
         </view>
       </view>
-      <view class="modal-section"><text class="modal-sectitle">车手简介</text><text class="modal-desc">{{showDriver.desc}}</text></view>
+      <view class="modal-section"><text class="modal-sectitle">车手简介</text><text class="modal-desc">{{showDriver.detail}}</text></view>
     </view>
   </view>
 
@@ -136,7 +136,7 @@
           <view class="md"><text class="md-label">储备</text><text class="md-name">{{showTeam.res}}</text></view>
         </view>
       </view>
-      <view class="modal-section"><text class="modal-sectitle">车队简介</text><text class="modal-desc">{{showTeam.desc}}</text></view>
+      <view class="modal-section"><text class="modal-sectitle">车队简介</text><text class="modal-desc">{{showTeam.detail}}</text></view>
     </view>
   </view>
 
