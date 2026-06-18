@@ -4,12 +4,11 @@
     <text class="nav-title">竞猜</text>
   </view>
 
-  <!-- 步骤选择 -->
-  <view wx:if="{{!showConfirm && !showCelebrate}}">
-    <view class="step-indicator">
-      <text class="step-q">{{stepTitles[step]}}</text>
+  <view wx:if="{{!showCelebrate}}">
+    <view class="step-bar">
+      <text class="step-title">{{stepTitles[step]}}</text>
     </view>
-    
+
     <view class="step-dots">
       <view class="dot {{step>=0?'done':''}}"></view>
       <view class="dot {{step>=1?'done':''}}"></view>
@@ -19,43 +18,25 @@
       <view class="dot {{step>=5?'done':''}}"></view>
     </view>
 
-    <!-- 选车手 -->
     <view class="driver-grid" wx:if="{{step<=3}}">
-      <view wx:for="{{drivers}}" wx:key="num" class="driver-card {{item.selected?'sel':''}}" bind:tap="selectDriver" data-idx="{{index}}">
-        <text class="dc-num">#{{item.num}}</text>
-        <text class="dc-name">{{item.name}}</text>
-        <text class="dc-team">{{item.team}}</text>
+      <view wx:for="{{drivers}}" wx:key="num" class="dc {{item.selected?'sel':''}}" bind:tap="selectDriver" data-idx="{{index}}">
+        <text class="dc-n">#{{item.num}}</text>
+        <text class="dc-nm">{{item.name}}</text>
       </view>
     </view>
 
-    <!-- 选选项 -->
-    <view class="option-grid" wx:if="{{step>=4 && step<=5}}">
-      <view wx:for="{{options}}" wx:key="text" class="option-card {{item.selected?'sel':''}}" bind:tap="selectOption" data-idx="{{index}}">
-        <text class="oc-text">{{item.text}}</text>
+    <view class="option-grid" wx:if="{{step>=4}}">
+      <view wx:for="{{options}}" wx:key="text" class="oc {{item.sel?'sel':''}}" bind:tap="selectOption" data-idx="{{index}}">
+        <text>{{item.text}}</text>
       </view>
     </view>
 
-    <!-- 下一步按钮 -->
-    <view class="advance-area" wx:if="{{canAdvance}}">
-      <button class="advance-btn" bind:tap="nextStep">
-        {{step===5 ? '确认并预览' : '下一步'}}
-      </button>
+    <view class="nav-btns">
+      <button class="nb prev" bind:tap="prevStep" wx:if="{{step>0}}">上一题</button>
+      <button class="nb next" bind:tap="nextStep" wx:if="{{canNext}}">{{step===5?'提交':'下一题'}}</button>
     </view>
   </view>
 
-  <!-- 确认页 -->
-  <view class="confirm" wx:if="{{showConfirm}}">
-    <text class="cfm-title">确认竞猜</text>
-    <view class="cfm-item"><text class="cfm-label">杆位</text><text class="cfm-val">{{picks.pole}}</text></view>
-    <view class="cfm-item"><text class="cfm-label">领奖台</text><text class="cfm-val">{{picks.podium[0]}} / {{picks.podium[1]}} / {{picks.podium[2]}}</text></view>
-    <view class="cfm-item"><text class="cfm-label">最快圈</text><text class="cfm-val">{{picks.fastest_lap}}</text></view>
-    <view class="cfm-item"><text class="cfm-label">安全车</text><text class="cfm-val">{{picks.safety_car}}</text></view>
-    <view class="cfm-item"><text class="cfm-label">退赛</text><text class="cfm-val">{{picks.retirements}}</text></view>
-    <button class="submit-btn" bind:tap="submit">确认提交</button>
-    <text class="cfm-back" bind:tap="nextStep">← 返回修改</text>
-  </view>
-
-  <!-- 庆祝 -->
   <view class="celebrate" wx:if="{{showCelebrate}}">
     <text class="cel-icon">🎉</text>
     <text class="cel-text">预测已提交</text>

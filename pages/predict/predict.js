@@ -10,86 +10,81 @@ const PERM_NUM = {
 
 Page({
   data: {
-    step:0, canAdvance:false, canSubmit:false, showConfirm:false, showCelebrate:false,
-    raceRound:8,
-    stepTitles:['1/6 杆位','2/6 排位赛前三（选3人）','3/6 正赛领奖台（选3人）','4/6 最快圈','5/6 安全车次数（含SC和VSC）','6/6 退赛车数'],
+    step:0, canNext:false, showCelebrate:false, raceRound:8,
+    stepTitles:['1/6 杆位','2/6 排位赛前三（选3人）','3/6 正赛领奖台（选3人）','4/6 最快圈','5/6 安全车次数','6/6 退赛车数'],
     drivers:[], options:[], picks:{pole:'',podium:[],fastest_lap:'',safety_car:'',retirements:''}
   },
 
   onLoad(){
-    var that=this
-    wx.request({url:API+'/standings/drivers',success:function(res){
-      that.setData({drivers:(res.data.data||[]).map(function(d){return{num:PERM_NUM[d.driver_name]||d.position,name:d.driver_name,team:d.constructor,selected:false}})})
-    },fail:function(){}})
-    wx.request({url:API+'/races',success:function(res){
-      var next=(res.data.data||[]).find(function(r){return new Date(r.date)>new Date()})
-      if(next)that.setData({raceRound:next.round})
-    },fail:function(){}})
+    var t=this
+    wx.request({url:API+'/standings/drivers',success(r){
+      t.setData({drivers:(r.data.data||[]).map(function(d){return{num:PERM_NUM[d.driver_name]||d.position,name:d.driver_name,team:d.constructor,selected:false}})})
+    }})
+    wx.request({url:API+'/races',success(r){
+      var n=(r.data.data||[]).find(function(rr){return new Date(rr.date)>new Date()})
+      if(n)t.setData({raceRound:n.round})
+    }})
+    this.prepareStep(0)
+  },
+
+  prepareStep(s){
+    var o=[]
+    if(s===4)o=[{text:'0次',sel:false},{text:'1次',sel:false},{text:'2次及以上',sel:false}]
+    if(s===5)o=[{text:'0-2辆',sel:false},{text:'3-5辆',sel:false},{text:'6辆以上',sel:false}]
+    // 恢复之前的选择
+    var pk=this.data.picks
+    if(s===0||s===3){
+      // 杆位/最快圈: 恢复单选
+      var drs=this.data.drivers.map(function(d){return Object.assign({},d,{selected:false})})
+      if(s===0&&pk.pole)drs.forEach(function(d){if(d.name===pk.pole)d.selected=true})
+      if(s===3&&pk.fastest_lap)drs.forEach(function(d){if(d.name===pk.fastest_lap)d.selected=true})
+      this.setData({drivers:drs,options:o,step:s,canNext:!!pk.pole||!!pk.fastest_lap})
+    }else if(s===1||s===2){
+      var drs=this.data.drivers.map(function(d){return Object.assign({},d,{selected:false})})
+      if(pk.podium.length>0)drs.forEach(function(d){if(pk.podium.indexOf(d.name)>=0)d.selected=true})
+      var sel=drs.filter(function(d){return d.selected}).length
+      this.setData({drivers:drs,options:o,step:s,canNext:sel===3})
+    }else{
+      this.setData({options:o,step:s,canNext:false})
+    }
   },
 
   selectDriver(e){
-    var idx=e.currentTarget.dataset.idx,step=this.data.step
-    var drivers=this.data.drivers.map(function(d){return Object.assign({},d)})
-    
-    if(step===0||step===3){
-      // 单选：杆位、最快圈
-      drivers.forEach(function(d,i){d.selected=(i===idx)})
-      this.setData({drivers:drivers,canAdvance:true})
-      return
-    }
-    // 多选：排位前三、领奖台（最多3个）
-    var sel=drivers.filter(function(d){return d.selected}).length
-    if(drivers[idx].selected){drivers[idx].selected=false;sel--}
-    else if(sel<3){drivers[idx].selected=true;sel++}
-    this.setData({drivers:drivers,canAdvance:sel===3})
+    var i=e.currentTarget.dataset.idx,s=this.data.step,drs=this.data.drivers.map(function(d){return Object.assign({},d)})
+    if(s===0||s===3){drs.forEach(function(d,j){d.selected=(j===i)});this.setData({drivers:drs,canNext:true})}
+    else{var sel=drs.filter(function(d){return d.selected}).length;if(drs[i].selected){drs[i].selected=false;sel--}else if(sel<3){drs[i].selected=true;sel++};this.setData({drivers:drs,canNext:sel===3})}
   },
 
   selectOption(e){
-    var idx=e.currentTarget.dataset.idx
-    var options=this.data.options.map(function(o,i){return{text:o.text,selected:i===idx}})
-    this.setData({options:options,canAdvance:true})
+    var i=e.currentTarget.dataset.idx
+    this.setData({options:this.data.options.map(function(o,j){return{text:o.text,sel:j===i}}),canNext:true})
+  },
+
+  savePicks(){
+    var d=this.data,pk=d.picks,sel=d.drivers.filter(function(dr){return dr.selected})
+    if(d.step===0)pk.pole=sel[0]?sel[0].name:''
+    if(d.step===1||d.step===2)pk.podium=sel.map(function(dr){return dr.name})
+    if(d.step===3)pk.fastest_lap=sel[0]?sel[0].name:''
+    var o=d.options.find(function(o){return o.sel})
+    if(d.step===4)pk.safety_car=o?o.text:''
+    if(d.step===5)pk.retirements=o?o.text:''
+    return pk
   },
 
   nextStep(){
-    var step=this.data.step,d=this.data
-    // 保存当前选择
-    var sel=d.drivers.filter(function(dr){return dr.selected})
-    if(step===0)d.picks.pole=sel[0]?sel[0].name:''
-    if(step===1||step===2)d.picks.podium=sel.map(function(dr){return dr.name})
-    if(step===3)d.picks.fastest_lap=sel[0]?sel[0].name:''
-    if(step===4||step===5){
-      var opt=d.options.find(function(o){return o.selected})
-      if(step===4)d.picks.safety_car=opt?opt.text:''
-      if(step===5)d.picks.retirements=opt?opt.text:''
-    }
-    
-    step++
-    var clean=d.drivers.map(function(dr){dr.selected=false;return dr})
-    
-    if(step===4||step===5){
-      // 安全车和退赛：显示选项
-      var opts=step===4?[{text:'0次',selected:false},{text:'1次',selected:false},{text:'2次及以上',selected:false}]:[{text:'0-2辆',selected:false},{text:'3-5辆',selected:false},{text:'6辆以上',selected:false}]
-      this.setData({step:step,drivers:clean,options:opts,canAdvance:false})
-    }else if(step===6){
-      // 最后一步：显示确认页
-      this.setData({step:step,drivers:clean,options:[],canAdvance:false,showConfirm:true})
-    }else{
-      this.setData({step:step,drivers:clean,options:[],canAdvance:false})
-    }
+    var pk=this.savePicks(),ns=this.data.step+1
+    if(ns>=6){this.setData({picks:pk,showCelebrate:true});this.submit()}
+    else{this.setData({picks:pk,options:[]});this.prepareStep(ns)}
   },
+
+  prevStep(){this.savePicks();var ps=Math.max(0,this.data.step-1);this.setData({options:[]});this.prepareStep(ps)},
 
   submit(){
-    var that=this,d=this.data
-    wx.request({
-      url:API+'/predict',method:'POST',
-      data:{race_round:d.raceRound,pole:d.picks.pole,podium:d.picks.podium,fastest_lap:d.picks.fastest_lap,safety_car:d.picks.safety_car,retirements:d.picks.retirements,wx_openid:'test'},
-      success:function(){
-        that.setData({showConfirm:false,showCelebrate:true})
-        setTimeout(function(){wx.switchTab({url:'/pages/index/index'})},2500)
-      },
+    var t=this,d=this.data,pk=d.picks
+    wx.request({url:API+'/predict',method:'POST',
+      data:{race_round:d.raceRound,pole:pk.pole,podium:pk.podium,fastest_lap:pk.fastest_lap,safety_car:pk.safety_car,retirements:pk.retirements,wx_openid:'test'},
+      success:function(){setTimeout(function(){wx.switchTab({url:'/pages/index/index'})},2000)},
       fail:function(){wx.showToast({title:'提交失败',icon:'none'})}
     })
-  },
-
-  onBack(){wx.navigateBack()}
+  }
 })
