@@ -1,7 +1,9 @@
 <view class="page">
-  <view class="nav-bar"><text class="nav-title">杆位</text><text class="nav-pts">PTS 156</text></view>
+  <view class="nav-bar"><text class="nav-title">杆位</text><view class="nav-right">
+    <view class="checkin-btn" bind:tap="onCheckin">{{checkedIn ? '已签到' : '签到 +1'}}</view>
+    <text class="nav-pts">PTS 156</text>
+  </view></view>
 
-  <!-- 比赛周：英雄卡片 -->
   <view class="hero-card" wx:if="{{!isOffSeason}}">
     <view class="hero-badge">ROUND 10 · 🇨🇦</view>
     <view class="hero-title">加拿大大奖赛</view>
@@ -23,21 +25,21 @@
     <text class="participants">已有 128 人参与竞猜</text>
   </view>
 
-  <!-- 休赛期：新赛季倒计时 -->
+  <!-- 休赛期 -->
   <view class="hero-card offseason" wx:if="{{isOffSeason}}">
     <view class="hero-badge">2027 SEASON</view>
     <view class="hero-title">新赛季倒计时</view>
     <view class="hero-sub">澳大利亚大奖赛 · 3月8日</view>
-    <view class="hero-countdown">
-      <view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view>
-      <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
-      <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
-    </view>
+    <view class="hero-countdown"><view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view><view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view><view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view></view>
     <view class="offseason-tips">
-      <view class="tip-item">🏎️ 冬测追踪：2月巴林</view>
-      <view class="tip-item">🔄 转会市场：跟踪最新动态</view>
-      <view class="tip-item">📊 你的2026赛季报告已生成</view>
+      <view class="tip-item">🏎️ 冬测追踪：2月巴林</view><view class="tip-item">🔄 转会市场：跟踪最新动态</view><view class="tip-item">📊 你的2026赛季报告已生成</view>
     </view>
+  </view>
+
+  <!-- 每日冷知识 -->
+  <view class="card daily-card">
+    <view class="daily-badge">💡 每日F1冷知识</view>
+    <text class="daily-text">{{dailyTrivia}}</text>
   </view>
 
   <view class="card">
@@ -56,9 +58,7 @@
       <view class="score-main"><text class="score-num">156</text><text class="score-sub">赛季积分</text><text class="score-rank">排名 #42 / 1280</text></view>
       <view class="score-last">
         <text class="last-label">上站 · 西班牙</text><text class="last-change">▲ +11</text>
-        <view class="last-detail">
-          <text class="ld-item">✅ 杆位</text><text class="ld-item">✅ 2/3领奖台</text><text class="ld-item miss">— 最快圈</text>
-        </view>
+        <view class="last-detail"><text class="ld-item">✅ 杆位</text><text class="ld-item">✅ 2/3领奖台</text><text class="ld-item miss">— 最快圈</text></view>
       </view>
     </view>
     <view class="review-divider"></view>
