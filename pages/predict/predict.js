@@ -1,6 +1,4 @@
 const API = 'http://localhost:8080/api'
-const { DRIVER_CN, TEAM_CN } = require('../../utils/translate')
-
 Page({
   data: { step: 0, showCelebrate: false, canSubmit: false, raceRound: 8,
     stepTitles: ['1/6 杆位', '2/6 排位赛前三（选3人）', '3/6 正赛领奖台（选3人）', '4/6 最快圈', '5/6 安全车次数', '6/6 退赛车数'],
@@ -8,7 +6,7 @@ Page({
   },
   onLoad() {
     wx.request({ url: API + '/standings/drivers', success: (res) => {
-      this.setData({ drivers: (res.data.data||[]).map(d => ({ num: d.position, name: DRIVER_CN[d.driver_name] || d.driver_name, team: TEAM_CN[d.constructor] || d.constructor, selected: false })) })
+      this.setData({ drivers: (res.data.data||[]).map(d => ({ num: d.position, name: d.driver_name, team: d.constructor, selected: false })) })
     }})
     wx.request({ url: API + '/races', success: (res) => { const next = (res.data.data||[]).find(r => new Date(r.date) > new Date()); if (next) this.setData({ raceRound: next.round }) }})
   },
