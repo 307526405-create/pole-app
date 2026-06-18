@@ -238,4 +238,3 @@ async def api_wiki_circuits():
     races = await get_races("current")
     return {"code": 0, "data": races, "count": len(races)}
 
-return app
