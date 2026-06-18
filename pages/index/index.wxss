@@ -1,5 +1,5 @@
 .page { padding: 0 32rpx 120rpx; }
-.nav-bar { display: flex; justify-content: space-between; align-items: center; height: 88rpx; }
+
 .nav-title { font-size: 40rpx; font-weight: 800; color: #E10600; letter-spacing: -1rpx; }
 .nav-right { display: flex; align-items: center; gap: 12rpx; }
 .checkin-btn { background: #E10600; color: #fff; font-size: 20rpx; padding: 6rpx 16rpx; border-radius: 20rpx; }
@@ -65,8 +65,11 @@ button::after { border: none; }
 .si-line { width: 3rpx; height: 12rpx; background: #666; border-radius: 2rpx; position: absolute; bottom: 2rpx; right: 2rpx; transform: rotate(-45deg); }
 
 /* 导航栏对齐胶囊按钮 */
-.nav-bar { height: 132rpx; padding-top: 44rpx; }
+
 
 /* 精确对齐胶囊 */
-.nav-bar { height: auto; padding: 0; position: relative; }
+
 .nav-brand { position: absolute; left: 32rpx; top: 50%; transform: translateY(-50%); align-items: center; }
+
+.nav-bar { position: relative; margin: 0 -32rpx; }
+.nav-brand { position: absolute; left: 32rpx; top: 50%; transform: translateY(-50%); display: flex; align-items: center; gap: 8rpx; }
