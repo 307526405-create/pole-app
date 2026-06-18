@@ -1,4 +1,10 @@
 <view class="page">
+  <!-- 导航栏 -->
+  <view class="nav-bar">
+    <text class="nav-title">杆位</text>
+    <text class="nav-pts">PTS 156</text>
+  </view>
+
   <!-- 比赛卡片 -->
   <view class="race-card">
     <view class="race-header">
