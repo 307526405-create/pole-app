@@ -47,7 +47,7 @@
         <view class="tc-header">
           <image wx:if="{{item.logo}}" class="tch-logo" src="{{item.logo}}" mode="aspectFit"/>
           <view wx:else class="tch-logo" style="background:{{item.color}}"><text>{{item.name[0]}}</text></view>
-          <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">📍 {{item.base}} · 🏎️ {{item.engine}}</text></view>
+          <view class="tch-info"><text class="tch-name">{{item.name}}</text><text class="tch-base">总部 {{item.base}} · 引擎 {{item.engine}}</text></view>
         </view>
         <text class="tc-desc">{{item.desc}}</text>
         <view class="tc-drivers">
