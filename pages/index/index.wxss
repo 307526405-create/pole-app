@@ -4,7 +4,6 @@
 .nav-title { font-size: 36rpx; font-weight: 600; color: #333; }
 .nav-pts { font-size: 28rpx; color: #E10600; font-weight: 600; }
 
-/* 英雄卡片 */
 .hero-card {
   background: linear-gradient(135deg, #1a0000 0%, #0a0a0a 100%);
   border-radius: 24rpx; padding: 40rpx 32rpx 32rpx;
@@ -28,23 +27,15 @@
 }
 button::after { border: none; }
 
-/* 快讯 */
-.news-scroll { display: flex; gap: 16rpx; white-space: nowrap; margin-bottom: 24rpx; width: 100%; }
-.news-item { background: #fff; border-radius: 8rpx; padding: 16rpx 24rpx; font-size: 24rpx; color: #666; display: inline-flex; align-items: center; gap: 8rpx; box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04); }
-.news-dot { width: 8rpx; height: 8rpx; background: #E10600; border-radius: 50%; display: inline-block; }
-
-/* 卡片 */
 .card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 32rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
 .card-title { font-size: 24rpx; color: #999; margin-bottom: 16rpx; font-weight: 600; }
 
-/* 资讯 */
 .info-item { padding: 16rpx 0; border-bottom: 1rpx solid #F0F0F0; display: flex; flex-wrap: wrap; align-items: center; gap: 12rpx; }
 .info-item:last-child { border-bottom: none; padding-bottom: 0; }
 .info-tag { background: rgba(225,6,0,0.08); color: #E10600; font-size: 20rpx; font-weight: 600; padding: 2rpx 12rpx; border-radius: 4rpx; }
 .info-title { font-size: 28rpx; color: #333; flex: 1; }
 .info-time { font-size: 20rpx; color: #999; width: 100%; }
 
-/* 积分 */
 .score-row { display: flex; gap: 24rpx; align-items: center; }
 .score-main { text-align: center; }
 .score-num { font-size: 48rpx; font-weight: 600; color: #333; display: block; line-height: 1; }
@@ -58,7 +49,6 @@ button::after { border: none; }
 .ld-item.miss { color: #999; }
 
 .review-divider { height: 1rpx; background: #F0F0F0; margin: 24rpx 0; }
-.review-detail { margin-bottom: 8rpx; }
 .rd-row { display: flex; justify-content: space-between; padding: 8rpx 0; font-size: 28rpx; }
 .hit { color: #52C41A; font-weight: 600; }
 .miss { color: #999; }

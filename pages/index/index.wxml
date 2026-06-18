@@ -1,7 +1,6 @@
 <view class="page">
   <view class="nav-bar"><text class="nav-title">杆位</text><text class="nav-pts">PTS 156</text></view>
 
-  <!-- 比赛英雄卡片 -->
   <view class="hero-card">
     <view class="hero-badge">ROUND 10 · 🇨🇦</view>
     <view class="hero-title">加拿大大奖赛</view>
@@ -18,14 +17,7 @@
     <button class="btn-go" bind:tap="onPredict">开始竞猜</button>
   </view>
 
-  <!-- 快讯 -->
-  <scroll-view class="news-scroll" scroll-x>
-    <view class="news-item"><view class="news-dot"></view><text>法拉利确认2027自研引擎</text></view>
-    <view class="news-item"><view class="news-dot"></view><text>诺里斯连续24站得分</text></view>
-    <view class="news-item"><view class="news-dot"></view><text>奥迪F1 2026入场</text></view>
-  </scroll-view>
-
-  <!-- 资讯卡片 -->
+  <!-- 资讯 -->
   <view class="card">
     <view class="card-title">最新资讯</view>
     <view class="info-item" wx:for="{{news}}" wx:key="title">
