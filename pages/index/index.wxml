@@ -1,30 +1,43 @@
 <view class="page">
-  <view class="nav-bar"><text class="nav-title">杆位</text><text class="nav-pts">PTS 156 ▲3</text></view>
+  <view class="nav-bar"><text class="nav-title">杆位</text><text class="nav-pts">PTS 156</text></view>
 
-  <view class="hero-card">
+  <!-- 比赛周：英雄卡片 -->
+  <view class="hero-card" wx:if="{{!isOffSeason}}">
     <view class="hero-badge">ROUND 10 · 🇨🇦</view>
     <view class="hero-title">加拿大大奖赛</view>
     <view class="hero-sub">维伦纽夫赛道 · 4.36km · 14弯 · DRS 3区</view>
-    
-    <!-- 赛季进度 -->
     <view class="season-bar"><view class="season-fill" style="width:42%"></view></view>
     <text class="season-label">赛季进度 10/24</text>
-
     <view class="hero-track">
       <view class="ht-item"><text class="ht-lbl">最快圈纪录</text><text class="ht-val">1:11.441</text><text class="ht-drv">Verstappen 2024</text></view>
       <view class="ht-item"><text class="ht-lbl">轮胎策略</text><text class="ht-val">1停为主</text><text class="ht-drv">C3/C4/C5</text></view>
     </view>
-
     <view class="hero-countdown">
       <view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view>
       <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
       <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
     </view>
     <text class="deadline-warn">⏰ 竞猜截止：周六 22:59</text>
-
     <view class="hero-times"><text class="ht-label">排位赛 周六 23:00</text><text class="ht-label">正赛 周日 23:00</text></view>
     <button class="btn-go" bind:tap="onPredict">开始竞猜</button>
     <text class="participants">已有 128 人参与竞猜</text>
+  </view>
+
+  <!-- 休赛期：新赛季倒计时 -->
+  <view class="hero-card offseason" wx:if="{{isOffSeason}}">
+    <view class="hero-badge">2027 SEASON</view>
+    <view class="hero-title">新赛季倒计时</view>
+    <view class="hero-sub">澳大利亚大奖赛 · 3月8日</view>
+    <view class="hero-countdown">
+      <view class="cd-item"><text class="cd-num">{{cd.days}}</text><text class="cd-label">天</text></view>
+      <view class="cd-item"><text class="cd-num">{{cd.hours}}</text><text class="cd-label">时</text></view>
+      <view class="cd-item"><text class="cd-num">{{cd.minutes}}</text><text class="cd-label">分</text></view>
+    </view>
+    <view class="offseason-tips">
+      <view class="tip-item">🏎️ 冬测追踪：2月巴林</view>
+      <view class="tip-item">🔄 转会市场：跟踪最新动态</view>
+      <view class="tip-item">📊 你的2026赛季报告已生成</view>
+    </view>
   </view>
 
   <view class="card">
