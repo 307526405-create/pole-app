@@ -43,7 +43,7 @@
       <text class="sub-tab {{wikiTab==2?'active':''}}" bind:tap="switchWiki" data-idx="2">赛道</text>
     </view>
     <view wx:if="{{wikiTab==0}}">
-      <view class="team-card" wx:for="{{teams}}" wx:key="name">
+      <view class="team-card" wx:for="{{teams}}" wx:key="name" bind:tap="goTeam" data-idx="{{index}}">
         <view class="tc-header">
           <image wx:if="{{item.logo}}" class="tch-logo" src="{{item.logo}}" mode="aspectFit"/>
           <view wx:else class="tch-logo" style="background:{{item.color}}"><text>{{item.name[0]}}</text></view>
@@ -108,6 +108,27 @@
         <view class="dps"><text class="dps-v">{{showDriver.podiums}}</text><text class="dps-l">领奖台</text></view>
       </view>
       <text class="dp-desc">{{showDriver.desc}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{showTeam}}" class="driver-popup" bind:tap="closeTeam">
+    <view class="dp-card" catchtap="">
+      <text class="dp-close" bind:tap="closeTeam">✕</text>
+      <image wx:if="{{showTeam.logo}}" class="dp-logo" src="{{showTeam.logo}}" mode="aspectFit"/>
+      <view wx:else class="dp-avt" style="background:{{showTeam.color}}"><text>{{showTeam.name[0]}}</text></view>
+      <text class="dp-name">{{showTeam.name}}</text>
+      <text class="dp-team">总部 {{showTeam.base}} · 引擎 {{showTeam.engine}}</text>
+      <view class="dp-stats">
+        <view class="dps"><text class="dps-v">{{showTeam.championships}}</text><text class="dps-l">世界冠军</text></view>
+        <view class="dps"><text class="dps-v">{{showTeam.wins}}</text><text class="dps-l">分站冠军</text></view>
+        <view class="dps"><text class="dps-v">{{showTeam.since}}</text><text class="dps-l">参赛</text></view>
+      </view>
+      <view class="dp-drivers">
+        <view class="dpd"><text class="dpd-label">一号</text><text class="dpd-name">{{showTeam.d1}}</text></view>
+        <view class="dpd"><text class="dpd-label">二号</text><text class="dpd-name">{{showTeam.d2}}</text></view>
+        <view class="dpd"><text class="dpd-label">储备</text><text class="dpd-name">{{showTeam.res}}</text></view>
+      </view>
+      <text class="dp-desc">{{showTeam.desc}}</text>
     </view>
   </view>
 </scroll-view>
