@@ -18,39 +18,49 @@
 .ts-value { font-size: 28rpx; font-weight: 600; color: #333; margin: 4rpx 0; }
 .ts-driver { font-size: 20rpx; color: #666; }
 .race-times { display: flex; gap: 48rpx; margin-bottom: 24rpx; }
+.time-item { display: flex; flex-direction: column; gap: 4rpx; }
 .time-label { font-size: 20rpx; color: #999; }
 .time-value { font-size: 28rpx; font-weight: 600; color: #333; }
-.race-btns { display: flex; flex-direction: column; gap: 16rpx; }
 
-/* 覆盖Vant按钮样式 */
-.btn-go { height: 88rpx !important; font-size: 28rpx !important; font-weight: 600 !important; }
-.btn-cal { height: 88rpx !important; font-size: 28rpx !important; color: #333 !important; background: #F5F5F5 !important; border: 1rpx solid #F0F0F0 !important; }
+.btn-go {
+  width: 100%; height: 88rpx; background: #E10600; color: #fff; border: none;
+  border-radius: 16rpx; font-size: 28rpx; font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+}
+button::after { border: none; }
 
 .card { background: #fff; border-radius: 16rpx; padding: 32rpx; margin-bottom: 32rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.05); }
 .card-title { font-size: 24rpx; color: #999; margin-bottom: 16rpx; font-weight: 600; }
+
 .score-panel { display: flex; align-items: center; gap: 16rpx; }
 .sp-left { flex: 1; text-align: right; }
-.sp-label { font-size: 20rpx; color: #999; }
-.sp-change { font-size: 28rpx; font-weight: 600; color: #52C41A; margin-top: 4rpx; }
+.sp-label { font-size: 20rpx; color: #999; display: block; }
+.sp-change { font-size: 28rpx; font-weight: 600; color: #52C41A; display: block; margin-top: 4rpx; }
 .sp-center { text-align: center; }
-.sp-num { font-size: 36rpx; font-weight: 600; color: #333; line-height: 1; }
-.sp-sub { font-size: 24rpx; color: #666; }
+.sp-num { font-size: 36rpx; font-weight: 600; color: #333; display: block; line-height: 1; }
+.sp-sub { font-size: 24rpx; color: #666; display: block; margin-top: 4rpx; }
 .sp-right { flex: 1; }
 .sp-row { font-size: 24rpx; padding: 6rpx 0; color: #52C41A; }
 .sp-row .miss { color: #999; }
 
-/* 覆盖Vant列表样式 */
-.cell-group-clean { margin: 0 !important; }
-.cell-rank { padding: 16rpx 0 !important; }
-.cell-rank .van-cell__title { font-size: 28rpx !important; }
-.cell-rank .van-cell__label { font-size: 20rpx !important; }
-.cell-rank .van-cell__value { font-size: 28rpx !important; font-weight: 600 !important; }
+.list-item { display: flex; align-items: center; height: 88rpx; border-bottom: 1rpx solid #F0F0F0; }
+.list-pos { width: 48rpx; font-size: 28rpx; font-weight: 600; color: #666; text-align: center; }
+.list-info { flex: 1; }
+.list-name { font-size: 28rpx; color: #333; display: block; }
+.list-sub { font-size: 20rpx; color: #999; display: block; }
+.list-right { display: flex; align-items: center; gap: 16rpx; }
+.list-pts { font-size: 28rpx; font-weight: 600; color: #333; }
+.list-chg { font-size: 24rpx; font-weight: 600; color: #52C41A; }
 
 .news-scroll { display: flex; gap: 16rpx; white-space: nowrap; margin-bottom: 32rpx; width: 100%; }
 .news-item { background: #fff; border-radius: 8rpx; padding: 16rpx 24rpx; font-size: 24rpx; color: #666; display: inline-flex; align-items: center; gap: 8rpx; box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04); }
-.news-dot { width: 8rpx; height: 8rpx; background: #E10600; border-radius: 50%; }
+.news-dot { width: 8rpx; height: 8rpx; background: #E10600; border-radius: 50%; display: inline-block; }
 
 .review-row { display: flex; justify-content: space-between; padding: 16rpx 0; border-top: 1rpx solid #F0F0F0; font-size: 28rpx; }
 .hit { color: #52C41A; font-weight: 600; }
 .miss { color: #999; }
-.share-btn { height: 88rpx !important; font-size: 28rpx !important; color: #333 !important; background: #F5F5F5 !important; border: 1rpx solid #F0F0F0 !important; }
+.share-btn {
+  width: 100%; height: 88rpx; margin-top: 24rpx; background: #F5F5F5; color: #333;
+  border: 1rpx solid #F0F0F0; border-radius: 16rpx; font-size: 28rpx;
+  display: flex; align-items: center; justify-content: center;
+}
