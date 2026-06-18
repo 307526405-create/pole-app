@@ -4,7 +4,7 @@ page { height: 100vh; overflow: hidden; }
 .tabs-fixed { display: flex; margin: 0 32rpx 16rpx; background: #fff; border-radius: 8rpx; padding: 4rpx; }
 .tab { flex: 1; text-align: center; padding: 16rpx 0; font-size: 24rpx; color: #999; font-weight: 600; border-radius: 6rpx; }
 .tab.active { background: #F5F5F5; color: #E10600; }
-.content-scroll { height: calc(100vh - 260rpx); padding: 0 32rpx; box-sizing: border-box; }
+.content-scroll { height: calc(100vh - 176rpx); padding: 0 32rpx; box-sizing: border-box; }
 .cal-row { display: flex; align-items: center; padding: 24rpx 0; border-bottom: 1rpx solid #F0F0F0; gap: 8rpx; }
 .cal-num { width: 40rpx; font-size: 24rpx; color: #999; font-weight: 600; text-align: center; flex-shrink: 0; }
 .cal-flag { font-size: 36rpx; width: 48rpx; text-align: center; flex-shrink: 0; }
