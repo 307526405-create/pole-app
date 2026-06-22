@@ -15,12 +15,12 @@
     <view class="card-hd">我支持的车队与车手</view>
     <view class="fav-row">
       <view class="fav ferrari" bind:tap="pickTeam">
-        <text class="fav-icon">🐎</text>
-        <text class="fav-name">{{favTeam}}</text>
+        <image class="fav-logo" src="{{favTeamLogo}}" mode="aspectFit"/>
+        <text class="fav-name">{{favTeamName}}</text>
       </view>
       <view class="fav" bind:tap="pickDriver">
-        <text class="fav-icon">🏎️</text>
-        <text class="fav-name">{{favDriver}}</text>
+        <image class="fav-avatar" src="{{favDriverImg}}" mode="aspectFill"/>
+        <text class="fav-name">{{favDriverName}}</text>
       </view>
     </view>
   </view>
