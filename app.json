@@ -5,8 +5,7 @@
     "pages/profile/profile",
     "pages/predict/predict",
     "pages/search/search",
-    "pages/privacy/privacy",
-    "pages/compare/compare"
+    "pages/privacy/privacy"
   ],
   "window": {
     "backgroundColor": "#F5F5F5",
