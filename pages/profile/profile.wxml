@@ -25,6 +25,15 @@
     </view>
   </view>
 
+  <view wx:if="{{showPick}}" class="pick-mask" bind:tap="doPick">
+    <view class="pick-box" catchtap="">
+      <text class="pick-title">{{pickTitle}}</text>
+      <scroll-view scroll-y enhanced show-scrollbar="{{false}}" style="max-height:60vh">
+        <view wx:for="{{pickItems}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-idx="{{index}}">{{item}}</view>
+      </scroll-view>
+    </view>
+  </view>
+
   <view class="card">
     <view class="card-hd">最近预测</view>
     <view wx:for="{{history}}" wx:key="race" class="h-row">
