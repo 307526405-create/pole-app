@@ -1,0 +1,16 @@
+<view class="page">
+  <view class="nav-bar">
+    <text class="back" bind:tap="onBack">←</text>
+    <text class="nav-title">车手对比</text>
+  </view>
+  <view class="pick-row">
+    <view class="pr-item" bind:tap="pickD1">{{d1name||'选择车手'}}</view>
+    <text class="vs">VS</text>
+    <view class="pr-item" bind:tap="pickD2">{{d2name||'选择车手'}}</view>
+  </view>
+  <view wx:if="{{d1name && d2name}}" class="card">
+    <view class="c-row"><text class="c-label">积分</text><text class="c-v1">{{d1.pts||0}}</text><text class="c-v2">{{d2.pts||0}}</text></view>
+    <view class="c-row"><text class="c-label">分站冠军</text><text class="c-v1">{{d1.wins||0}}</text><text class="c-v2">{{d2.wins||0}}</text></view>
+    <view class="c-row"><text class="c-label">排名</text><text class="c-v1">P{{d1.pos}}</text><text class="c-v2">P{{d2.pos}}</text></view>
+  </view>
+</view>

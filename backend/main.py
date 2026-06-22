@@ -238,3 +238,13 @@ async def api_wiki_circuits():
     races = await get_races("current")
     return {"code": 0, "data": races, "count": len(races)}
 
+
+@app.get("/api/compare/drivers")
+async def api_compare_drivers(driver1: str = "", driver2: str = ""):
+    """对比两个车手"""
+    if not driver1 or not driver2:
+        return {"code": -1, "msg": "需要两个车手参数"}
+    standings = await get_driver_standings("current")
+    d1 = next((d for d in standings if d["driver_name"] == driver1), None)
+    d2 = next((d for d in standings if d["driver_name"] == driver2), None)
+    return {"code": 0, "data": {"driver1": d1, "driver2": d2}}
