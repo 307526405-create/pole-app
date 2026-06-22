@@ -46,3 +46,5 @@
 .pick-title{font-size:28rpx;font-weight:600;color:#333;display:block;text-align:center;margin-bottom:16rpx}
 .pick-item{padding:28rpx 32rpx;font-size:28rpx;color:#333;border-top:1rpx solid #F0F0F0;text-align:center}
 .pick-item:active{background:#F8F8F8}
+.fav-logo{width:64rpx;height:64rpx;margin:0 auto 8rpx;display:block}
+.fav-avatar{width:64rpx;height:64rpx;border-radius:32rpx;margin:0 auto 8rpx;display:block}

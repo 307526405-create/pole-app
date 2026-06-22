@@ -14,8 +14,8 @@
   <view class="card">
     <view class="card-hd">我支持的车队与车手 <text class="edit-hint" bind:tap="onPick" data-type="team">编辑</text></view>
     <view class="fav-row">
-      <view class="fav ferrari" bind:tap="onPick" data-type="team"><text class="fav-icon">🐎</text><text class="fav-name">{{favTeam}}</text></view>
-      <view class="fav" bind:tap="onPick" data-type="driver"><text class="fav-icon">🏎️</text><text class="fav-name">{{favDriver}}</text></view>
+      <view class="fav ferrari" bind:tap="onPick" data-type="team"><image class="fav-logo" src="{{teamLogo[favTeam]}}" mode="aspectFit"/><text class="fav-name">{{favTeam}}</text></view>
+      <view class="fav" bind:tap="onPick" data-type="driver"><image class="fav-avatar" src="{{driverImg[favDriver]}}" mode="aspectFill"/><text class="fav-name">{{favDriver}}</text></view>
     </view>
   </view>
 
