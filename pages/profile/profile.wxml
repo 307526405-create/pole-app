@@ -14,15 +14,15 @@
   <view class="card">
     <view class="card-hd">我支持的车队与车手</view>
     <view class="fav-row">
-      <view class="fav ferrari" bind:tap="onPick" data-type="team"><image class="fav-logo" src="{{teamLogo[favTeam]}}" mode="aspectFit"/><text class="fav-name">{{favTeam}}</text></view>
-      <view class="fav" bind:tap="onPick" data-type="driver"><image class="fav-avatar" src="{{driverImg[favDriver]}}" mode="aspectFill"/><text class="fav-name">{{favDriver}}</text></view>
+      <view class="fav ferrari" bind:tap="onPick" data-type="team"><image class="fav-logo" src="{{teamLogo[favTeam]}}" mode="aspectFit"/><text class="fav-name">{{cnTeam[favTeam]||favTeam}}</text></view>
+      <view class="fav" bind:tap="onPick" data-type="driver"><image class="fav-avatar" src="{{driverImg[favDriver]}}" mode="aspectFill"/><text class="fav-name">{{cnDriver[favDriver]||favDriver}}</text></view>
     </view>
   </view>
 
   <view wx:if="{{showPick}}" class="pick-mask" bind:tap="doPick" data-val="">
     <view class="pick-box" catchtap="">
-      <text class="pick-title">选择{{pickType==='team'?'车队':'车手'}}</text>
-      <view wx:for="{{pickType==='team'?teams:drivers}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-val="{{item}}">{{item}}</view>
+      <text class="pick-title">选择{{pickType==="team"?"车队":"车手"}}</text>
+      <view wx:for="{{pickType==='team'?teams:drivers}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-val="{{pickType==="team"?cnTeam[item]:cnDriver[item]}}">{{item}}</view>
     </view>
   </view>
 

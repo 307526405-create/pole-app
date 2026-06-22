@@ -51,5 +51,5 @@ Page({
     d.showPick = false
     this.setData(d)
   },
-  goPrivacy() { wx.navigateTo({ url: '/pages/privacy/privacy' }) }
+  cnTeam:{'Ferrari': '法拉利 Ferrari', 'McLaren': '迈凯伦 McLaren', 'Mercedes': '梅赛德斯 Mercedes', 'Red Bull': '红牛 Red Bull', 'Alpine': '阿尔派 Alpine', 'Aston Martin': '阿斯顿马丁 Aston Martin', 'Williams': '威廉姆斯 Williams', 'RB': '小红牛 RB', 'Haas': '哈斯 Haas', 'Audi': '奥迪 Audi', 'Cadillac': '凯迪拉克 Cadillac'},cnDriver:{'Verstappen': '维斯塔潘 Verstappen', 'Norris': '诺里斯 Norris', 'Leclerc': '勒克莱尔 Leclerc', 'Hamilton': '汉密尔顿 Hamilton', 'Piastri': '皮亚斯特里 Piastri', 'Russell': '拉塞尔 Russell', 'Antonelli': '安东内利 Antonelli', 'Sainz': '赛恩斯 Sainz', 'Alonso': '阿隆索 Alonso', 'Gasly': '加斯利 Gasly', 'Albon': '阿尔本 Albon', 'Tsunoda': '角田裕毅 Tsunoda', 'Ocon': '奥康 Ocon', 'Bearman': '贝尔曼 Bearman', 'Hulkenberg': '霍肯伯格 Hulkenberg', 'Perez': '佩雷兹 Perez', 'Stroll': '斯特罗尔 Stroll', 'Lawson': '劳森 Lawson', 'Hadjar': '哈贾尔 Hadjar', 'Bortoleto': '博托莱托 Bortoleto', 'Colapinto': '科拉平托 Colapinto', 'Doohan': '杜汉 Doohan'},goPrivacy() { wx.navigateTo({ url: '/pages/privacy/privacy' }) }
 })
