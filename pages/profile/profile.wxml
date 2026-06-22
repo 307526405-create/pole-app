@@ -2,13 +2,24 @@
   <view class="header">
     <view class="avt"><text>老李</text></view>
     <text class="nick">车迷·老李</text>
-    <view class="streak-badge">🔥 连续预测 9 站</view>
+    <text class="sub">加入2赛季 · 连续预测9站</text>
   </view>
 
-  <view class="stats">
-    <view class="st"><text class="st-v">156</text><text class="st-l">赛季积分</text></view>
-    <view class="st"><text class="st-v">42</text><text class="st-l">排名</text></view>
-    <view class="st"><text class="st-v green">47%</text><text class="st-l">准确率</text></view>
+  <view class="stat-card">
+    <view class="sc-item">
+      <text class="sc-v">156</text>
+      <text class="sc-l">赛季积分</text>
+    </view>
+    <view class="sc-div"></view>
+    <view class="sc-item">
+      <text class="sc-v">42</text>
+      <text class="sc-l">排名</text>
+    </view>
+    <view class="sc-div"></view>
+    <view class="sc-item">
+      <text class="sc-v green">47%</text>
+      <text class="sc-l">准确率</text>
+    </view>
   </view>
 
   <view class="card">
