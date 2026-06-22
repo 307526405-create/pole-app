@@ -7,18 +7,23 @@
 
   <view class="stats">
     <view class="st"><text class="st-v">156</text><text class="st-l">赛季积分</text></view>
-    <view class="st"><text class="st-v">42</text><text class="st-l">排名 / 1280</text></view>
-    <view class="st"><text class="st-v green">47%</text><text class="st-l">预测准确率</text></view>
-    <view wx:if="{{history.length===0}}" class="empty-text" style="text-align:center;padding:40rpx 0;font-size:24rpx;color:#999">暂无竞猜记录</view>
+    <view class="st"><text class="st-v">42</text><text class="st-l">排名</text></view>
+    <view class="st"><text class="st-v green">47%</text><text class="st-l">准确率</text></view>
   </view>
 
   <view class="card">
-    <view class="card-hd">我支持的车队与车手</view>
+    <view class="card-hd">我支持的车队与车手 <text class="edit-hint" bind:tap="onPick" data-type="team">编辑</text></view>
     <view class="fav-row">
-      <view class="fav ferrari"><text class="fav-icon">🐎</text><text class="fav-name">Ferrari</text></view>
-      <view class="fav"><text class="fav-icon">16</text><text class="fav-name">Leclerc</text></view>
+      <view class="fav ferrari" bind:tap="onPick" data-type="team"><text class="fav-icon">🐎</text><text class="fav-name">{{favTeam}}</text></view>
+      <view class="fav" bind:tap="onPick" data-type="driver"><text class="fav-icon">🏎️</text><text class="fav-name">{{favDriver}}</text></view>
     </view>
-    <view wx:if="{{history.length===0}}" class="empty-text" style="text-align:center;padding:40rpx 0;font-size:24rpx;color:#999">暂无竞猜记录</view>
+  </view>
+
+  <view wx:if="{{showPick}}" class="pick-mask" bind:tap="doPick" data-val="">
+    <view class="pick-box" catchtap="">
+      <text class="pick-title">选择{{pickType=='team'?'车队':'车手'}}</text>
+      <view wx:for="{{pickType=='team'?teams:drivers}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-val="{{item}}">{{item}}</view>
+    </view>
   </view>
 
   <view class="card">
@@ -31,6 +36,14 @@
       <text class="h-r">+{{item.score}}</text>
     </view>
     <view wx:if="{{history.length===0}}" class="empty-text" style="text-align:center;padding:40rpx 0;font-size:24rpx;color:#999">暂无竞猜记录</view>
+  </view>
+
+  <view class="card">
+    <view class="card-hd">数据对比</view>
+    <view class="report">
+      <text class="rp-t">即将上线</text>
+      <text class="rp-s">圈速对比 · 生涯数据</text>
+    </view>
   </view>
 
   <view class="card">
