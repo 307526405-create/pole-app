@@ -19,6 +19,7 @@ Page({
     var t=this
     wx.request({url:API+'/standings/drivers',success(r){
       t.setData({drivers:(r.data.data||[]).map(function(d){return{num:PERM_NUM[d.driver_name]||d.position,name:d.driver_name,team:d.constructor,selected:false}})})
+      t.prepareStep(0)
     }})
     wx.request({url:API+'/races',success(r){
       var n=(r.data.data||[]).find(function(rr){return new Date(rr.date)>new Date()})
