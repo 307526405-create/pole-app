@@ -15,12 +15,12 @@
     <view class="card-hd">我支持的车队与车手</view>
     <view class="fav-row">
       <view class="fav ferrari" bind:tap="pickTeam">
-        <image class="fav-logo" src="{{favTeamLogo}}" mode="aspectFit"/>
-        <text class="fav-name">{{favTeamName}}</text>
+        <text class="fav-icon">🐎</text>
+        <text class="fav-name">{{favTeam}}</text>
       </view>
       <view class="fav" bind:tap="pickDriver">
-        <image class="fav-avatar" src="{{favDriverImg}}" mode="aspectFill"/>
-        <text class="fav-name">{{favDriverName}}</text>
+        <text class="fav-icon">🏎️</text>
+        <text class="fav-name">{{favDriver}}</text>
       </view>
     </view>
   </view>
@@ -32,11 +32,6 @@
       <view class="h-m"><text wx:for="{{item.items}}" wx:key="*this" class="h-tag {{item.cls}}">{{item.txt}}</text></view>
       <text class="h-r">+{{item.score}}</text>
     </view>
-  </view>
-
-  <view class="card">
-    <view class="card-hd">数据对比</view>
-    <view class="report"><text class="rp-t">即将上线</text><text class="rp-s">圈速对比 · 生涯数据</text></view>
   </view>
 
   <view class="card">
