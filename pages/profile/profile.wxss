@@ -41,9 +41,9 @@
 .footer-text { font-size:22rpx;color:#999; }
 
 .modal-mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center}
-.modal-box{background:#fff;border-radius:24rpx;width:600rpx;max-height:75vh;overflow-y:auto;padding:32rpx;margin:0 32rpx}
+.modal-box{background:#fff;border-radius:24rpx;width:650rpx;max-height:75vh;overflow-y:auto;padding:32rpx;margin:0 32rpx}
 .modal-title{font-size:30rpx;font-weight:600;color:#333;display:block;text-align:center;margin-bottom:24rpx}
-.modal-grid{display:flex;flex-wrap:wrap;gap:12rpx}
-.modal-item{width:calc(50% - 6rpx);text-align:center;padding:14rpx 4rpx;background:#F8F8F8;border-radius:8rpx;font-size:22rpx;color:#333;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.modal-grid{display:flex;flex-wrap:wrap;gap:8rpx}
+.modal-item{width:calc(33.33% - 8rpx);text-align:center;padding:12rpx 2rpx;background:#F8F8F8;border-radius:8rpx;font-size:20rpx;color:#333;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .modal-item:active{background:#FFF0F0;color:#E10600}
 .modal-cancel{display:block;text-align:center;padding:20rpx 0;margin-top:16rpx;font-size:26rpx;color:#999;border-top:1rpx solid #F0F0F0}
