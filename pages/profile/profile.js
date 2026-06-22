@@ -39,7 +39,15 @@ Page({
     this.setData({ favTeam: wx.getStorageSync('favTeam') || 'Ferrari', favDriver: wx.getStorageSync('favDriver') || 'Leclerc' })
   },
   onPick(e) {
-    this.setData({ showPick: true, pickType: e.currentTarget.dataset.type })
+    var t = e.currentTarget.dataset.type
+    var list = []
+    var that = this
+    if (t === 'team') {
+      this.data.teams.forEach(function(k) { list.push(that.cnTeam[k] || k) })
+    } else {
+      this.data.drivers.forEach(function(k) { list.push(that.cnDriver[k] || k) })
+    }
+    this.setData({ showPick: true, pickType: t === 'team' ? '车队' : '车手', pickList: list })
   },
   doPick(e) {
     var v = e.currentTarget.dataset.val
