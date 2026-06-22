@@ -62,7 +62,7 @@
 
   <view class="pro">
     <view class="pro-l"><text class="pro-t">Pro 功能</text><text class="pro-s">圈速数据对比 · 历史回溯 · 免广告</text></view>
-    <text class="pro-btn" bind:tap="goCompare">免费试用</text>
+    <button class="pro-btn" bind:tap="goCompare" hover-class="none">免费试用</button>
   </view>
 </view>
 <view class="footer" style="text-align:center;padding:32rpx 0;">
