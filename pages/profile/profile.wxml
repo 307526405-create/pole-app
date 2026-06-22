@@ -1,7 +1,14 @@
 <view class="page">
   <view class="header">
-    <view class="avt"><text>老李</text></view>
-    <text class="nick">车迷·老李</text>
+    <view class="avt" bind:tap="startEditNick"><text>{{avatarText||'车迷'}}</text></view>
+    <view wx:if="{{!editNick}}">
+      <text class="nick" bind:tap="startEditNick">{{nick}} <text class="edit-tag">编辑</text></text>
+    </view>
+    <view wx:if="{{editNick}}" class="edit-row">
+      <input class="edit-input" value="{{nick}}" bind:input="onNickInput" focus="true" maxlength="12"/>
+      <text class="edit-ok" bind:tap="saveNick">确定</text>
+      <text class="edit-cancel" bind:tap="cancelEditNick">取消</text>
+    </view>
     <text class="sub">加入2赛季 · 连续预测9站</text>
   </view>
 

@@ -14,7 +14,7 @@ Page({
     favDriverName: '',
     favTeamLogo: '',
     favDriverImg: '',
-    showPick: false,
+    showPick: false,nick: '',avatarText: '',editNick: false,editAvatar: false,
     pickTitle: '',
     pickItems: [],
     pickKeys: [],
@@ -22,7 +22,7 @@ Page({
     compD2: '',
     compResult: null
   },
-  onShow: function() {
+  onShow: function() { var nick = wx.getStorageSync('nick') || '车迷·老李'; this.setData({nick: nick, avatarText: nick.slice(-2)});
     if (typeof this.getTabBar === 'function') this.getTabBar().setData({ selected: 2 })
     this.loadFav()
   },
@@ -112,7 +112,16 @@ Page({
     }
     selected = []
     step()
-  },goPrivacy: function() {
+  },
+  startEditNick: function() { this.setData({ editNick: true }) },
+  onNickInput: function(e) { this.setData({ tmpNick: e.detail.value }) },
+  saveNick: function() {
+    var nn = this.data.tmpNick || this.data.nick
+    wx.setStorageSync('nick', nn)
+    this.setData({ nick: nn, avatarText: nn.slice(-2), editNick: false })
+  },
+  cancelEditNick: function() { this.setData({ editNick: false }) },
+goPrivacy: function() {
     wx.navigateTo({ url: '/pages/privacy/privacy' })
   }
 })
