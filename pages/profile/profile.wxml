@@ -61,11 +61,32 @@
   </view>
 
   
-  <view wx:if="{{compResult}}" class="card">
+  <view wx:if="{{compResult}}" class="card" hidden>
     <view class="card-hd">对比结果</view>
     <view class="comp-row"><text class="comp-label">积分</text><text class="comp-v1">{{compResult.d1pts}}</text><text class="comp-v2">{{compResult.d2pts}}</text></view>
     <view class="comp-row"><text class="comp-label">分站冠军</text><text class="comp-v1">{{compResult.d1wins}}</text><text class="comp-v2">{{compResult.d2wins}}</text></view>
     <view class="comp-row"><text class="comp-label">排名</text><text class="comp-v1">P{{compResult.d1pos}}</text><text class="comp-v2">P{{compResult.d2pos}}</text></view>
+  </view>
+
+  <view wx:if="{{compareList}}" class="card">
+    <view class="card-hd">车手对比</view>
+    <scroll-view scroll-x enable-flex style="white-space:nowrap">
+      <view style="display:inline-flex;gap:0">
+        <view style="width:160rpx;flex-shrink:0">
+          <view class="ch-th" style="height:80rpx"></view>
+          <view class="ch-row">排名</view>
+          <view class="ch-row">积分</view>
+          <view class="ch-row">分站冠军</view>
+        </view>
+        <view wx:for="{{compareList}}" wx:key="name" style="width:200rpx;flex-shrink:0;text-align:center;border-left:2rpx solid #F0F0F0">
+          <view class="ch-th"><text style="font-size:24rpx;font-weight:700;color:#333">{{item.name}}</text></view>
+          <view class="ch-row" style="font-family:monospace">{{item.position}}</view>
+          <view class="ch-row" style="font-family:monospace;font-weight:700">{{item.points}}</view>
+          <view class="ch-row" style="font-family:monospace">{{item.wins}}</view>
+        </view>
+      </view>
+    </scroll-view>
+    <button class="pro-btn" bind:tap="goCompare" hover-class="none" style="margin-top:16rpx">更换车手</button>
   </view>
 <view class="pro">
     <view class="pro-l"><text class="pro-t">Pro 功能</text><text class="pro-s">圈速数据对比 · 历史回溯 · 免广告</text></view>

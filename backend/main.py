@@ -248,3 +248,17 @@ async def api_compare_drivers(driver1: str = "", driver2: str = ""):
     d1 = next((d for d in standings if d["driver_name"] == driver1), None)
     d2 = next((d for d in standings if d["driver_name"] == driver2), None)
     return {"code": 0, "data": {"driver1": d1, "driver2": d2}}
+
+@app.get("/api/compare/multi")
+async def api_compare_multi(drivers: str = ""):
+    """多车手对比，drivers用逗号分隔"""
+    if not drivers:
+        return {"code": -1, "msg": "需要至少一个车手"}
+    names = [d.strip() for d in drivers.split(",") if d.strip()]
+    standings = await get_driver_standings("current")
+    result = []
+    for name in names:
+        d = next((d for d in standings if d["driver_name"] == name), None)
+        if d:
+            result.append({"name": name, "position": d["position"], "points": d["points"], "wins": d["wins"]})
+    return {"code": 0, "data": result}

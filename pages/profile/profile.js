@@ -66,42 +66,53 @@ Page({
   },
   goCompare: function() {
     var that = this
-    wx.showActionSheet({
-      itemList: ['Verstappen','Norris','Leclerc','Hamilton','Piastri','Russell','Antonelli'],
-      success: function(r1) {
-        var names = ['Verstappen','Norris','Leclerc','Hamilton','Piastri','Russell','Antonelli']
-        var d1 = names[r1.tapIndex]
-        wx.showActionSheet({
-          itemList: ['Verstappen','Norris','Leclerc','Hamilton','Piastri','Russell','Antonelli'],
-          success: function(r2) {
-            var d2 = names[r2.tapIndex]
-            wx.request({
-              url: 'http://localhost:8080/api/compare/drivers?driver1=' + d1 + '&driver2=' + d2,
-              success: function(r) {
-                if (r.statusCode === 200) {
-                  var dd = r.data.data
-                  that.setData({
-                    compD1: d1,
-                    compD2: d2,
-                    compResult: {
-                      d1name: d1, d2name: d2,
-                      d1pts: dd.driver1 ? dd.driver1.points : '?',
-                      d2pts: dd.driver2 ? dd.driver2.points : '?',
-                      d1wins: dd.driver1 ? dd.driver1.wins : '?',
-                      d2wins: dd.driver2 ? dd.driver2.wins : '?',
-                      d1pos: dd.driver1 ? dd.driver1.position : '?',
-                      d2pos: dd.driver2 ? dd.driver2.position : '?'
-                    }
-                  })
-                }
-              }
-            })
+    var allDrivers = ['Verstappen','Norris','Leclerc','Hamilton','Piastri','Russell','Antonelli']
+    var selected = []
+    var step = function() {
+      var remaining = allDrivers.filter(function(d) { return selected.indexOf(d) < 0 })
+      var items = remaining.slice(0, 6)
+      if (items.length === 0 || selected.length >= 5) {
+        if (selected.length < 2) return
+        that.setData({ compLoading: true })
+        wx.request({
+          url: 'http://localhost:8080/api/compare/multi?drivers=' + selected.join(','),
+          success: function(r) {
+            if (r.statusCode === 200) {
+              that.setData({ compareList: r.data.data, compLoading: false })
+            }
           }
         })
+        return
       }
-    })
-  },
-  goPrivacy: function() {
+      items.push('完成选择')
+      wx.showActionSheet({
+        itemList: items,
+        success: function(r) {
+          if (r.tapIndex === items.length - 1) {
+            if (selected.length < 2) {
+              wx.showToast({ title: '至少选2个', icon: 'none' })
+              step()
+            } else {
+              that.setData({ compLoading: true })
+              wx.request({
+                url: 'http://localhost:8080/api/compare/multi?drivers=' + selected.join(','),
+                success: function(r) {
+                  if (r.statusCode === 200) {
+                    that.setData({ compareList: r.data.data, compLoading: false })
+                  }
+                }
+              })
+            }
+          } else {
+            selected.push(items[r.tapIndex])
+            step()
+          }
+        }
+      })
+    }
+    selected = []
+    step()
+  },goPrivacy: function() {
     wx.navigateTo({ url: '/pages/privacy/privacy' })
   }
 })
