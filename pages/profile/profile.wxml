@@ -13,24 +13,11 @@
   </view>
 
   <view class="card">
-    <view class="card-hd">支持的车队与车手 <text class="edit-hint" bind:tap="onPick" data-type="team">编辑</text></view>
+    <view class="card-hd">我支持的车队与车手</view>
     <view class="fav-row">
-      <view class="fav ferrari" bind:tap="onPick" data-type="team"><text class="fav-icon">🐎</text><text class="fav-name">{{favTeam}}</text></view>
-      <view class="fav" bind:tap="onPick" data-type="driver"><text class="fav-icon">🏎️</text><text class="fav-name">{{favDriver}}</text></view>
+      <view class="fav ferrari"><text class="fav-icon">🐎</text><text class="fav-name">Ferrari</text></view>
+      <view class="fav"><text class="fav-icon">16</text><text class="fav-name">Leclerc</text></view>
     </view>
-  </view>
-  
-  <view wx:if="{{showPicker}}" class="picker-mask" bind:tap="selectFav" data-val="">
-    <view class="picker-box" catchtap="">
-      <text class="picker-title">选择{{pickerType==='team'?'车队':'车手'}}</text>
-      <scroll-view scroll-y class="picker-list">
-        <view wx:for="{{pickerType==='team'?teams:drivers}}" wx:key="*this" class="picker-item" bind:tap="selectFav" data-val="{{item}}">
-          <text>{{item}}</text>
-        </view>
-      </scroll-view>
-      <text class="picker-close" bind:tap="selectFav" data-val="">取消</text>
-    </view>
-  </view>
     <view wx:if="{{history.length===0}}" class="empty-text" style="text-align:center;padding:40rpx 0;font-size:24rpx;color:#999">暂无竞猜记录</view>
   </view>
 
@@ -54,15 +41,7 @@
     </view>
   </view>
 
-  
-  <view class="card">
-    <view class="card-hd">数据对比</view>
-    <view class="report">
-      <text class="rp-t">即将上线</text>
-      <text class="rp-s">圈速对比 · 生涯数据对比</text>
-    </view>
-  </view>
-<view class="pro">
+  <view class="pro">
     <view class="pro-l"><text class="pro-t">Pro 功能</text><text class="pro-s">圈速数据对比 · 历史回溯 · 免广告</text></view>
     <text class="pro-btn">免费试用</text>
   </view>

@@ -40,11 +40,9 @@
 .pro-btn { background: #E8F5E9; color: #2E7D32; padding: 14rpx 28rpx; border-radius: 24rpx; font-size: 26rpx; font-weight: 600; }
 .footer-text { font-size:22rpx;color:#999; }
 
-.edit-hint { font-size:22rpx; color:#E10600; font-weight:400; margin-left:8rpx; }
-.picker-mask { position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:200;display:flex;align-items:flex-end; }
-.picker-box { background:#fff;border-radius:24rpx 24rpx 0 0;width:100%;max-height:60vh;padding:32rpx 32rpx 0; }
-.picker-title { font-size:28rpx;font-weight:600;color:#333;display:block;text-align:center;margin-bottom:20rpx; }
-.picker-list { max-height:40vh; }
-.picker-item { padding:24rpx 0;text-align:center;font-size:28rpx;color:#333;border-top:1rpx solid #F0F0F0; }
-.picker-item:active { background:#F8F8F8; }
-.picker-close { display:block;text-align:center;padding:28rpx 0;font-size:28rpx;color:#999;border-top:1rpx solid #F0F0F0;margin-top:8rpx; }
+.edit-hint{font-size:22rpx;color:#E10600;margin-left:8rpx}
+.pick-mask{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:200;display:flex;align-items:flex-end}
+.pick-box{background:#fff;border-radius:24rpx 24rpx 0 0;width:100%;max-height:70vh;padding:32rpx 0 48rpx;overflow-y:auto}
+.pick-title{font-size:28rpx;font-weight:600;color:#333;display:block;text-align:center;margin-bottom:16rpx}
+.pick-item{padding:28rpx 32rpx;font-size:28rpx;color:#333;border-top:1rpx solid #F0F0F0;text-align:center}
+.pick-item:active{background:#F8F8F8}
