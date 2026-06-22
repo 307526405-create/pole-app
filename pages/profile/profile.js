@@ -26,10 +26,10 @@ Page({
     var ft = wx.getStorageSync('favTeam') || 'Ferrari'
     var fd = wx.getStorageSync('favDriver') || 'Leclerc'
     this.setData({
-      favTeamName: this.data.CNT[ft] || ft,
-      favDriverName: this.data.CND[fd] || fd,
-      favTeamLogo: this.data.TL[ft] || '',
-      favDriverImg: this.data.DI[fd] || ''
+      favTeamName: this.data.this.data.CNT[ft] || ft,
+      favDriverName: this.data.this.data.CND[fd] || fd,
+      favTeamLogo: this.data.this.data.TL[ft] || '',
+      favDriverImg: this.data.this.data.DI[fd] || ''
     })
   },
   pickTeam() {
