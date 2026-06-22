@@ -14,21 +14,14 @@
   <view class="card">
     <view class="card-hd">我支持的车队与车手</view>
     <view class="fav-row">
-      <view class="fav ferrari" bind:tap="onPick" data-type="team">
-        <image class="fav-logo" src="{{teamLogo[favTeam]}}" mode="aspectFit"/>
-        <text class="fav-name">{{cnTeam[favTeam]}}</text>
+      <view class="fav ferrari" bind:tap="pickTeam">
+        <image class="fav-logo" src="{{favTeamLogo}}" mode="aspectFit"/>
+        <text class="fav-name">{{favTeamName}}</text>
       </view>
-      <view class="fav" bind:tap="onPick" data-type="driver">
-        <image class="fav-avatar" src="{{driverImg[favDriver]}}" mode="aspectFill"/>
-        <text class="fav-name">{{cnDriver[favDriver]}}</text>
+      <view class="fav" bind:tap="pickDriver">
+        <image class="fav-avatar" src="{{favDriverImg}}" mode="aspectFill"/>
+        <text class="fav-name">{{favDriverName}}</text>
       </view>
-    </view>
-  </view>
-
-  <view wx:if="{{showPick}}" class="pick-mask" bind:tap="doPick" data-val="" data-idx="">
-    <view class="pick-box" catchtap="">
-      <text class="pick-title">选择{{pickType}}</text>
-      <view wx:for="{{pickList}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-val="{{item}}" data-idx="{{index}}">{{item}}</view>
     </view>
   </view>
 
