@@ -60,3 +60,6 @@
 .edit-input{border:2rpx solid #E10600;border-radius:8rpx;padding:6rpx 12rpx;font-size:28rpx;width:260rpx;text-align:center}
 .edit-ok{font-size:24rpx;color:#fff;background:#E10600;padding:6rpx 16rpx;border-radius:6rpx}
 .edit-cancel{font-size:24rpx;color:#999}
+.share-row{display:flex;justify-content:center;margin-bottom:16rpx}
+.share-btn{background:#E10600;color:#fff;border:none;border-radius:20rpx;font-size:24rpx;padding:12rpx 40rpx;font-weight:600}
+button.share-btn::after{border:none}
