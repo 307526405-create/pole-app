@@ -60,9 +60,16 @@
     <view class="report"><text class="rp-t">赛季结束后自动生成</text><text class="rp-s">可分享到朋友圈</text></view>
   </view>
 
-  <view class="pro">
+  
+  <view wx:if="{{compResult}}" class="card">
+    <view class="card-hd">对比结果</view>
+    <view class="comp-row"><text class="comp-label">积分</text><text class="comp-v1">{{compResult.d1pts}}</text><text class="comp-v2">{{compResult.d2pts}}</text></view>
+    <view class="comp-row"><text class="comp-label">分站冠军</text><text class="comp-v1">{{compResult.d1wins}}</text><text class="comp-v2">{{compResult.d2wins}}</text></view>
+    <view class="comp-row"><text class="comp-label">排名</text><text class="comp-v1">P{{compResult.d1pos}}</text><text class="comp-v2">P{{compResult.d2pos}}</text></view>
+  </view>
+<view class="pro">
     <view class="pro-l"><text class="pro-t">Pro 功能</text><text class="pro-s">圈速数据对比 · 历史回溯 · 免广告</text></view>
-    <button class="pro-btn" bind:tap="goCompare" hover-class="none">免费试用</button>
+    <button class="pro-btn" bind:tap="goCompare" hover-class="none">车手对比</button>
   </view>
 </view>
 <view class="footer" style="text-align:center;padding:32rpx 0;">
