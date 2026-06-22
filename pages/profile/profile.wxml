@@ -14,15 +14,21 @@
   <view class="card">
     <view class="card-hd">我支持的车队与车手</view>
     <view class="fav-row">
-      <view class="fav ferrari" bind:tap="onPick" data-type="team"><image class="fav-logo" src="{{teamLogo[favTeam]}}" mode="aspectFit"/><text class="fav-name">{{cnTeam[favTeam]||favTeam}}</text></view>
-      <view class="fav" bind:tap="onPick" data-type="driver"><image class="fav-avatar" src="{{driverImg[favDriver]}}" mode="aspectFill"/><text class="fav-name">{{cnDriver[favDriver]||favDriver}}</text></view>
+      <view class="fav" bind:tap="onPick" data-type="team">
+        <image class="fav-logo" src="{{teamLogo[favTeam]}}" mode="aspectFit"/>
+        <text class="fav-name">{{cnTeam[favTeam]}}</text>
+      </view>
+      <view class="fav" bind:tap="onPick" data-type="driver">
+        <image class="fav-avatar" src="{{driverImg[favDriver]}}" mode="aspectFill"/>
+        <text class="fav-name">{{cnDriver[favDriver]}}</text>
+      </view>
     </view>
   </view>
 
   <view wx:if="{{showPick}}" class="pick-mask" bind:tap="doPick" data-val="">
     <view class="pick-box" catchtap="">
-      <text class="pick-title">选择{{pickType==="team"?"车队":"车手"}}</text>
-      <view wx:for="{{pickType==='team'?teams:drivers}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-val="{{pickType==="team"?cnTeam[item]:cnDriver[item]}}">{{item}}</view>
+      <text class="pick-title">选择{{pickType}}</text>
+      <view wx:for="{{pickList}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-val="{{item}}">{{item}}</view>
     </view>
   </view>
 
@@ -30,28 +36,19 @@
     <view class="card-hd">最近预测</view>
     <view wx:for="{{history}}" wx:key="race" class="h-row">
       <text class="h-l">{{item.race}}</text>
-      <view class="h-m">
-        <text wx:for="{{item.items}}" wx:key="*this" class="h-tag {{item.cls}}">{{item.txt}}</text>
-      </view>
+      <view class="h-m"><text wx:for="{{item.items}}" wx:key="*this" class="h-tag {{item.cls}}">{{item.txt}}</text></view>
       <text class="h-r">+{{item.score}}</text>
     </view>
-    <view wx:if="{{history.length===0}}" class="empty-text" style="text-align:center;padding:40rpx 0;font-size:24rpx;color:#999">暂无竞猜记录</view>
   </view>
 
   <view class="card">
     <view class="card-hd">数据对比</view>
-    <view class="report">
-      <text class="rp-t">即将上线</text>
-      <text class="rp-s">圈速对比 · 生涯数据</text>
-    </view>
+    <view class="report"><text class="rp-t">即将上线</text><text class="rp-s">圈速对比 · 生涯数据</text></view>
   </view>
 
   <view class="card">
     <view class="card-hd">2026 赛季报告</view>
-    <view class="report">
-      <text class="rp-t">赛季结束后自动生成</text>
-      <text class="rp-s">可分享到朋友圈</text>
-    </view>
+    <view class="report"><text class="rp-t">赛季结束后自动生成</text><text class="rp-s">可分享到朋友圈</text></view>
   </view>
 
   <view class="pro">

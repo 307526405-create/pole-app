@@ -10,7 +10,7 @@ Page({
     favTeam: '',
     favDriver: '',
     showPick: false,
-    pickType: '',
+    pickType: '',pickList: [],
     teamLogo: {
       'Ferrari':'https://media.formula1.com/content/dam/fom-website/teams/2025/ferrari-logo.png.transform/2col-retina/image.png',
       'McLaren':'https://media.formula1.com/content/dam/fom-website/teams/2025/mclaren-logo.png.transform/2col-retina/image.png',
