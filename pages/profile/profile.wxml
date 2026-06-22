@@ -21,8 +21,8 @@
 
   <view wx:if="{{showPick}}" class="pick-mask" bind:tap="doPick" data-val="">
     <view class="pick-box" catchtap="">
-      <text class="pick-title">选择{{pickType=='team'?'车队':'车手'}}</text>
-      <view wx:for="{{pickType=='team'?teams:drivers}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-val="{{item}}">{{item}}</view>
+      <text class="pick-title">选择{{pickType==='team'?'车队':'车手'}}</text>
+      <view wx:for="{{pickType==='team'?teams:drivers}}" wx:key="*this" class="pick-item" bind:tap="doPick" data-val="{{item}}">{{item}}</view>
     </view>
   </view>
 
