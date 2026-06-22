@@ -1,15 +1,24 @@
 Page({
-  data: { d1name: '', d2name: '', d1: {}, d2: {} },
+  data: { d1name: '', d2name: '', d1: null, d2: null },
   onBack() { wx.navigateBack() },
-  pickD1() { this.pick('d1') },
-  pickD2() { this.pick('d2') },
-  pick(k) {
+  pickD1() {
     var that = this
     wx.showActionSheet({
       itemList: ['Verstappen','Norris','Leclerc','Hamilton','Piastri','Russell','Antonelli'],
       success(r) {
         var names = ['Verstappen','Norris','Leclerc','Hamilton','Piastri','Russell','Antonelli']
-        that.setData({ [k+'name']: names[r.tapIndex] })
+        that.setData({ d1name: names[r.tapIndex] })
+        if (that.data.d1name && that.data.d2name) that.load()
+      }
+    })
+  },
+  pickD2() {
+    var that = this
+    wx.showActionSheet({
+      itemList: ['Verstappen','Norris','Leclerc','Hamilton','Piastri','Russell','Antonelli'],
+      success(r) {
+        var names = ['Verstappen','Norris','Leclerc','Hamilton','Piastri','Russell','Antonelli']
+        that.setData({ d2name: names[r.tapIndex] })
         if (that.data.d1name && that.data.d2name) that.load()
       }
     })
