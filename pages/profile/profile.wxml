@@ -12,6 +12,8 @@
     <text class="sub">加入2赛季 · 连续预测9站</text>
   </view>
 
+  <view class="share-row"><button class="share-btn" open-type="share">分享名片</button></view>
+
   <view class="stat-card">
     <view class="sc-item">
       <text class="sc-v">156</text>
