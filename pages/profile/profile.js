@@ -31,7 +31,7 @@ Page({
       favDriverImg: DI[fd] || ''
     })
   },
-  pickTeam() { wx.showToast({title:"选择车队",icon:"none"}); var that=this
+  pickTeam() {
     var that = this
     wx.showActionSheet({
       itemList: T.map(function(k) { return CNT[k] || k }),
@@ -41,7 +41,7 @@ Page({
       }
     })
   },
-  pickDriver() { wx.showToast({title:"选择车手",icon:"none"})
+  pickDriver() {
     var that = this
     wx.showActionSheet({
       itemList: D.map(function(k) { return CND[k] || k }),
