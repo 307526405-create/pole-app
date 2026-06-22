@@ -25,8 +25,8 @@ Page({
   onPick(e) {
     var t = e.currentTarget.dataset.type
     var keys, cnMap
-    if (t === 'team') { keys = this.data.teams; cnMap = this.cnTeam }
-    else { keys = this.data.drivers; cnMap = this.cnDriver }
+    if (t === 'team') { keys = this.data.teams; cnMap = this.data.cnTeam }
+    else { keys = this.data.drivers; cnMap = this.data.cnDriver }
     var list = []
     for (var i = 0; i < keys.length; i++) { list.push(cnMap[keys[i]] || keys[i]) }
     this.setData({ showPick: true, pickType: t === 'team' ? '车队' : '车手', pickList: list, pickKeys: keys })
